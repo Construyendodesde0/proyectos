@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiendaLatina | Servicios Latinos en Porto</title>
+    <link rel="stylesheet" href="estilo/estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar Responsivo -->
+    <header class="header">
+        <div class="logo">
+            <img src="imagenes/logoTL.png" alt="TiendaLatina">
+        </div>
+        
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Conec<span>t</span>amos <span>t</span>a<span>l</span>en<span>t</span>o <span>l</span>a<span>t</span>ino en Por<span>t</span>o</h1>
+            <p>Encuentra u ofrece servicios con confianza.</p>
+            <button class="cta-button">Explorar Servicios <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <h2><span>Servicios</span> Populares</h2>
+        <div class="filtros">
+            <button class="filtro-btn">Todos</button>
+            <button class="filtro-btn">Hogar</button>
+            <button class="filtro-btn">Educación</button>
+        </div>
+        <div class="services-grid" id="services-container">
+            <!-- JS cargará aquí -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 TiendaLatina. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

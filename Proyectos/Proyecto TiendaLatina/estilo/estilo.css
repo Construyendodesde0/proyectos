@@ -1,0 +1,280 @@
+@charset (UTF-8);
+/* Variables de tu paleta #1 */
+:root {
+    --rojo: #E63946;
+    --amarillo: #FFD166;
+    --azul: #1D3557;
+    --blanco: #F5F5F5;
+    --sombra: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--blanco);
+    color: var(--azul);
+    line-height: 1.6;
+    transition: background 0.3s;
+}
+
+/* Header Fijo con Degradado */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(90deg, var(--azul) 0%, var(--rojo) 100%);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 40px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    border-radius: 50%;
+}
+
+/* Menú Hamburguesa (Móvil) */
+.menu-toggle {
+    background: transparent;
+    border: none;
+    color: var(--blanco);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: block;
+    z-index: 1001;
+}
+
+.navbar {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-190%);
+    width: 80%;
+    height: calc(100vh - 70px);
+    background: var(--azul);
+    transition: left 0.3s ease;
+    padding: 2rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.active {
+    left: 0;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.nav-list a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    padding: 0.5rem;
+    border-radius: 5px;
+    display: block;
+}
+
+.nav-list a:hover {
+    background-color: var(--rojo);
+    transform: translateY(-2px);
+}
+
+.btn-modo {
+    background: transparent;
+    border: none;
+    color: var(--blanco);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+
+/* Hero Section */
+.hero {
+    background: url('hero-bg.jpg') no-repeat center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--blanco);
+    position: relative;
+    margin-top: 70px;
+    padding: 1rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(29, 53, 87, 0.8), rgba(230, 57, 70, 0.7));
+}
+
+.hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 span {
+    color: var(--amarillo);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    color: rgba(255, 255, 255, 0.9);  /* Blanco ligeramente transparente */
+    font-size: 1.1rem;                /* Tamaño similar al h1 pero menos destacado */
+    margin-bottom: 1.5rem;            /* Espaciado consistente */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra suave para legibilidad */
+    position: relative;               /* Necesario para z-index */
+    z-index: 1;                       /* Igual que el h1 (sobre el gradiente) */
+    max-width: 600px;                 /* Evita que el texto se extienda demasiado */
+    margin-left: auto;                /* Centrado */
+    margin-right: auto;
+    padding: 0 1rem;                  /* Padding para responsividad */
+}
+
+
+.cta-button {
+    background-color: var(--amarillo);
+    color: var(--azul);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s;
+    font-weight: bold;
+    box-shadow: var(--sombra);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(255, 209, 102, 0.4);
+}
+
+/* Servicios */
+.services {
+    padding: 4rem 1rem;
+    text-align: center;
+    background-color: var(--blanco);
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.services h2 span {
+    color: var(--rojo);
+}
+
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filtro-btn {
+    background: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+    background: var(--azul);
+    color: var(--blanco);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* Media Queries (Desktop) */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+    
+    .navbar {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        padding: 0;
+    }
+    
+    .nav-list {
+        flex-direction: row;
+        gap: 2rem;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    .hero {
+        height: 80vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
