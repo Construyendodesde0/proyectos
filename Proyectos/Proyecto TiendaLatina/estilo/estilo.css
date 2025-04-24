@@ -1,5 +1,6 @@
-@charset (UTF-8);
-/* Variables de tu paleta #1 */
+@charset "UTF-8";
+
+/* Variables de color */
 :root {
     --rojo: #E63946;
     --amarillo: #FFD166;
@@ -15,22 +16,17 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--blanco);
+    color: var(--azul);
+    line-height: 1.6;
+    transition: background 0.3s;
+    margin: 0;
+    padding: 0;
+}
 
-    body {
-        font-family: 'Montserrat', sans-serif;
-        background-color: var(--blanco);
-        color: var(--azul);
-        line-height: 1.6;
-        transition: background 0.3s;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(90deg, var(--azul) 50%, var(--rojo) 100%);
-    }
-
-
-
-
-/* Header Fijo con Degradado */
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -45,66 +41,47 @@
 }
 
 .logo img {
-    height: 40px;
+    height: 70px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     border-radius: 50%;
 }
+
+/* Banderas */
 .banderas {
-    margin-top: 80px; /* Ajusta según la altura de tu header */
+    margin-top: 105px;
     padding: 10px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5px; /* Espacio entre banderas */
-    border-bottom: 1px solid #ddd; /* Opcional: línea divisoria */
+    gap: 5px;
     background: linear-gradient(90deg, var(--azul) 50%, var(--rojo) 100%);
+    border-bottom: 1px solid #ddd;
 }
 
 .banderas img {
-    width: 30px; /* Ajusta el tamaño */
+    width: 30px;
     height: auto;
-    transition: transform 0.2s; /* Efecto hover opcional */
-    
+    transition: transform 0.2s;
 }
 
 .banderas img:hover {
-    transform: scale(1.1); /* Opcional: efecto al pasar el mouse */
+    transform: scale(1.1);
 }
 
-/* Menú Hamburguesa (Móvil) */
-.menu-toggle {
-    background: transparent;
-    border: none;
-    color: var(--blanco);
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: block;
-    z-index: 1001;
-}
-
+/* Navbar centrado */
 .navbar {
-    position: fixed;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-190%);
-    width: 80%;
-    height: calc(100vh - 70px);
-    background: var(--azul);
-    transition: left 0.3s ease;
-    padding: 2rem;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar.active {
-    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .nav-list {
-    list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
 }
 
 .nav-list a {
@@ -112,23 +89,183 @@
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s;
-    padding: 0.5rem;
-    border-radius: 5px;
-    display: block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    background-color: rgba(230, 57, 70, 0.7);
 }
 
 .nav-list a:hover {
     background-color: var(--rojo);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(230, 57, 70, 0.4);
+}
+
+/* Menú desplegable de servicios */
+.menu-servicios {
+    position: relative;
+}
+
+.servicios-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    max-width: 90vw;
+    max-height: 70vh;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 1001;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.categorias {
+    display: flex;
+    background: var(--azul);
+    padding: 0.5rem;
+    gap: 0.5rem;
+    overflow-x: auto;
+}
+
+.categoria-btn {
+    background: transparent;
+    color: var(--blanco);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.categoria-btn.active {
+    background: var(--rojo);
+    font-weight: bold;
+}
+
+.servicios-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.servicios-categoria {
+    display: none;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.servicios-categoria.active {
+    display: block;
+}
+
+.servicios-categoria ul {
+    columns: 2;
+    column-gap: 1.5rem;
+    list-style: none;
+}
+
+.servicios-categoria li {
+    margin-bottom: 0.8rem;
+    break-inside: avoid;
+}
+
+.servicios-categoria a {
+    color: var(--azul);
+    text-decoration: none;
+    transition: all 0.2s;
+    display: block;
+    padding: 0.3rem 0;
+}
+
+.servicios-categoria a:hover {
+    color: var(--rojo);
+    transform: translateX(5px);
+}
+
+/* Menú de contacto */
+.menu-contacto {
+    position: relative;
+}
+
+.contacto-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 1001;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.qr-container {
+    text-align: center;
+}
+
+.qr-container h3 {
+    color: var(--azul);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.qr-option {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.qr-option:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 10px;
+    display: block;
+    border: 1px solid #ddd;
+    padding: 5px;
+    background: white;
+}
+
+.qr-button {
+    display: inline-block;
+    background: var(--azul);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: all 0.3s;
+}
+
+.qr-button:hover {
+    background: var(--rojo);
     transform: translateY(-2px);
 }
 
-.btn-modo {
-    background: transparent;
-    border: none;
-    color: var(--blanco);
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-left: 1rem;
+/* Versión móvil */
+@media (max-width: 768px) {
+    .contacto-menu {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 350px;
+    }
 }
 
 
@@ -162,24 +299,18 @@
     z-index: 1;
 }
 
-.hero-content h1 span {
-    color: var(--amarillo);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
 .hero-content p {
-    color: rgba(255, 255, 255, 0.9);  /* Blanco ligeramente transparente */
-    font-size: 1.1rem;                /* Tamaño similar al h1 pero menos destacado */
-    margin-bottom: 1.5rem;            /* Espaciado consistente */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra suave para legibilidad */
-    position: relative;               /* Necesario para z-index */
-    z-index: 1;                       /* Igual que el h1 (sobre el gradiente) */
-    max-width: 600px;                 /* Evita que el texto se extienda demasiado */
-    margin-left: auto;                /* Centrado */
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin-left: auto;
     margin-right: auto;
-    padding: 0 1rem;                  /* Padding para responsividad */
+    padding: 0 1rem;
 }
-
 
 .cta-button {
     background-color: var(--amarillo);
@@ -205,14 +336,11 @@
     box-shadow: 0 15px 25px rgba(255, 209, 102, 0.4);
 }
 
-/* Servicios */
+/* Sección de servicios */
 .services {
     padding: 4rem 1rem;
     text-align: center;
     background-color: var(--blanco);
-    background-image: url('/imagenes/pattern002.png');
-    background-size: cover;
-    background-repeat: repeat;
 }
 
 .services h2 {
@@ -242,7 +370,10 @@
     transition: all 0.3s;
 }
 
-
+.filtro-btn:hover {
+    background: var(--rojo);
+    transform: translateY(-3px);
+}
 
 .services-grid {
     display: grid;
@@ -274,47 +405,58 @@
     margin-top: 2rem;
 }
 
-/* Media Queries (Desktop) */
-@media (min-width: 768px) {
-    .menu-toggle {
-        display: none;
+/* Media Queries para móvil */
+@media (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-190%);
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: var(--azul);
+        transition: left 0.3s ease;
+        padding: 2rem;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     }
     
-    .navbar {
-        position: static; /* Elimina el posicionamiento fijo */
-        width: 100%;
-        transform: none; /* Elimina transform */
-        left: auto;
-        display: flex;
-        justify-content: center; /* Centrado horizontal */
-        background: transparent;
-        padding: 0;
-        height: auto;
-        box-shadow: none;
+    .navbar.active {
+        left: 0;
     }
     
     .nav-list {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        padding: 0 1rem;
-    }
-    .nav-list a {
-        color: var(--blanco);
-        background-color: rgba(230, 57, 70, 0.7); /* Fondo rojo semitransparente */
-        padding: 0.8rem 1.5rem;
-        border-radius: 10px;
-        transition: all 0.3s;
+        flex-direction: column;
+        gap: 1.5rem;
     }
     
-    .nav-list a:hover {
-        background-color: var(--rojo); /* Rojo sólido al hover */
-        transform: translateY(-3px);
-        box-shadow: 0 4px 8px rgba(230, 57, 70, 0.4);
+    .servicios-menu {
+        position: static;
+        width: 100%;
+        transform: none;
+        max-height: none;
     }
     
-    .logo img {
-        height: 50px;
+    .servicios-categoria ul {
+        columns: 1;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .hero {
+        height: 50vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Media Queries para desktop */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
     }
     
     .hero {
@@ -327,5 +469,10 @@
     
     .services-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    /* Mostrar menú al hover en desktop */
+    .menu-servicios:hover .servicios-menu {
+        display: flex;
     }
 }

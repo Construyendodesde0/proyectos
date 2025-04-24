@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="estilo/estilo.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
+    <link rel="shortcut icon" href="imagenes/favicon_esferico.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Navbar Responsivo -->
@@ -23,8 +23,81 @@
         <nav class="navbar">
             <ul class="nav-list">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li class="menu-servicios">
+                    <a href="#" id="servicios-link">Servicios <i class="fas fa-chevron-down"></i></a>
+                    <div class="servicios-menu" id="servicios-menu">
+                        <div class="categorias">
+                            <button class="categoria-btn active" data-categoria="belleza">Belleza</button>
+                            <button class="categoria-btn" data-categoria="hogar">Hogar</button>
+                            <button class="categoria-btn" data-categoria="educacion">Educación</button>
+                            <button class="categoria-btn" data-categoria="otros">Otros</button>
+                        </div>
+                        
+                        <div class="servicios-container">
+                            <div class="servicios-categoria active" data-categoria="belleza">
+                                <ul>
+                                    <li><a href="#" target="_blank">Peluquería</a></li>
+                                    <li><a href="#" target="_blank">Manicure/Pedicure</a></li>
+                                    <li><a href="#" target="_blank">Barbería</a></li>
+                                    <li><a href="#" target="_blank">Maquillaje</a></li>
+                                    <li><a href="#" target="_blank">Depilación</a></li>
+                                    <li><a href="#" target="_blank">Extensiones</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="servicios-categoria" data-categoria="hogar">
+                                <ul>
+                                    <li><a href="#" target="_blank">Limpieza básica</a></li>
+                                    <li><a href="#" target="_blank">Limpieza avanzada</a></li>
+                                    <li><a href="#" target="_blank">Pinturería</a></li>
+                                    <li><a href="#" target="_blank">Reparaciones eléctricas</a></li>
+                                    <li><a href="#" target="_blank">Obras/Construcción</a></li>
+                                    <li><a href="#" target="_blank">Jardinería</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="servicios-categoria" data-categoria="educacion">
+                                <ul>
+                                    <li><a href="#" target="_blank">Clases de Inglés</a></li>
+                                    <li><a href="#" target="_blank">Clases de Portugués</a></li>
+                                    <li><a href="#" target="_blank">Clases de Español</a></li>
+                                    <li><a href="#" target="_blank">Traducciones</a></li>
+                                    <li><a href="#" target="_blank">Asesoría legal</a></li>
+                                    <li><a href="#" target="_blank">Clases de informática</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="servicios-categoria" data-categoria="otros">
+                                <ul>
+                                    <li><a href="#" target="_blank">Mudanzas</a></li>
+                                    <li><a href="#" target="_blank">Cuidado de ancianos</a></li>
+                                    <li><a href="#" target="_blank">Catering Latino</a></li>
+                                    <li><a href="#" target="_blank">Transporte</a></li>
+                                    <li><a href="#" target="_blank">Eventos</a></li>
+                                    <li><a href="#" target="_blank">Reparación de celulares</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="menu-contacto">
+                    <a href="#" id="contacto-link">Contacto <i class="fas fa-chevron-down"></i></a>
+                    <div class="contacto-menu" id="contacto-menu">
+                        <div class="qr-container">
+                            <h3>Contáctanos vía:</h3>
+                            <div class="qr-option">
+                                <img src="imagenes/qr-whatsapp.png" alt="QR WhatsApp" class="qr-code">
+                                <p>WhatsApp Business</p>
+                                <a href="https://wa.me/tunumerodewhatsapp" target="_blank" class="qr-button">Abrir Chat</a>
+                            </div>
+                            <div class="qr-option">
+                                <img src="imagenes/qr-instagram.png" alt="QR Instagram" class="qr-code">
+                                <p>Instagram</p>
+                                <a href="https://instagram.com/tucuenta" target="_blank" class="qr-button">Seguir</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -51,14 +124,11 @@
         <img src="imagenes/uy.png" alt="Uruguay">
         <img src="imagenes/ve.png" alt="Venezuela">
     </div>
+
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>
-                <span>
-                    Conectamos talento Latino en Porto
-                </span>
-            </h1>
+            <h1>Conectamos talento Latino en Porto</h1>
             <p>Encuentra u ofrece servicios con confianza.</p>
             <button class="cta-button">Explorar Servicios <i class="fas fa-arrow-right"></i></button>
         </div>
@@ -82,8 +152,7 @@
         <p>&copy; 2025 TiendaLatina. Todos los derechos reservados.</p>
     </footer>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="script.js"></script>
-    
 </body>
 </html>
