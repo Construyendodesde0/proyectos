@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opciones Binarias Latinoamérica</title>
+  <link rel="stylesheet" href="grafico.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="_imagenes/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="_imagenes/favicon-16x16.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header y Navegación -->
+  <header class="fade-in">
+    <nav class="main-nav">
+      <h1>💰 Opciones Binarias Latinoamérica</h1>
+      <div class="buttons-container">
+        <a href="index.html"><button class="cta-button">Mejores Brokers</button></a>
+        <a href="grafico.html"><button class="cta-button active">Gráficos y Herramientas</button></a>
+        <a href="comunidad.html"><button class="cta-button">Comunidad</button></a>
+      </div>
+    </nav>
+    <!-- Widget de CoinMarketCap -->
+    <div class="widget-section fade-in" style="margin-top: 20px; text-align: center;">
+      <div id="coinmarketcap-widget-marquee" class="fade-in"
+           coins="1,1027,825,2,5426,74,1839,11419"
+           currency="USD" theme="light"
+           transparent="false"
+           show-symbol-logo="true">
+      </div>
+      <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script>
+    </div>
+  </header>
+
+  <!-- Sección Hero con fondo animado -->
+  <section class="hero fade-in">
+    <h2>Domina los Mercados con Herramientas Avanzadas</h2>
+    <p>Gráficos en tiempo real, calculadoras Forex y estrategias probadas para decisiones rápidas y efectivas.</p>
+    <div class="hero-animation"></div>
+  </section>
+
+  <!-- Layout Principal: Dos Columnas -->
+  <main>
+    <!-- Columna Izquierda -->
+    <section class="left-column fade-in">
+      <!-- Contenedor del Gráfico -->
+      <div class="chart-container">
+        <div id="tradingview_chart"></div>
+      </div>
+
+      <!-- Análisis Técnico -->
+      <div class="widget-container fade-in">
+        <h3>Análisis Técnico en Tiempo Real</h3>
+        <div class="tradingview-widget-container">
+          <div id="technical-analysis"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {
+            "interval": "1h",
+            "width": "100%",
+            "isTransparent": false,
+            "height": "450",
+            "symbol": "FX:EURUSD",
+            "showIntervalTabs": true,
+            "locale": "es",
+            "colorTheme": "light"
+          }
+          </script>
+        </div>
+      </div>
+
+      <!-- Calendario Económico -->
+      <div class="widget-container calendar-widget">
+        <h3>Calendario Económico</h3>
+        <div class="tradingview-widget-container" style="max-height: 400px; overflow: hidden;">
+          <div id="tradingview_calendar"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+          {
+            "colorTheme": "light",
+            "isTransparent": false,
+            "displayTimeZone": "exchange",
+            "width": "100%",
+            "height": "400",
+            "locale": "es",
+            "importanceFilter": "-1,0,1"
+          }
+          </script>
+        </div>
+      </div>
+
+      <!-- Forex Heat Map -->
+      <div class="widget-container forex-heatmap-widget fade-in">
+        <h3>Mapa de Calor Forex</h3>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {
+          "colorTheme": "light",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "es",
+          "largeChartUrl": "",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "width": "100%",
+          "height": "600",
+          "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+          "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+          "gridLineColor": "rgba(240, 243, 250, 0.06)",
+          "scaleFontColor": "rgba(120, 123, 134, 1)",
+          "belowChartFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+          "belowChartFillColorFalling": "rgba(41, 98, 255, 0.12)",
+          "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+          "tabs": [
+            {
+              "title": "Forex",
+              "symbols": [
+                { "s": "FX:EURUSD", "d": "EUR/USD" },
+                { "s": "FX:GBPUSD", "d": "GBP/USD" },
+                { "s": "FX:USDJPY", "d": "USD/JPY" },
+                { "s": "FX:USDCHF", "d": "USD/CHF" },
+                { "s": "FX:AUDUSD", "d": "AUD/USD" },
+                { "s": "FX:USDCAD", "d": "USD/CAD" }
+              ]
+            }
+          ]
+        }
+        </script>
+      </div>
+
+      <!-- Market Insights -->
+      <div class="widget-container market-insights fade-in">
+        <h3>Perspectivas del Mercado</h3>
+        <p>Obtén información clave sobre los movimientos del mercado y cómo aprovecharlos.</p>
+        <ul>
+          <li><strong>Volatilidad:</strong> Monitorea eventos de alto impacto en el calendario económico.</li>
+          <li><strong>Tendencias:</strong> Usa medias móviles para confirmar la dirección del mercado.</li>
+          <li><strong>Riesgo:</strong> Nunca arriesgues más del 2% de tu capital por operación.</li>
+        </ul>
+      </div>
+
+      <!-- TradingView Timeline -->
+      <div class="widget-container timeline-widget fade-in">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright">
+            <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+              <span class="blue-text">Track all markets on TradingView</span>
+            </a>
+          </div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+          {
+            "feedMode": "all_symbols",
+            "isTransparent": false,
+            "displayMode": "regular",
+            "width": "100%",
+            "height": "800",
+            "colorTheme": "light",
+            "locale": "es"
+          }
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- Columna Derecha -->
+    <aside class="right-column fade-in">
+      <!-- Pares de Divisas y Criptos -->
+      <div class="pairs-container">
+        <div class="pairs-panel">
+          <button onclick="changeSymbol('FX:AUDCAD')">AUD/CAD</button>
+          <button onclick="changeSymbol('FX:AUDCHF')">AUD/CHF</button>
+          <button onclick="changeSymbol('FX:AUDJPY')">AUD/JPY</button>
+          <button onclick="changeSymbol('FX:AUDNZD')">AUD/NZD</button>
+          <button onclick="changeSymbol('FX:AUDUSD')">AUD/USD</button>
+          <button onclick="changeSymbol('FX:CADCHF')">CAD/CHF</button>
+          <button onclick="changeSymbol('FX:CADJPY')">CAD/JPY</button>
+          <button onclick="changeSymbol('FX:CHFJPY')">CHF/JPY</button>
+          <button onclick="changeSymbol('FX:EURAUD')">EUR/AUD</button>
+          <button onclick="changeSymbol('FX:EURCAD')">EUR/CAD</button>
+          <button onclick="changeSymbol('FX:EURCHF')">EUR/CHF</button>
+          <button onclick="changeSymbol('FX:EURGBP')">EUR/GBP</button>
+          <button onclick="changeSymbol('FX:EURHKD')">EUR/HKD</button>
+          <button onclick="changeSymbol('FX:EURJPY')">EUR/JPY</button>
+          <button onclick="changeSymbol('FX:EURNZD')">EUR/NZD</button>
+          <button onclick="changeSymbol('FX:EURSGD')">EUR/SGD</button>
+          <button onclick="changeSymbol('FX:EURUSD')">EUR/USD</button>
+          <button onclick="changeSymbol('FX:GBPAUD')">GBP/AUD</button>
+          <button onclick="changeSymbol('FX:GBPCAD')">GBP/CAD</button>
+          <button onclick="changeSymbol('FX:GBPCHF')">GBP/CHF</button>
+          <button onclick="changeSymbol('FX:GBPJPY')">GBP/JPY</button>
+          <button onclick="changeSymbol('FX:GBPNZD')">GBP/NZD</button>
+          <button onclick="changeSymbol('FX:GBPSGD')">GBP/SGD</button>
+          <button onclick="changeSymbol('FX:GBPUSD')">GBP/USD</button>
+          <button onclick="changeSymbol('FX:NZDCHF')">NZD/CHF</button>
+          <button onclick="changeSymbol('FX:NZDJPY')">NZD/JPY</button>
+          <button onclick="changeSymbol('FX:NZDUSD')">NZD/USD</button>
+          <button onclick="changeSymbol('FX:USDCAD')">USD/CAD</button>
+          <button onclick="changeSymbol('FX:USDCHF')">USD/CHF</button>
+          <button onclick="changeSymbol('FX:USDHKD')">USD/HKD</button>
+          <button onclick="changeSymbol('FX:USDJPY')">USD/JPY</button>
+          <button onclick="changeSymbol('FX:USDSGD')">USD/SGD</button>
+        </div>
+        <div class="pairs-panel">
+          <button onclick="changeSymbol('XAUUSD')">XAU/USD</button>
+          <button onclick="changeSymbol('XAGUSD')">XAG/USD</button>
+          <button onclick="changeSymbol('XPTUSD')">XPT/USD</button>
+          <button onclick="changeSymbol('XPDUSD')">XPD/USD</button>
+        </div>
+        <div class="pairs-panel">
+          <button onclick="changeSymbol('BINANCE:BTCUSDT')">🟠 BTC</button>
+          <button onclick="changeSymbol('BINANCE:ETHUSDT')">🔵 ETH</button>
+          <button onclick="changeSymbol('BINANCE:SOLUSDT')">🟡 SOL</button>
+          <button onclick="changeSymbol('BINANCE:LTCUSDT')">⚪ LTC</button>
+          <button onclick="changeSymbol('BINANCE:USDTUSD')">🟢 USDT</button>
+          <button onclick="changeSymbol('BINANCE:BCHUSDT')">🟩 BCH</button>
+          <button onclick="changeSymbol('BINANCE:ZECUSDT')">🟤 ZEC</button>
+          <button onclick="changeSymbol('BINANCE:TONUSDT')">🔵 TON</button>
+          <button onclick="changeSymbol('BINANCE:XMRUSDT')">🟠 XMR</button>
+          <button onclick="changeSymbol('BINANCE:RAYUSDT')">🔷 RAY</button>
+          <button onclick="changeSymbol('BINANCE:SHIBUSDT')">🐕 SHIB</button>
+          <button onclick="changeSymbol('BINANCE:DOGEUSDT')">🐶 DOGE</button>
+          <button onclick="changeSymbol('BINANCE:ADAUSDT')">🔵 ADA</button>
+          <button onclick="changeSymbol('BINANCE:AVAXUSDT')">🔺 AVAX</button>
+          <button onclick="changeSymbol('BINANCE:XRPUSDT')">⚫ XRP</button>
+          <button onclick="changeSymbol('BINANCE:MATICUSDT')">🟣 MATIC</button>
+          <button onclick="changeSymbol('BINANCE:DOTUSDT')">🔴 DOT</button>
+          <button onclick="changeSymbol('BINANCE:ATOMUSDT')">🪐 ATOM</button>
+          <button onclick="changeSymbol('BINANCE:APEUSDT')">🦍 APE</button>
+          <button onclick="changeSymbol('BINANCE:ARBUSDT')">🔵 ARB</button>
+          <button onclick="changeSymbol('BINANCE:OPUSDT')">🟠 OP</button>
+          <button onclick="changeSymbol('BINANCE:FTMUSDT')">🔵 FTM</button>
+          <button onclick="changeSymbol('BINANCE:SANDUSDT')">🏝️ SAND</button>
+          <button onclick="changeSymbol('BINANCE:MANAUSDT')">🏡 MANA</button>
+          <button onclick="changeSymbol('BINANCE:NEARUSDT')">📡 NEAR</button>
+          <button onclick="changeSymbol('BINANCE:TRXUSDT')">🔺 TRX</button>
+          <button onclick="changeSymbol('BINANCE:ALGOUSDT')">🟩 ALGO</button>
+          <button onclick="changeSymbol('BINANCE:GALAUSDT')">🎮 GALA</button>
+          <button onclick="changeSymbol('BINANCE:ICPUSDT')">🌐 ICP</button>
+          <button onclick="changeSymbol('BINANCE:PEPEUSDT')">🐸 PEPE</button>
+          <button onclick="changeSymbol('BINANCE:STXUSDT')">📦 STX</button>
+          <button onclick="changeSymbol('BINANCE:RNDRUSDT')">🎨 RNDR</button>
+          <button onclick="changeSymbol('BINANCE:AAVEUSDT')">🏦 AAVE</button>
+          <button onclick="changeSymbol('BINANCE:UNIUSDT')">🦄 UNI</button>
+          <button onclick="changeSymbol('BINANCE:DYDXUSDT')">⚖️ DYDX</button>
+          <button onclick="changeSymbol('BINANCE:IMXUSDT')">🖼️ IMX</button>
+        </div>
+      </div>
+
+      <!-- Widget Conversor de Divisas -->
+      <div class="widget-container fade-in">
+        <h3>Conversor de Divisas</h3>
+        <fxwidget-ccp amount="100" decimals="2" large="false" shadow="true" symbol="true" grouping="true" border="true" main-curr="USD" sel-curr="BTC,EUR,GBP,AUD,CNY,JPY" background-color="#1a2b44"></fxwidget-ccp>
+        <a href="https://currencyrate.today/">CurrencyRate</a>
+        <script async src="https://s.fx-w.io/widgets/currency-converter-pro/latest.js"></script>
+      </div>
+
+      <!-- Alertas Personalizables -->
+      <div class="widget-container fade-in">
+        <h3>Configura Alertas</h3>
+        <input type="text" id="alertSymbol" placeholder="Símbolo (ej. BTCUSDT)">
+        <input type="number" id="alertPrice" placeholder="Precio objetivo" step="0.01">
+        <button id="setAlert" class="cta-button">Establecer Alerta</button>
+      </div>
+      <div id="alertBox" class="alert-box" style="display: none;"></div>
+
+      <!-- Calculadoras Financieras -->
+      <div class="widget-container calculator-compact fade-in">
+        <h3>Calculadora de Porcentaje</h3>
+        <p class="calc-description">Calcula el valor final tras aplicar un porcentaje compuesto.</p>
+        <div class="calc-fields">
+          <input type="number" id="dia" placeholder="Días" min="1">
+          <input type="number" id="valor" placeholder="Valor ($)" step="0.01">
+          <input type="number" id="porcentaje" placeholder="Porcentaje (%)" step="0.01">
+          <input type="text" id="resultado" placeholder="Resultado ($)" readonly>
+        </div>
+        <div class="calc-buttons">
+          <button id="calcular">Calcular</button>
+          <button id="reiniciar">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="widget-container calculator-compact fade-in">
+        <h3>Calculadora de Pips</h3>
+        <p class="calc-description">Calcula el valor monetario basado en pips y tamaño de lote.</p>
+        <div class="calc-fields">
+          <input type="number" id="pipCantidad" placeholder="Cantidad de pips" step="0.1">
+          <input type="number" id="pipValor" placeholder="Valor por pip ($)" step="0.0001">
+          <input type="number" id="pipLote" placeholder="Tamaño de lote" step="0.01">
+          <input type="text" id="resultadoPips" placeholder="Resultado ($)" readonly>
+        </div>
+        <div class="calc-buttons">
+          <button id="calcularPips">Calcular</button>
+          <button id="reiniciarPips">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="widget-container calculator-compact fade-in">
+        <h3>Calculadora de Margen</h3>
+        <p class="calc-description">Determina el margen requerido para tus operaciones.</p>
+        <div class="calc-fields">
+          <input type="number" id="marginBalance" placeholder="Balance ($)" step="0.01">
+          <input type="number" id="marginLeverage" placeholder="Apalancamiento" step="1">
+          <input type="text" id="resultadoMargin" placeholder="Margen Usado ($)" readonly>
+        </div>
+        <div class="calc-buttons">
+          <button id="calcularMargin">Calcular</button>
+          <button id="reiniciarMargin">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="widget-container calculator-compact fade-in">
+        <h3>Calculadora de ROI</h3>
+        <p class="calc-description">Calcula el Retorno de Inversión (ROI) de tus operaciones.</p>
+        <div class="calc-fields">
+          <input type="number" id="investment" placeholder="Inversión ($)" step="0.01">
+          <input type="number" id="profit" placeholder="Ganancia ($)" step="0.01">
+          <input type="text" id="roiResult" placeholder="ROI (%)" readonly>
+        </div>
+        <div class="calc-buttons">
+          <button id="calculateROI">Calcular</button>
+          <button id="resetROI">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="widget-container calculator-compact fade-in">
+        <h3>Calculadora de Riesgo/Recompensa</h3>
+        <p class="calc-description">Evalúa la proporción riesgo/recompensa de tus operaciones.</p>
+        <div class="calc-fields">
+          <input type="number" id="riskAmount" placeholder="Riesgo ($)" step="0.01">
+          <input type="number" id="rewardAmount" placeholder="Recompensa ($)" step="0.01">
+          <input type="text" id="riskRewardResult" placeholder="Ratio" readonly>
+        </div>
+        <div class="calc-buttons">
+          <button id="calculateRiskReward">Calcular</button>
+          <button id="resetRiskReward">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="widget-container calculator-compact fade-in">
+        <h3>Calculadora Avanzada</h3>
+        <p class="calc-description">Realiza cálculos financieros complejos con facilidad.</p>
+        <div class="calc-fields">
+          <input type="text" id="calcDisplay" placeholder="0" readonly>
+        </div>
+        <div class="calc-buttons">
+          <div class="calculator-buttons">
+            <button class="calc-btn" data-value="C">C</button>
+            <button class="calc-btn" data-value="back">⌫</button>
+            <button class="calc-btn" data-value="(">(</button>
+            <button class="calc-btn" data-value=")">)</button>
+            <button class="calc-btn" data-value="Math.sqrt(">√</button>
+            <button class="calc-btn" data-value="7">7</button>
+            <button class="calc-btn" data-value="8">8</button>
+            <button class="calc-btn" data-value="9">9</button>
+            <button class="calc-btn" data-value="/">÷</button>
+            <button class="calc-btn" data-value="^">^</button>
+            <button class="calc-btn" data-value="4">4</button>
+            <button class="calc-btn" data-value="5">5</button>
+            <button class="calc-btn" data-value="6">6</button>
+            <button class="calc-btn" data-value="*">×</button>
+            <button class="calc-btn" data-value="%">%</button>
+            <button class="calc-btn" data-value="1">1</button>
+            <button class="calc-btn" data-value="2">2</button>
+            <button class="calc-btn" data-value="3">3</button>
+            <button class="calc-btn" data-value="-">−</button>
+            <button class="calc-btn" data-value="1/x">1/x</button>
+            <button class="calc-btn" data-value="negate">±</button>
+            <button class="calc-btn" data-value="0">0</button>
+            <button class="calc-btn" data-value=".">.</button>
+            <button class="calc-btn" data-value="+">+</button>
+            <button id="calcEqual" class="calc-equal">=</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Sección Informativa: Cómo Operar Noticias y Aperturas -->
+  <section class="news-guidance card fade-in">
+    <h2>Cómo Operar Noticias, Aperturas y Evitar Riesgos</h2>
+    <p>Las noticias económicas y las aperturas de los mercados financieros son momentos clave que pueden generar oportunidades de trading, pero también conllevan alta volatilidad. Aprende a navegar estos eventos con estrategias sólidas.</p>
+
+    <h3>Impacto de las Noticias Económicas</h3>
+    <p>Eventos como los informes de empleo, decisiones de tasas de interés o datos de PIB pueden mover los mercados significativamente. La alta volatilidad durante estos anuncios ofrece oportunidades, pero requiere preparación y disciplina.</p>
+    <h4>Estrategias para Operar Noticias</h4>
+    <ul>
+      <li><strong>Preparación:</strong> Consulta el calendario económico para anticipar eventos de alto impacto, como las decisiones del Banco Central o datos de PIB.</li>
+      <li><strong>Análisis Rápido:</strong> Usa herramientas como el mapa de calor Forex para identificar movimientos inmediatos en los pares de divisas.</li>
+      <li><strong>Gestión de Riesgo:</strong> Establece stop-loss ajustados y take-profit claros para proteger tu capital durante movimientos bruscos.</li>
+      <li><strong>Práctica:</strong> Simula operaciones en una cuenta demo durante eventos de noticias para perfeccionar tu enfoque sin riesgo.</li>
+    </ul>
+    <h4>Cuándo Evitar Operar Noticias</h4>
+    <ul>
+      <li><strong>Eventos de Alto Impacto sin Experiencia:</strong> Noticias como las Non-Farm Payrolls pueden causar movimientos impredecibles.</li>
+      <li><strong>Volatilidad Extrema:</strong> Evita operar durante anuncios inesperados, como crisis geopolíticas, que amplifican la incertidumbre.</li>
+      <li><strong>Señales Técnicas Confusas:</strong> Si el análisis técnico no muestra una tendencia clara, espera a que el mercado se estabilice.</li>
+      <li><strong>Fatiga o Falta de Preparación:</strong> No operes si no has analizado el contexto del mercado o no estás mentalmente preparado.</li>
+    </ul>
+
+    <h3>Impacto de las Aperturas de Mercado</h3>
+    <p>Las aperturas de las principales sesiones de trading (Londres, Nueva York, Tokio, Sídney) generan picos de volatilidad y liquidez, ya que grandes instituciones y traders entran al mercado. Cada sesión tiene características únicas que afectan los pares de divisas y otros activos.</p>
+    <ul>
+      <li><strong>Sesión de Londres (08:00 GMT):</strong> La apertura de Londres es la más volátil debido a su superposición con la sesión asiática y la alta participación de bancos europeos. Pares como EUR/USD y GBP/USD experimentan movimientos significativos. Es ideal para estrategias de breakout o scalping.</li>
+      <li><strong>Sesión de Nueva York (13:00 GMT):</strong> La apertura de Nueva York coincide con el final de la sesión de Londres, creando alta liquidez. USD-related pairs y activos como oro (XAU/USD) ven gran actividad. Es un buen momento para operar tendencias confirmadas.</li>
+      <li><strong>Sesión de Tokio (00:00 GMT):</strong> La apertura asiática es menos volátil, pero pares como USD/JPY y AUD/JPY pueden moverse debido a noticias económicas de Asia. Es adecuada para trading de rango o scalping en marcos temporales cortos.</li>
+      <li><strong>Sesión de Sídney (22:00 GMT):</strong> La apertura de Sídney es la menos volátil, pero puede influir en pares como AUD/USD. Es un momento para operar con cautela, enfocándose en movimientos predecibles.</li>
+    </ul>
+    <h4>Estrategias para Operar Aperturas</h4>
+    <ul>
+      <li><strong>Monitoreo de Sesiones:</strong> Usa las tarjetas de sesión en esta página para saber cuándo abre cada mercado y planifica tus operaciones según la volatilidad esperada.</li>
+      <li><strong>Breakouts en Apertura:</strong> Durante la apertura de Londres o Nueva York, identifica niveles de soporte/resistencia en el gráfico y opera breakouts confirmados con volumen.</li>
+      <li><strong>Gestión de Riesgo:</strong> Ajusta los stop-loss para accountar la alta volatilidad inicial, especialmente en Londres y Nueva York.</li>
+      <li><strong>Evita Sobreoperar:</strong> Limita tus operaciones a las primeras 1-2 horas de la sesión para capturar los movimientos más fuertes.</li>
+    </ul>
+    <h4>Cuándo Evitar Operar Aperturas</h4>
+    <ul>
+      <li><strong>Sin Plan Claro:</strong> No operes la apertura si no has identificado niveles clave o no entiendes la dinámica de la sesión.</li>
+      <li><strong>Noticias Simultáneas:</strong> Si la apertura coincide con un evento de noticias importante, la volatilidad puede ser impredecible; espera claridad.</li>
+      <li><strong>Sesiones de Baja Liquidez:</strong> Evita operar al inicio de la sesión de Sídney si buscas movimientos grandes, ya que la liquidez es menor.</li>
+    </ul>
+    <p><strong>Nota:</strong> Tanto las noticias como las aperturas de mercado requieren combinar análisis técnico y fundamental con una gestión de riesgo estricta. Usa el gráfico ampliado y nuestras herramientas para tomar decisiones informadas.</p>
+  </section>
+
+  <!-- Sección de Estrategias de Trading -->
+  <section class="strategies-section card fade-in">
+    <h2>Estrategias de Trading Poderosas</h2>
+    <p>Domina los mercados con estas estrategias probadas, diseñadas para traders de todos los niveles. Cada una combina análisis técnico y gestión de riesgo para maximizar tus oportunidades.</p>
+    <div class="strategy">
+      <h3>1. Estrategia de Breakout</h3>
+      <p>Identifica niveles clave de soporte y resistencia donde el precio está a punto de romper. Opera en la dirección del breakout con confirmación de volumen.</p>
+      <ul>
+        <li><strong>Paso 1:</strong> Usa el gráfico de velas para marcar niveles de soporte/resistencia.</li>
+        <li><strong>Paso 2:</strong> Espera un cierre de vela por encima (compra) o por debajo (venta) del nivel.</li>
+        <li><strong>Paso 3:</strong> Confirma con un aumento en el volumen usando el widget de análisis técnico.</li>
+        <li><strong>Riesgo:</strong> Coloca un stop-loss justo debajo del nivel de breakout.</li>
+      </ul>
+    </div>
+    <div class="strategy">
+      <h3>2. Seguimiento de Tendencias</h3>
+      <p>Aprovecha las tendencias del mercado usando medias móviles para entrar en operaciones alineadas con la dirección dominante.</p>
+      <ul>
+        <li><strong>Paso 1:</strong> Configura medias móviles exponenciales (EMA) de 50 y 200 períodos en el gráfico.</li>
+        <li><strong>Paso 2:</strong> Compra cuando la EMA 50 cruza por encima de la EMA 200; vende en el cruce opuesto.</li>
+        <li><strong>Paso 3:</strong> Usa el RSI para evitar entrar en mercados sobrecomprados o sobrevendidos.</li>
+        <li><strong>Riesgo:</strong> Establece un stop-loss en el último mínimo/máximo de la tendencia.</li>
+      </ul>
+    </div>
+    <div class="strategy">
+      <h3>3. Scalping en Marcos Temporales Cortos</h3>
+      <p>Realiza operaciones rápidas en gráficos de 1 o 5 minutos, aprovechando movimientos pequeños pero frecuentes.</p>
+      <ul>
+        <li><strong>Paso 1:</strong> Selecciona pares volátiles como EUR/USD o BTC/USD en el gráfico de 1 minuto.</li>
+        <li><strong>Paso 2:</strong> Usa Bandas de Bollinger para identificar puntos de entrada en retrocesos.</li>
+        <li><strong>Paso 3:</strong> Sal de la operación con 5-10 pips de ganancia o al tocar la banda opuesta.</li>
+        <li><strong>Riesgo:</strong> Limita el riesgo a 1% por operación con un stop-loss ajustado.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sección de Educación Mejorada -->
+  <section class="education-section card fade-in">
+    <h2>Aprende a Operar: Guía para Principiantes</h2>
+    <div class="education-content">
+      <p>
+        Operar en mercados financieros como Forex y criptomonedas requiere conocimiento, práctica y disciplina. Aquí te ofrecemos los fundamentos para empezar con confianza: 
+        <strong>1) Análisis Técnico:</strong> Aprende a leer gráficos de velas (como doji, martillo o envolvente) para identificar patrones de reversión o continuación. 
+        <strong>2) Gestión de Riesgo:</strong> Nunca arriesgues más del 1-2% de tu capital por operación y usa stop-loss para limitar pérdidas. 
+        <strong>3) Estrategias Efectivas:</strong> Comienza con estrategias simples, como seguir tendencias con medias móviles o operar breakouts en niveles clave. 
+        Prueba la demostración interactiva a continuación para ver cómo funciona el gráfico de BTC/USD y configura una alerta para practicar.
+      </p>
+      <div class="education-demo">
+        <div id="btc-chart" class="btc-chart-container"></div>
+        <button id="simulate-trend" class="cta-button">Simular Tendencia</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tarjetas de Sesión -->
+  <section class="session-cards-container fade-in">
+    <article class="session-card" id="london-card">
+      <h2>Londres (GMT)</h2>
+      <div class="session-details">
+        <div class="session-time" id="london-time">Cargando...</div>
+        <div class="session-status-container">
+          <span class="session-status" id="london-status">(Estado)</span>
+          <span class="session-indicator" id="london-indicator"></span>
+        </div>
+      </div>
+    </article>
+    <article class="session-card" id="newyork-card">
+      <h2>Nueva York (GMT-4)</h2>
+      <div class="session-details">
+        <div class="session-time" id="newyork-time">Cargando...</div>
+        <div class="session-status-container">
+          <span class="session-status" id="newyork-status">(Estado)</span>
+          <span class="session-indicator" id="newyork-indicator"></span>
+        </div>
+      </div>
+    </article>
+    <article class="session-card" id="tokyo-card">
+      <h2>Tokio (GMT+9)</h2>
+      <div class="session-details">
+        <div class="session-time" id="tokyo-time">Cargando...</div>
+        <div class="session-status-container">
+          <span class="session-status" id="tokyo-status">(Estado)</span>
+          <span class="session-indicator" id="tokyo-indicator"></span>
+        </div>
+      </div>
+    </article>
+    <article class="session-card" id="sydney-card">
+      <h2>Sídney (GMT+10)</h2>
+      <div class="session-details">
+        <div class="session-time" id="sydney-time">Cargando...</div>
+        <div class="session-status-container">
+          <span class="session-status" id="sydney-status">(Estado)</span>
+          <span class="session-indicator" id="sydney-indicator"></span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fade-in">
+    <div class="footer-bottom">
+      <p>© 2025 Top Brokers Latinoamérica. Todos los derechos reservados.</p>
+      <p>Este sitio es educativo. El trading de opciones binarias conlleva alto riesgo. No inviertas capital que no estés dispuesto a perder. <strong>TRADER TACS</strong>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script src="script01.js"></script>
+</body>
+</html>

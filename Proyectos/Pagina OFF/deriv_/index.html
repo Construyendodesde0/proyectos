@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico de Velas Personalizado - Deriv API</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Gráfico de Velas con Deriv API</h1>
+    <p>Gráfico personalizado de EUR/USD (1 minuto) usando datos de Deriv.</p>
+  </header>
+  <main>
+    <section class="chart-container">
+      <canvas id="candlestickChart"></canvas>
+    </section>
+    <section class="controls">
+      <label for="symbol">Símbolo:</label>
+      <select id="symbol">
+        <option value="frxEURUSD" selected>EUR/USD</option>
+        <option value="frxGBPUSD">GBP/USD</option>
+        <option value="cryBTCUSD">BTC/USD</option>
+        <option value="R_100">Volatility 100 Index</option>
+      </select>
+      <label for="granularity">Temporalidad:</label>
+      <select id="granularity">
+        <option value="60" selected>1 Minuto</option>
+        <option value="300">5 Minutos</option>
+        <option value="3600">1 Hora</option>
+      </select>
+      <button onclick="updateChart()">Actualizar Gráfico</button>
+    </section>
+  </main>
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@0.2.1/dist/chartjs-chart-financial.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.3.1/dist/chartjs-adapter-luxon.umd.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

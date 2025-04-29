@@ -1,0 +1,89 @@
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  /* Header */
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a2b44;
+    color: #fff;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+  
+  header p {
+    margin: 5px 0 0;
+    font-size: 1em;
+  }
+  
+  /* Contenedor del Gráfico */
+  .chart-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 600px !important;
+  }
+  
+  /* Controles */
+  .controls {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .controls label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .controls select,
+  .controls button {
+    padding: 8px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .controls button {
+    background-color: #1a2b44;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .controls button:hover {
+    background-color: #2a3b54;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .chart-container {
+      padding: 10px;
+    }
+  
+    canvas {
+      height: 400px !important;
+    }
+  
+    .controls select,
+    .controls button {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
