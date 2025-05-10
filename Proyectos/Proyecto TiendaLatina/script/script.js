@@ -12,56 +12,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Menú de servicios con categorías
-    document.addEventListener('DOMContentLoaded', function() {
-    
-        // Menú de servicios con categorías - VERSIÓN CORREGIDA
-        const serviciosLink = document.getElementById('servicios-link');
-        const serviciosMenu = document.getElementById('servicios-menu');
-        const categoriaBtns = document.querySelectorAll('.categoria-btn');
-        const serviciosCategorias = document.querySelectorAll('.servicios-categoria');
-    
-        if (serviciosLink && serviciosMenu) {
-            // Mostrar/ocultar menú al hacer clic
-            serviciosLink.addEventListener('click', function(e) {
+    // Menú de servicios con categorías - VERSIÓN FUNCIONAL
+    const serviciosLink = document.getElementById('servicios-link');
+    const serviciosMenu = document.getElementById('servicios-menu');
+    const categoriaBtns = document.querySelectorAll('.categoria-btn');
+    const serviciosCategorias = document.querySelectorAll('.servicios-categoria');
+
+    if (serviciosLink && serviciosMenu) {
+        // Mostrar/ocultar menú al hacer clic
+        serviciosLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                serviciosMenu.style.display = serviciosMenu.style.display === 'flex' ? 'none' : 'flex';
+            } else {
+                serviciosMenu.style.display = 'flex'; // Siempre mostrar en desktop
+            }
+        });
+
+        // Cambiar categorías - VERSIÓN CORREGIDA
+        categoriaBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const isMobile = window.innerWidth <= 768;
+                const categoria = this.getAttribute('data-categoria');
                 
-                if (isMobile) {
-                    serviciosMenu.style.display = serviciosMenu.style.display === 'flex' ? 'none' : 'flex';
-                }
-            });
-    
-            // Cambiar categorías - FUNCIÓN CORREGIDA
-            categoriaBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const categoria = this.dataset.categoria;
-                    
-                    // Remover clase active de todos los botones
-                    categoriaBtns.forEach(b => b.classList.remove('active'));
-                    // Añadir clase active al botón clickeado
-                    this.classList.add('active');
-                    
-                    // Ocultar todas las categorías
-                    serviciosCategorias.forEach(cat => {
+                // Remover clase active de todos los botones
+                categoriaBtns.forEach(b => b.classList.remove('active'));
+                // Añadir clase active al botón clickeado
+                this.classList.add('active');
+                
+                // Ocultar todas las categorías y mostrar solo la seleccionada
+                serviciosCategorias.forEach(cat => {
+                    if (cat.getAttribute('data-categoria') === categoria) {
+                        cat.classList.add('active');
+                        cat.style.display = 'block';
+                    } else {
                         cat.classList.remove('active');
-                    });
-                    
-                    // Mostrar solo la categoría seleccionada
-                    document.querySelector(`.servicios-categoria[data-categoria="${categoria}"]`).classList.add('active');
+                        cat.style.display = 'none';
+                    }
                 });
             });
-    
-            // Cerrar al hacer clic fuera (solo móvil)
-            document.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
-                    if (!e.target.closest('.menu-servicios') && serviciosMenu.style.display === 'flex') {
-                        serviciosMenu.style.display = 'none';
-                    }
-                }
-            });
+        });
+
+        // Inicializar mostrando la primera categoría
+        if (categoriaBtns.length > 0 && serviciosCategorias.length > 0) {
+            categoriaBtns[0].click(); // Simular click en el primer botón
         }
+
+        // Cerrar al hacer clic fuera (solo móvil)
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!e.target.closest('.menu-servicios') && 
+                    !e.target.closest('#servicios-link') && 
+                    serviciosMenu.style.display === 'flex') {
+                    serviciosMenu.style.display = 'none';
+                }
+            }
+        });
     }
     
     // Cargar servicios de ejemplo
@@ -101,42 +109,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Menú de contacto
-const contactoLink = document.getElementById('contacto-link');
-const contactoMenu = document.getElementById('contacto-menu');
+    const contactoLink = document.getElementById('contacto-link');
+    const contactoMenu = document.getElementById('contacto-menu');
 
-if (contactoLink && contactoMenu) {
-    contactoLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Cerrar otros menús abiertos
-        if (serviciosMenu) serviciosMenu.style.display = 'none';
-        
-        // Alternar menú de contacto
-        contactoMenu.style.display = contactoMenu.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Cerrar al hacer clic fuera
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.menu-contacto') && contactoMenu.style.display === 'block') {
-            contactoMenu.style.display = 'none';
-        }
-    });
-}
-    
-    // Animación GSAP para el hero
-    if (window.innerWidth >= 768 && typeof gsap !== 'undefined') {
-        gsap.from(".hero-content h1", { 
-            opacity: 0, 
-            y: 50, 
-            duration: 1, 
-            delay: 0.5 
+    if (contactoLink && contactoMenu) {
+        contactoLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Cerrar otros menús abiertos
+            if (serviciosMenu) serviciosMenu.style.display = 'none';
+            
+            // Alternar menú de contacto
+            contactoMenu.style.display = contactoMenu.style.display === 'block' ? 'none' : 'block';
         });
-    
-        gsap.from(".cta-button", { 
-            opacity: 0, 
-            y: 50, 
-            duration: 1, 
-            delay: 1 
+        
+        // Cerrar al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.menu-contacto') && !e.target.closest('#contacto-link') && contactoMenu.style.display === 'block') {
+                contactoMenu.style.display = 'none';
+            }
         });
     }
-});
+    
+   

@@ -161,7 +161,7 @@ body {
 }
 
 .servicios-categoria.active {
-    display: block;
+    display: block !important;
 }
 
 .servicios-categoria ul {
@@ -313,23 +313,23 @@ body {
 }
 
 .cta-button {
-    background-color: var(--amarillo);
-    color: var(--azul);
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 50px;
-    transition: all 0.3s;
-    font-weight: bold;
-    box-shadow: var(--sombra);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+            background-color: var(--amarillo);
+            color: var(--azul);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: var(--sombra);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
 
 .cta-button:hover {
     transform: translateY(-5px);
