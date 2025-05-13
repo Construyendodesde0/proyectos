@@ -29,15 +29,14 @@ body {
 /* Header */
 .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+    flex-direction: row;
+    padding: 10px;
     background: linear-gradient(90deg, var(--azul) 50%, var(--rojo) 100%);
-    position: fixed;
+    position: relative;
     width: 100%;
     top: 0;
-    z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    justify-content: space-evenly;
 }
 
 .logo img {
@@ -48,8 +47,7 @@ body {
 
 /* Banderas */
 .banderas {
-    margin-top: 105px;
-    padding: 10px 0;
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -61,7 +59,6 @@ body {
 
 .banderas img {
     width: 30px;
-    height: auto;
     transition: transform 0.2s;
 }
 
@@ -71,9 +68,9 @@ body {
 
 /* Navbar centrado */
 .navbar {
-    display: flex;
-    justify-content: center;
+    margin-top: 30px;
     width: 100%;
+    gap: 60px;
 }
 
 .nav-list {
@@ -82,6 +79,8 @@ body {
     align-items: center;
     gap: 2rem;
     list-style: none;
+    margin: 0px;
+    padding: 0px;
 }
 
 .nav-list a {
@@ -93,6 +92,9 @@ body {
     border-radius: 10px;
     background-color: rgba(230, 57, 70, 0.7);
 }
+.nav-list > li {
+    position: relative;
+}
 
 .nav-list a:hover {
     background-color: var(--rojo);
@@ -103,28 +105,30 @@ body {
 /* Menú desplegable de servicios */
 .menu-servicios {
     position: relative;
+    gap: 10px;
+    height: 100%;
 }
 
 .servicios-menu {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
+    position: relative;
     transform: translateX(-50%);
-    width: 500px;
-    max-width: 90vw;
-    max-height: 70vh;
-    background: white;
+    width: 300px;
+    max-width: 70vw;
+    max-height: 60vh;
+    background: linear-gradient(90deg, var(--azul) 50%, var(--rojo) 100%);
+    color: white;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     z-index: 1001;
-    overflow: hidden;
-    flex-direction: column;
+    overflow:  visible;
+    flex-direction: row;
 }
 
 .categorias {
     display: flex;
     background: var(--azul);
+    color: white;
     padding: 0.5rem;
     gap: 0.5rem;
     overflow-x: auto;
@@ -176,7 +180,7 @@ body {
 }
 
 .servicios-categoria a {
-    color: var(--azul);
+    color: var(--blanco);
     text-decoration: none;
     transition: all 0.2s;
     display: block;
@@ -205,6 +209,7 @@ body {
     z-index: 1001;
     padding: 20px;
     animation: fadeIn 0.3s ease-out;
+    flex-direction: row;
 }
 
 .qr-container {
@@ -230,8 +235,8 @@ body {
 }
 
 .qr-code {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 220px;
     margin: 0 auto 10px;
     display: block;
     border: 1px solid #ddd;
@@ -278,7 +283,7 @@ body {
     text-align: center;
     color: var(--blanco);
     position: relative;
-    margin-top: -10px;
+    margin-top: -5px;
     padding: 1rem;
 }
 
@@ -406,28 +411,59 @@ body {
 }
 
 /* Media Queries para móvil */
-@media (max-width: 768px) {
+
+    @media (max-width: 768px) {
+    /* Oculta el navbar por defecto en móvil */
     .navbar {
         position: fixed;
-        top: 70px;
-        left: 50%;
-        transform: translateX(-190%);
-        width: 80%;
-        height: calc(100vh - 70px);
-        background: var(--azul);
-        transition: left 0.3s ease;
-        padding: 2rem;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .navbar.active {
+        top: 90px; /* Ajusta según la altura de tu header */
         left: 0;
+        width: 100%;
+        background: var(--azul);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        display: none; /* Oculto inicialmente */
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     }
     
-    .nav-list {
-        flex-direction: column;
-        gap: 1.5rem;
+    /* Muestra el navbar al activarse */
+    .navbar.active {
+        display: flex;
     }
+    
+    /* Estilo para los items del menú en móvil */
+    .nav-list {
+        flex-direction: row;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    /* Ajusta el botón hamburguesa */
+    .menu-toggle {
+        display: flex;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        z-index: 1001;
+        justify-content: space-around;
+    }
+    
+    /* Botones de idioma (posición alternativa) */
+    .language-buttons {
+        position: sticky;
+        top: 1rem;
+        right: 4rem;
+        flex-direction: wrap;
+        
+    }
+    .banderas {
+        padding-top: 100px;
+    }
+}
+
+    
     
     .servicios-menu {
         position: static;
@@ -440,9 +476,6 @@ body {
         columns: 1;
     }
     
-    .menu-toggle {
-        display: block;
-    }
     
     .hero {
         height: 50vh;
@@ -451,7 +484,7 @@ body {
     .hero-content h1 {
         font-size: 1.8rem;
     }
-}
+
 
 /* Media Queries para desktop */
 @media (min-width: 769px) {
@@ -460,7 +493,7 @@ body {
     }
     
     .hero {
-        height: 80vh;
+        height: 50vh;
     }
     
     .hero-content h1 {
@@ -475,4 +508,41 @@ body {
     .menu-servicios:hover .servicios-menu {
         display: flex;
     }
+}
+
+
+.language-buttons {
+    display: flex;
+    gap: 10px; 
+    margin-left: auto;
+    justify-content: end;
+    height: 70px; /* Misma altura que las banderas */
+}
+
+.language-buttons button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 10px; /* Eliminamos padding interno */
+    border-radius: 3px; /* Bordes más suaves */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; /* Centra el contenido */
+    width: 70px; /* Mismo ancho que las banderas */
+    height: 30px; /* Altura compacta */
+    font-size: 12px; /* Texto más pequeño */
+    transition: all 0.3s;
+}
+
+.language-buttons button:hover {
+    background: var(--rojo);
+    transform: scale(1.05); /* Efecto hover más sutil */
+}
+
+/* Si usas imágenes en los botones (opcional) */
+.language-buttons button img {
+    width: 25px; /* Tamaño ligeramente menor que las banderas */
+    height: 30px;
+    object-fit: contain;
 }

@@ -1,17 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Menú Hamburguesa
     const menuToggle = document.querySelector('.menu-toggle');
     const navbar = document.querySelector('.navbar');
     
     if (menuToggle && navbar) {
         menuToggle.addEventListener('click', () => {
+            // Alternar clase 'active' en el navbar
             navbar.classList.toggle('active');
-            menuToggle.innerHTML = navbar.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+            
+            // Cambiar ícono (hamburguesa a X)
+            const icon = menuToggle.querySelector('i');
+            if (navbar.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
     }
-    
+});
     // Menú de servicios con categorías - VERSIÓN FUNCIONAL
     const serviciosLink = document.getElementById('servicios-link');
     const serviciosMenu = document.getElementById('servicios-menu');
