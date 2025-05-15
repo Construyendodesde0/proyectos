@@ -79,7 +79,7 @@ body {
 }
 
 .nav-list a {
-    color: var(--blanco);
+    color: #F5F5F5;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s;
@@ -361,7 +361,6 @@ body {
     color: var(--blanco);
     text-align: center;
     padding: 1rem;
-    margin-top: 1rem;
 }
 
 /* Language buttons */
