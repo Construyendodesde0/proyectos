@@ -32,28 +32,35 @@ document.addEventListener('DOMContentLoaded', function() {
         body.classList.remove('menu-open');
         
         // Cerrar otros menús
+        const serviciosMenu = document.querySelector('.servicios-container');
+        const contactoMenu = document.getElementById('contacto-menu');
+        
         if (serviciosMenu) serviciosMenu.style.display = 'none';
         if (contactoMenu) contactoMenu.style.display = 'none';
         
         // Restablecer icono
         if (menuToggle) {
             const icon = menuToggle.querySelector('i');
-            icon.classList.replace('fa-times', 'fa-bars');
+            if (icon) {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
         }
     }
 
     function toggleIcon() {
         const icon = menuToggle.querySelector('i');
-        if (navbar.classList.contains('active')) {
-            icon.classList.replace('fa-bars', 'fa-times');
-        } else {
-            icon.classList.replace('fa-times', 'fa-bars');
+        if (icon) {
+            if (navbar.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
         }
     }
 
     // 2. Menú de Servicios
     const serviciosLink = document.getElementById('servicios-link');
-    const serviciosMenu = document.querySelector('.servicios-menu') || document.querySelector('.servicios-container');
+    const serviciosMenu = document.querySelector('.servicios-container');
     const categoriaBtns = document.querySelectorAll('.categoria-btn');
     const serviciosCategorias = document.querySelectorAll('.servicios-categoria');
 
@@ -66,8 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isMobile) {
                 serviciosMenu.style.display = serviciosMenu.style.display === 'flex' ? 'none' : 'flex';
                 if (serviciosMenu.style.display === 'flex') {
-                    closeAllMenus();
-                    navbar.classList.remove('active');
+                    closeOtherMenus('servicios');
                 }
             } else {
                 serviciosMenu.style.display = 'flex';
@@ -100,42 +106,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 3. Cargar servicios de ejemplo
-    const servicios = [
-        { nombre: "Clases de Español", categoria: "Educación", precio: "15€/hora" },
-        { nombre: "Reparaciones Eléctricas", categoria: "Hogar", precio: "25€/hora" },
-        { nombre: "Catering Latino", categoria: "Eventos", precio: "30€/persona" },
-        { nombre: "Peluquería", categoria: "Belleza", precio: "20€" },
-        { nombre: "Limpieza Profunda", categoria: "Hogar", precio: "15€/hora" },
-        { nombre: "Traducciones", categoria: "Educación", precio: "0.10€/palabra" }
-    ];
-
-    const servicesContainer = document.getElementById('services-container');
-    if (servicesContainer) {
-        servicios.forEach(servicio => {
-            const card = document.createElement('div');
-            card.className = 'service-card';
-            card.innerHTML = `
-                <div class="card-content">
-                    <h3>${servicio.nombre}</h3>
-                    <p><i class="fas fa-tag"></i> ${servicio.categoria}</p>
-                    <p><i class="fas fa-euro-sign"></i> ${servicio.precio}</p>
-                </div>
-            `;
-            servicesContainer.appendChild(card);
-        });
+    function closeOtherMenus(currentMenu) {
+        const contactoMenu = document.getElementById('contacto-menu');
+        
+        if (currentMenu !== 'contacto' && contactoMenu) {
+            contactoMenu.style.display = 'none';
+        }
+        
+        if (currentMenu !== 'servicios' && serviciosMenu) {
+            serviciosMenu.style.display = 'none';
+        }
     }
 
-    // 4. Filtros de servicios
-    document.querySelectorAll('.filtro-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            // Aquí iría la lógica real de filtrado
-        });
-    });
-
-    // 5. Menú de Contacto
+    // 3. Menú de Contacto
     const contactoLink = document.getElementById('contacto-link');
     const contactoMenu = document.getElementById('contacto-menu');
 
@@ -145,10 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             
             contactoMenu.style.display = contactoMenu.style.display === 'block' ? 'none' : 'block';
-            if (serviciosMenu) serviciosMenu.style.display = 'none';
             if (contactoMenu.style.display === 'block') {
-                closeAllMenus();
-                navbar.classList.remove('active');
+                closeOtherMenus('contacto');
             }
         });
     }
@@ -179,8 +160,36 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.remove('menu-open');
             if (menuToggle) {
                 const icon = menuToggle.querySelector('i');
-                icon.classList.replace('fa-times', 'fa-bars');
+                if (icon) {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
             }
+            
+            // Asegurar que los menús se muestren correctamente en desktop
+            if (serviciosMenu) serviciosMenu.style.display = 'flex';
+            if (contactoMenu) contactoMenu.style.display = 'none';
+            
+            // Mostrar todas las categorías de servicios en desktop
+            serviciosCategorias.forEach(cat => {
+                cat.style.display = cat.classList.contains('active') ? 'flex' : 'none';
+            });
+        } else {
+            // En móvil, asegurar que solo se muestre la categoría activa
+            serviciosCategorias.forEach(cat => {
+                if (cat.classList.contains('active')) {
+                    cat.style.display = 'block';
+                } else {
+                    cat.style.display = 'none';
+                }
+            });
         }
     });
+
+    // Inicialización
+    if (window.innerWidth > 768 && serviciosMenu) {
+        serviciosMenu.style.display = 'flex';
+    }
+    if (contactoMenu) {
+        contactoMenu.style.display = 'none';
+    }
 });

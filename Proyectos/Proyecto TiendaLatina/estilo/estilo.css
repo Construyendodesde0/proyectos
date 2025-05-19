@@ -401,6 +401,13 @@ body {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    .header {
+        position: relative;
+        z-index: 1002;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    
     .navbar {
         position: fixed;
         top: 90px;
@@ -435,13 +442,13 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px; 
-}
+    }
 
-.navbar li {
+    .navbar li {
     width: 70%;
-}
+    }
 
-.navbar a {
+    .navbar a {
     display: block;
     padding: 12px 20px;
     color: white;
@@ -450,11 +457,11 @@ body {
     transition: all 0.3s ease;
     border-radius: 4px;
     text-align: center;
-}
+    }
 
-.navbar a:hover {
+    .navbar a:hover {
     background: rgba(255, 255, 255, 0.1);
-}
+    }
     
     .menu-toggle {
         display: flex;
@@ -486,9 +493,12 @@ body {
     }
     
     .banderas {
-        padding-top: 0;
-        position: relative;
-        z-index: 1001;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 5px 0; 
+        margin: 0;
+        line-height: 0;
     }
     
     .contacto-menu {
@@ -501,6 +511,7 @@ body {
         height: auto;
         max-height: 90vh;
         overflow-y: auto;
+        z-index: 1100;
     }
     
     .qr-code {
@@ -532,6 +543,7 @@ body {
     
     .hero {
         height: 50vh;
+        margin-top: -1px;
     }
     
     .hero-content h1 {
