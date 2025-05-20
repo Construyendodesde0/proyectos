@@ -99,16 +99,16 @@
                 <div class="servicios-categoria active" data-categoria="Belleza">
                     <div class="servicios-columna">
                         <ul>
-                            <li><a href="#" target="_blank">Peluquería</a></li>
-                            <li><a href="#" target="_blank">Manicure/Pedicure</a></li>
-                            <li><a href="#" target="_blank">Barbería</a></li>
+                            <li>Peluquería</li>
+                            <li>Manicure/Pedicure</li>
+                            <li>Barbería</li>
                         </ul>
                     </div>
                     <div class="servicios-columna">
                         <ul>
-                            <li><a href="#" target="_blank">Maquillaje</a></li>
-                            <li><a href="#" target="_blank">Depilación</a></li>
-                            <li><a href="#" target="_blank">Extensiones</a></li>
+                            <li>Maquillaje</li>
+                            <li>Depilación</li>
+                            <li>Extensiones</li>
                         </ul>
                     </div>
                 </div>
@@ -131,8 +131,25 @@
             lema: "Encuentra u ofrece servicios con confianza.",
             servicios: "Servicios Populares",
             contacto: "Contáctanos vía:",
-            derechos: "© 2025 TiendaLatina. Todos los derechos reservados."
-            
+            derechos: "© 2025 TiendaLatina. Todos los derechos reservados.",
+            menuInicio: "Inicio",
+            menuServicios: "Servicios",
+            menuContacto: "Contacto",
+            whatsapp: "WhatsApp",
+            abrirChat: "Abrir Chat",
+            instagram: "Instagram",
+            seguir: "Seguir",
+            explorarServicios: "Explorar Servicios",
+            categoriaBelleza: "Belleza",
+            categoriaHogar: "Hogar",
+            categoriaEducacion: "Educación",
+            categoriaOtros: "Otros",
+            peluqueria: "Peluquería",
+            manicure: "Manicure/Pedicure",
+            barberia: "Barbería",
+            maquillaje: "Maquillaje",
+            depilacion: "Depilación",
+            extensiones: "Extensiones"
         },
         en: {
             titulo: "TiendaLatina | Latin Services in Porto",
@@ -140,7 +157,25 @@
             lema: "Find or offer services with confidence.",
             servicios: "Popular Services",
             contacto: "Contact us via:",
-            derechos: "© 2025 TiendaLatina. All rights reserved."
+            derechos: "© 2025 TiendaLatina. All rights reserved.",
+            menuInicio: "Home",
+            menuServicios: "Services",
+            menuContacto: "Contact",
+            whatsapp: "WhatsApp",
+            abrirChat: "Open Chat",
+            instagram: "Instagram",
+            seguir: "Follow",
+            explorarServicios: "Explore Services",
+            categoriaBelleza: "Beauty",
+            categoriaHogar: "Home",
+            categoriaEducacion: "Education",
+            categoriaOtros: "Others",
+            peluqueria: "Hair Salon",
+            manicure: "Manicure/Pedicure",
+            barberia: "Barber Shop",
+            maquillaje: "Makeup",
+            depilacion: "Waxing",
+            extensiones: "Extensions"
         },
         pt: { // Portugués DE PORTUGAL (pt-PT)
             titulo: "TiendaLatina | Serviços Latinos no Porto",
@@ -148,7 +183,25 @@
             lema: "Encontre ou ofereça serviços com confiança.",
             servicios: "Serviços Populares",
             contacto: "Contacte-nos através de:",
-            derechos: "© 2025 TiendaLatina. Todos os direitos reservados."
+            derechos: "© 2025 TiendaLatina. Todos os direitos reservados.",
+            menuInicio: "Início",
+            menuServicios: "Serviços",
+            menuContacto: "Contacto",
+            whatsapp: "WhatsApp",
+            abrirChat: "Abrir Chat",
+            instagram: "Instagram",
+            seguir: "Seguir",
+            explorarServicios: "Explorar Serviços",
+            categoriaBelleza: "Beleza",
+            categoriaHogar: "Casa",
+            categoriaEducacion: "Educação",
+            categoriaOtros: "Outros",
+            peluqueria: "Cabeleireiro",
+            manicure: "Manicure/Pedicure",
+            barberia: "Barbearia",
+            maquillaje: "Maquilhagem",
+            depilacion: "Depilação",
+            extensiones: "Extensões"
         }
     };
 
@@ -157,10 +210,38 @@
         document.title = translations[lang].titulo;
         document.querySelector('.hero-content h1').textContent = translations[lang].bienvenida;
         document.querySelector('.hero-content p').textContent = translations[lang].lema;
-        document.querySelector('.services h2 span').textContent = translations[lang].servicios;
+        document.querySelector('.services h2').textContent = translations[lang].servicios;
         document.querySelector('.qr-container h3').textContent = translations[lang].contacto;
         document.querySelector('.footer p').textContent = translations[lang].derechos;
-        // Añade aquí todas las selecciones de elementos que necesites traducir...
+        
+        // Traducción del menú
+        document.querySelector('.nav-list li:nth-child(1) a').textContent = translations[lang].menuInicio;
+        document.querySelector('.nav-list li:nth-child(2) a').textContent = translations[lang].menuServicios;
+        document.querySelector('.nav-list li:nth-child(3) a').textContent = translations[lang].menuContacto;
+        
+        // Traducción de los botones de contacto
+        document.querySelectorAll('.qr-option p')[0].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+        document.querySelectorAll('.qr-option p')[1].innerHTML = `<i class="fab fa-instagram"></i> ${translations[lang].instagram}`;
+        document.querySelectorAll('.qr-button')[0].textContent = translations[lang].abrirChat;
+        document.querySelectorAll('.qr-button')[1].textContent = translations[lang].seguir;
+        
+        // Traducción del botón CTA
+        document.querySelector('.cta-button a').textContent = translations[lang].explorarServicios;
+        
+        // Traducción de categorías
+        document.querySelectorAll('.categoria-btn')[0].textContent = translations[lang].categoriaBelleza;
+        document.querySelectorAll('.categoria-btn')[1].textContent = translations[lang].categoriaHogar;
+        document.querySelectorAll('.categoria-btn')[2].textContent = translations[lang].categoriaEducacion;
+        document.querySelectorAll('.categoria-btn')[3].textContent = translations[lang].categoriaOtros;
+        
+        // Traducción de servicios de belleza
+        const beautyServices = document.querySelectorAll('.servicios-categoria[data-categoria="Belleza"] li');
+        beautyServices[0].textContent = translations[lang].peluqueria;
+        beautyServices[1].textContent = translations[lang].manicure;
+        beautyServices[2].textContent = translations[lang].barberia;
+        beautyServices[3].textContent = translations[lang].maquillaje;
+        beautyServices[4].textContent = translations[lang].depilacion;
+        beautyServices[5].textContent = translations[lang].extensiones;
         
         // Guarda el idioma en localStorage para recordarlo
         localStorage.setItem('language', lang);
