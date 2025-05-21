@@ -18,53 +18,94 @@
         
     </header>
 
-    <main class="emprendedores">
-        <section class="categoria-servicios" style="margin-top: 2rem;">
-            <h2 class="categoria-titulo"><i class="fas fa-store-alt"></i> Publica tu Negocio</h2>
-            <div class="emprendedores-container">
-                <!-- Formulario Netlify -->
-                <div class="contacto-form">
-                    <h3>Contáctanos para publicar</h3>
-                    <form name="emprendedor" method="POST" data-netlify="true">
-                        <input type="hidden" name="form-name" value="emprendedor">
-                        <input type="text" name="nombre" placeholder="Nombre del negocio" required>
-                        <input type="tel" name="telefono" placeholder="WhatsApp" required>
-                        <select name="servicio">
-                            <option value="comida">Comida</option>
-                            <option value="belleza">Belleza</option>
-                            <option value="reparaciones">Reparaciones</option>
-                            <option value="otros">Otros servicios</option>
-                        </select>
-                        <textarea name="descripcion" placeholder="Describe tu negocio (máx. 200 caracteres)" maxlength="200"></textarea>
-                        <button type="submit" class="servicio-precio" style="width: 100%; margin-top: 1rem;">Enviar solicitud</button>
-                    </form>
+    <!-- Botón flotante para emprendedores -->
+    <button class="btn-emprendedor" id="btnEmprendedor">
+        <i class="fas fa-store-alt"></i> Publica tu negocio
+    </button>
+
+   <!-- Panel desplegable -->
+<div class="panel-emprendedor" id="panelEmprendedor">
+    <button class="cerrar-panel" id="cerrarPanel">&times;</button>
+    
+    <div class="emprendedores-container">
+        <!-- Formulario Netlify -->
+        <div class="contacto-form">
+            <h3>¿Quieres aparecer aquí?</h3>
+            <form name="emprendedor" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+                <input type="hidden" name="form-name" value="emprendedor">
+                <input type="text" name="nombre" placeholder="Nombre del negocio" required>
+                <input type="tel" name="telefono" placeholder="WhatsApp" required>
+                
+                <select name="servicio" required>
+                    <option value="" disabled selected>Selecciona tu categoría</option>
+                    <option value="comida">Comida</option>
+                    <option value="belleza">Belleza</option>
+                    <option value="reparaciones">Reparaciones</option>
+                </select>
+                
+                <!-- Aquí Netlify inyectará el CAPTCHA -->
+                <div data-netlify-recaptcha="true"></div>
+                <button type="submit" class="btn-enviar">Solicitar información</button>
+            </form>
+
+            <div class="opciones-pago">
+                <div class="opcion-pago">
+                    <p>¿Prefieres pagar con crypto?</p>
+                    <button class="btn-pago btn-crypto" id="btnMostrarQR">
+                        <i class="fab fa-bitcoin"></i> Ver opciones
+                    </button>
                 </div>
 
-                <!-- Métodos de Pago -->
-                <div class="pago-section">
-                    <h3>Tarifas de publicación</h3>
-                    <div class="tarifas">
-                        <div class="servicio-card" style="text-align: center;">
-                            <h4>1 semana</h4>
-                            <p>5 USDT</p>
-                            <img src="../imagenes/qr_binance.png" alt="QR Binance" class="qr-pago">
-                            <p class="nota">Escanea con tu wallet</p>
-                        </div>
-                        <div class="servicio-card" style="text-align: center;">
-                            <h4>1 mes</h4>
-                            <p>15 USDT</p>
-                            <img src="../imagenes/qr_binance.png" alt="QR Binance" class="qr-pago">
-                            <p class="nota">Escanea con tu wallet</p>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/931307446?text=He%20realizado%20el%20pago%20de%20publicación" 
-                       class="whatsapp-float">
-                       <i class="fab fa-whatsapp"></i> Enviar comprobante
-                    </a>
+                <div class="opcion-pago">
+                    <p>¿Prefieres pagar con MB Way?</p>
+                    <button class="btn-pago btn-mbway" id="btnMbway">
+                        <img src="imagenes/mbway.png" alt="MB Way" class="icono-mbway"> Pagar con MB Way
+                    </button>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+
+        <!-- Sección QR -->
+        <div class="crypto-section" id="cryptoSection">
+            <h3><i class="fas fa-qrcode"></i> Pago con USDT</h3>
+            <div class="tarifas">
+                <div class="tarifa">
+                    <h4>1 semana</h4>
+                    <p>5 USDT</p>
+                    <img src="../imagenes/qr_binance.png" alt="QR Binance" class="qr-pago">
+                </div>
+                <div class="tarifa">
+                    <h4>1 mes</h4>
+                    <p>15 USDT</p>
+                    <img src="../imagenes/qr_binance.png" alt="QR Binance" class="qr-pago">
+                </div>
+            </div>
+            <a href="https://wa.me/931307446?text=He%20realizado%20el%20pago%20de%20publicación" 
+               class="whatsapp-link">
+               <i class="fab fa-whatsapp"></i> Enviar comprobante
+            </a>
+        </div>
+
+        <div class="mbway-section" id="mbwaySection" style="display: none;">
+            <h3><i class="fas fa-euro-sign"></i> Pago con MB Way</h3>
+            <div class="tarifas">
+                <div class="tarifa">
+                    <h4>1 semana</h4>
+                    <p>5€</p>
+                    <p>Número MB Way: <strong>912 345 678</strong></p>
+                </div>
+                <div class="tarifa">
+                    <h4>1 mes</h4>
+                    <p>15€</p>
+                    <p>Número MB Way: <strong>912 345 678</strong></p>
+                </div>
+            </div>
+            <a href="https://wa.me/931307446?text=He%20pagado%20con%20MB%20Way" class="whatsapp-link">
+                <i class="fab fa-whatsapp"></i> Enviar comprobante
+            </a>
+        </div>
+    </div>
+</div>
 
     <main class="servicios-main">
         <!-- Sección Belleza -->
@@ -78,17 +119,18 @@
                     <span class="servicio-precio">25€ - 60€</span>
                 </article>
                 
-                <article class="servicio-card">
-                    <h3 class="servicio-nombre">Maquillaje para Eventos</h3>
-                    <p class="servicio-descripcion">Estilo latino para tus ocasiones especiales.</p>
-                    <span class="servicio-precio">Desde 35€</span>
-                </article>
-                
                 <!-- Más servicios... -->
             </div>
         </section>
-        
-        <!-- Más secciones... -->
     </main>
+<script src="script/script.js"></script>
+<footer class="footer">
+    <div class="footer-contenido">
+        <p>&copy; 2025 TiendaLatina. Todos los derechos reservados.</p>
+        <div class="footer-eu">
+            <img src="imagenes/eu_flag.png" alt="Unión Europea" title="Unión Europea" class="eu-flag">
+        </div>
+    </div>
+</footer>
 </body>
 </html>

@@ -2,12 +2,22 @@
 
 :root {
     --rojo: #E63946;
-    --dorado:  #f5c542;
-    --azul-header: #4e7cc7;       /* Azul claro */
-    --azul-hero: #a8c4f0;         /* Azul muy suave */
-    --azul-card: #e3edf9;         /* Azul claro translúcido */
+    --dorado: #f5c542;
+    --azul-header: #4e7cc7;
+    --azul-hero: #a8c4f0;
+    --azul-card: #e3edf9;
     --blanco: #ffffff;
     --gris-claro: #f9f9f9;
+}
+
+
+/* Estilos Generales */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 body.servicios {
@@ -19,6 +29,7 @@ body.servicios {
     padding: 0;
 }
 
+/* Header */
 .servicios-header {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -31,6 +42,7 @@ body.servicios {
     top: 0;
     z-index: 1000;
 }
+
 .titulo {
     color: var(--dorado);
     font-weight: 700;
@@ -53,7 +65,8 @@ body.servicios {
     height: 3px;
     background: var(--dorado);
 }
-.logo{
+
+.logo {
     justify-self: start;
 }
 
@@ -63,10 +76,12 @@ body.servicios {
     display: block;
 }
 
+/* Main Content */
 .servicios-main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem 1rem;
+    flex: 1;
 }
 
 .categoria-servicios {
@@ -159,21 +174,70 @@ body.servicios {
     text-transform: uppercase;
 }
 
-/* Estilos para la sección de emprendedores */
-.emprendedores-container {
+.btn-emprendedor {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 1000;
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
-.contacto-form, .pago-section {
-    flex: 1;
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+.btn-emprendedor:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.panel-emprendedor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.cerrar-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.emprendedores-container {
+    background: white;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.contacto-form h3 {
+    color: var(--azul-header);
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .contacto-form input, 
@@ -190,6 +254,85 @@ body.servicios {
 .contacto-form textarea {
     min-height: 100px;
     resize: vertical;
+}
+
+.btn-enviar {
+    background: var(--azul-header);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-enviar:hover {
+    background: var(--dorado);
+}
+
+.opciones-pago {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.opcion-pago {
+    text-align: center;
+}
+
+.btn-pago {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem; /* ligeramente más pequeño */
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 220px;
+    justify-content: center;
+    height: 52px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.btn-pago:hover {
+    transform: scale(1.05);
+}
+
+.btn-crypto {
+    background-color: orange;
+    color: white;
+}
+
+.btn-mbway {
+    background-color: #e60000;
+    color: white;
+}
+
+.icono-mbway {
+    width: 28px;
+    height: auto;
+}
+
+.crypto-section {
+    display: none;
+    margin-top: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .tarifas {
@@ -209,40 +352,24 @@ body.servicios {
     background: white;
 }
 
-.nota {
-    font-size: 0.9rem;
-    color: var(--azul-header);
+.whatsapp-link {
+    display: block;
     text-align: center;
-    margin-top: 0.5rem;
-}
-
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
     background: #25D366;
     color: white;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 1rem;
     text-decoration: none;
 }
 
-
-/* Celulares */
+/* Responsive */
 @media (max-width: 768px) {
     .servicios-grid {
         grid-template-columns: 1fr;
     }
 
-    .servicios-titulo {
+    .titulo {
         font-size: 2rem;
     }
 
@@ -258,17 +385,49 @@ body.servicios {
         height: 80px;
     }
 
+    .btn-emprendedor {
+        bottom: 80px;
+        right: 16px;
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+    
     .emprendedores-container {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    .tarifas {
         flex-direction: column;
     }
-    
-    .contacto-form, .pago-section {
-        width: 100%;
-    }
-    
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
+}
+
+.footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+}
+
+.footer-contenido {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.footer-eu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.eu-flag {
+    width: 24px;
+    height: auto;
 }
