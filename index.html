@@ -79,7 +79,7 @@
         <!-- Hero Section -->
         <section id="inicio" class="hero">
             <div class="hero-content">
-                <h1>Conectamos talento Latino en Porto
+                <h1>Conectamos talento Latino en Porto</h1>
                 <p>Encuentra u ofrece servicios con confianza.</p>
                 <button class="cta-button"><a href="servicios/servicios.html" target="_blank">Explorar Servicios</a> <i class="fas fa-arrow-right"></i></button>
             </div>
@@ -251,6 +251,10 @@
     document.addEventListener('DOMContentLoaded', function() {
         const savedLang = localStorage.getItem('language') || 'es';
         changeLanguage(savedLang);
+        
+    document.querySelectorAll('.nav-list a, .language-buttons button').forEach(element => {
+        element.addEventListener('click', () => window.innerWidth <= 768 && document.querySelector('.navbar').classList.remove('active'));
+    });
     });
 </script>
 </body>

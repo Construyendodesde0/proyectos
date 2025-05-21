@@ -6,6 +6,7 @@
     <title>TiendaLatina | Nuestros Servicios</title>
     <link rel="stylesheet" href="estilo/style.css">
     <link rel="shortcut icon" href="../imagenes/favicon_esferico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="servicios">
     <header class="servicios-header">
@@ -16,6 +17,54 @@
         <h1 class="titulo">Descubre Nuestros Servicios</h1>
         
     </header>
+
+    <main class="emprendedores">
+        <section class="categoria-servicios" style="margin-top: 2rem;">
+            <h2 class="categoria-titulo"><i class="fas fa-store-alt"></i> Publica tu Negocio</h2>
+            <div class="emprendedores-container">
+                <!-- Formulario Netlify -->
+                <div class="contacto-form">
+                    <h3>Contáctanos para publicar</h3>
+                    <form name="emprendedor" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="emprendedor">
+                        <input type="text" name="nombre" placeholder="Nombre del negocio" required>
+                        <input type="tel" name="telefono" placeholder="WhatsApp" required>
+                        <select name="servicio">
+                            <option value="comida">Comida</option>
+                            <option value="belleza">Belleza</option>
+                            <option value="reparaciones">Reparaciones</option>
+                            <option value="otros">Otros servicios</option>
+                        </select>
+                        <textarea name="descripcion" placeholder="Describe tu negocio (máx. 200 caracteres)" maxlength="200"></textarea>
+                        <button type="submit" class="servicio-precio" style="width: 100%; margin-top: 1rem;">Enviar solicitud</button>
+                    </form>
+                </div>
+
+                <!-- Métodos de Pago -->
+                <div class="pago-section">
+                    <h3>Tarifas de publicación</h3>
+                    <div class="tarifas">
+                        <div class="servicio-card" style="text-align: center;">
+                            <h4>1 semana</h4>
+                            <p>5 USDT</p>
+                            <img src="../imagenes/qr_binance.png" alt="QR Binance" class="qr-pago">
+                            <p class="nota">Escanea con tu wallet</p>
+                        </div>
+                        <div class="servicio-card" style="text-align: center;">
+                            <h4>1 mes</h4>
+                            <p>15 USDT</p>
+                            <img src="../imagenes/qr_binance.png" alt="QR Binance" class="qr-pago">
+                            <p class="nota">Escanea con tu wallet</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/931307446?text=He%20realizado%20el%20pago%20de%20publicación" 
+                       class="whatsapp-float">
+                       <i class="fab fa-whatsapp"></i> Enviar comprobante
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <main class="servicios-main">
         <!-- Sección Belleza -->

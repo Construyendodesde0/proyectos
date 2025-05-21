@@ -413,7 +413,7 @@ body {
     object-fit: contain;
 }
 
-/* Media Queries */
+/* Celulares */
 @media (max-width: 768px) {
     .header {
         position: relative;

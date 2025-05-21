@@ -146,7 +146,6 @@ body.servicios {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Elemento rojo solo para destaque */
 .servicio-destacado {
     position: absolute;
     top: 15px;
@@ -160,7 +159,84 @@ body.servicios {
     text-transform: uppercase;
 }
 
-/* Responsive */
+/* Estilos para la sección de emprendedores */
+.emprendedores-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.contacto-form, .pago-section {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.contacto-form input, 
+.contacto-form select, 
+.contacto-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.contacto-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.tarifas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.qr-pago {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #eee;
+    padding: 5px;
+    background: white;
+}
+
+.nota {
+    font-size: 0.9rem;
+    color: var(--azul-header);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+}
+
+
+/* Celulares */
 @media (max-width: 768px) {
     .servicios-grid {
         grid-template-columns: 1fr;
@@ -180,5 +256,19 @@ body.servicios {
 
     .logo img {
         height: 80px;
+    }
+
+    .emprendedores-container {
+        flex-direction: column;
+    }
+    
+    .contacto-form, .pago-section {
+        width: 100%;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }
