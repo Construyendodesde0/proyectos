@@ -7,19 +7,20 @@
     <link rel="stylesheet" href="estilo/style.css">
     <link rel="shortcut icon" href="../imagenes/favicon_esferico.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="servicios">
     <header class="servicios-header">
-        <div class="logo">
+        <div class="logo" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800" oncontextmenu="return false;" draggable="false">
             <img src="../imagenes/logoTL.png" alt="TiendaLatina" title="Tienda Latina ™">
         </div>
         
-        <h1 class="titulo">Descubre Nuestros Servicios</h1>
+        <h1 class="titulo" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">Descubre Nuestros Servicios</h1>
         
     </header>
 
     <!-- Botón flotante para emprendedores -->
-    <button class="btn-emprendedor" id="btnEmprendedor">
+    <button class="btn-emprendedor" id="btnEmprendedor" data-aos="fade-up">
         <i class="fas fa-store-alt"></i> Publica tu negocio
     </button>
 
@@ -133,5 +134,15 @@
         </div>
     </div>
 </footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,       // Duración de la animación (ms)
+        offset: 100,        // Retraso antes de activar (px)
+        easing: 'ease-in-out', // Tipo de suavizado
+        once: true           // Animación solo una vez
+    });
+</script>
 </body>
 </html>

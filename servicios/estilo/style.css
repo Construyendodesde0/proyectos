@@ -77,6 +77,8 @@ body.servicios {
     height: 100px;
     width: auto;
     display: block;
+    border-radius: 5px;
+    box-shadow: #00000076;
 }
 
 /* Main Content */

@@ -19,17 +19,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Menú Hamburguesa
     if (menuToggle && navbar) {
-        menuToggle.addEventListener('click', function (e) {
-            e.stopPropagation();
-            const isActive = navbar.classList.contains('active');
-            closeAllMenus();
-            if (!isActive) {
-                navbar.classList.add('active');
-                body.classList.add('menu-open');
-                toggleIcon(true);
-            }
-        });
-    }
+        menuToggle.addEventListener('click', function(e) {
+         e.stopPropagation();
+            const wasActive = navbar.classList.contains('active');
+        
+        // Cerrar todo primero
+        closeAllMenus();
+        
+        // Abrir solo si no estaba activo previamente
+        if (!wasActive) {
+            navbar.classList.add('active');
+            body.classList.add('menu-open');
+            toggleIcon(true);
+            
+            // Resetear submenús
+            contactoMenu.classList.remove('active');
+            contactoMenu.style.display = 'none';
+            serviciosMenu.style.display = 'none';
+        }
+    });
+}
+
 
     function toggleIcon(isOpen) {
         const icon = menuToggle.querySelector('i');
@@ -48,19 +58,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Mostrar/Ocultar Contacto en móviles
-     if (contactoLink && contactoMenu) {
-        contactoLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Cerramos siempre servicios
+    if (contactoLink && contactoMenu) {
+    contactoLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Solo actuar si el menú principal está abierto
+        if (navbar.classList.contains('active')) {
+            const isContactActive = contactoMenu.classList.contains('active');
+            
+            // Paso 1: Cerrar otros submenús
+            serviciosMenu.classList.remove('active');
             serviciosMenu.style.display = 'none';
+            
+            // Paso 2: Toggle estado contacto
+            contactoMenu.classList.toggle('active');
+            contactoMenu.style.display = isContactActive ? 'none' : 'block';
+            
+            // Paso 3: Posicionamiento solo en móvil
+            if (window.innerWidth <= 768) {
+                const rect = contactoLink.getBoundingClientRect();
+                contactoMenu.style.top = `${rect.bottom}px`;
+                contactoMenu.style.left = '50%';
+                contactoMenu.style.transform = 'translateX(-50%)';
+            }
+        }
+    });
+}
 
-            // Toggle en contacto
-            const isOpen = contactoMenu.classList.toggle('active');
-            contactoMenu.style.display = isOpen ? 'block' : 'none';
-        });
-    }
 
         // Submenús: cerrar "Servicios" y "Contacto"
     function closeSubmenus() {

@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="shortcut icon" href="imagenes/favicon_esferico.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <div class="logo" oncontextmenu="return false;" draggable="false">
+        <div class="logo" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800" oncontextmenu="return false;" draggable="false">
             <img src="imagenes/logoTL.png" alt="TiendaLatina"  style="pointer-events: none;" title="Tienda Latina ™">
         </div>
             <button class="menu-toggle" aria-label="Abrir menú">
@@ -45,74 +46,199 @@
                 </li>
             </ul>
 
-             <div class="language-buttons">
-                    <button onclick="changeLanguage('es')"><img src="imagenes/esmenu.png" alt="Español"> ES</button>
-                    <button onclick="changeLanguage('en')"><img src="imagenes/enmenu.png" alt="English"> EN</button>
-                    <button onclick="changeLanguage('pt')"><img src="imagenes/ptmenu.png" alt="Português"> PT</button>
-             </div>
+            <div class="language-buttons">
+                <button onclick="changeLanguage('es')">
+                    <img src="imagenes/esmenu.png" alt="Español"> ES
+                </button>
+                <button onclick="changeLanguage('en')">
+                    <img src="imagenes/enmenu.png" alt="English"> EN
+                </button>
+                <button onclick="changeLanguage('pt')">
+                    <img src="imagenes/ptmenu.png" alt="Português"> PT
+                 </button>
+            </div>
         </nav>
-    </header>
+
+        <!-- Modal de Contacto para móvil -->
+    <div id="contacto-modal" class="contacto-modal">
+        <div class="contacto-modal__backdrop"></div>
+        <div class="contacto-modal__content">
+        <button id="contacto-modal-close" class="contacto-modal__close">&times;</button>
+            <h3>Contáctanos vía:</h3>
+        <div class="qr-option">
+            <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
+        <p><i class="fab fa-whatsapp"></i> WhatsApp</p>
+            <a href="https://wa.me/931307446" target="_blank" class="qr-button">Abrir Chat</a>
+        </div>
+        <div class="qr-option">
+            <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
+        <p><i class="fab fa-instagram"></i> Instagram</p>
+            <a href="https://www.instagram.com/tienda.latina.pt/" target="_blank" class="qr-button">Seguir</a>
+        </div>
+    </div>
+</div>
+</header>
 
     <main>
         <div class="banderas">
-            <img src="imagenes/ar.png" alt="Argentina" title="Argentina">
-            <img src="imagenes/bo.png" alt="Bolivia" title="Bolivia">
-            <img src="imagenes/br.png" alt="Brasil" title="Brasil">
-            <img src="imagenes/cl.png" alt="Chile" title="Chile">
-            <img src="imagenes/co.png" alt="Colombia" title="Colombia">
-            <img src="imagenes/cr.png" alt="Costa Rica" title="Costa Rica">
-            <img src="imagenes/cu.png" alt="Cuba" title="Cuba">
-            <img src="imagenes/do.png" alt="Dominicana" title="República Dominicana">
-            <img src="imagenes/ec.png" alt="Ecuador" title="Ecuador">
-            <img src ="imagenes/gt.png" alt="Guatemala" title="Guatemala">
-            <img src="imagenes/ht.png" alt="Haití" title="Haití">
-            <img src="imagenes/jm.png" alt="Jamaica" title="Jamaica">
-            <img src="imagenes/mx.png" alt="México" title="México">
-            <img src="imagenes/ni.png" alt="Nicaragua" title="Nicaragua">
-            <img src="imagenes/pa.png" alt="Panamá" title="Panamá">
-            <img src="imagenes/pe.png" alt="Perú" title="Perú">
-            <img src="imagenes/py.png" alt="Paraguay" title="Paraguay">
-            <img src="imagenes/sv.png" alt="El Salvador" title="El Salvador">
-            <img src="imagenes/uy.png" alt="Uruguay" title="Uruguay">
-            <img src="imagenes/ve.png" alt="Venezuela" title="Venezuela">
+            <img src="imagenes/ar.png" alt="Argentina" title="Argentina" data-aos="fade-in" data-aos-delay="100">
+            <img src="imagenes/bo.png" alt="Bolivia" title="Bolivia" data-aos="fade-in" data-aos-delay="200">
+            <img src="imagenes/br.png" alt="Brasil" title="Brasil" data-aos="fade-in" data-aos-delay="300">
+            <img src="imagenes/cl.png" alt="Chile" title="Chile" data-aos="fade-in" data-aos-delay="400">
+            <img src="imagenes/co.png" alt="Colombia" title="Colombia" data-aos="fade-in" data-aos-delay="500">
+            <img src="imagenes/cr.png" alt="Costa Rica" title="Costa Rica" data-aos="fade-in" data-aos-delay="600">
+            <img src="imagenes/cu.png" alt="Cuba" title="Cuba" data-aos="fade-in" data-aos-delay="700">
+            <img src="imagenes/do.png" alt="Dominicana" title="República Dominicana" data-aos="fade-in" data-aos-delay="800">
+            <img src="imagenes/ec.png" alt="Ecuador" title="Ecuador" data-aos="fade-in" data-aos-delay="900">
+            <img src ="imagenes/gt.png" alt="Guatemala" title="Guatemala" data-aos="fade-in" data-aos-delay="1000">
+            <img src="imagenes/ht.png" alt="Haití" title="Haití" data-aos="fade-in" data-aos-delay="1100">
+            <img src="imagenes/jm.png" alt="Jamaica" title="Jamaica" data-aos="fade-in" data-aos-delay="1200">
+            <img src="imagenes/mx.png" alt="México" title="México" data-aos="fade-in" data-aos-delay="1300">
+            <img src="imagenes/ni.png" alt="Nicaragua" title="Nicaragua" data-aos="fade-in" data-aos-delay="1400">
+            <img src="imagenes/pa.png" alt="Panamá" title="Panamá" data-aos="fade-in" data-aos-delay="1500">
+            <img src="imagenes/pe.png" alt="Perú" title="Perú" data-aos="fade-in" data-aos-delay="1600">
+            <img src="imagenes/py.png" alt="Paraguay" title="Paraguay" data-aos="fade-in" data-aos-delay="1700">
+            <img src="imagenes/sv.png" alt="El Salvador" title="El Salvador" data-aos="fade-in" data-aos-delay="1800">
+            <img src="imagenes/uy.png" alt="Uruguay" title="Uruguay" data-aos="fade-in" data-aos-delay="1900">
+            <img src="imagenes/ve.png" alt="Venezuela" title="Venezuela" data-aos="fade-in" data-aos-delay="2000">
         </div>
-        <!-- Hero Section -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h1>Conectamos talento Latino en Porto</h1>
-                <p>Encuentra u ofrece servicios con confianza.</p>
-                <button class="cta-button"><a href="servicios/servicios.html" target="_blank">Explorar Servicios</a> <i class="fas fa-arrow-right"></i></button>
-            </div>
-        </section>
-        <!-- Servicios -->
-         <section id="servicios" class="services">
-            <h2>Servicios Populares</h2>
-            <div class="categorias">
-                <button class="categoria-btn active" data-categoria="Belleza">Belleza</button>
-                <button class="categoria-btn" data-categoria="Hogar">Hogar</button>
-                <button class="categoria-btn" data-categoria="Educacion">Educación</button>
-                <button class="categoria-btn" data-categoria="Otros">Otros</button>
-            </div>
-        
-            <div class="servicios-container">
-                <!-- Categoría Belleza -->
-                <div class="servicios-categoria active" data-categoria="Belleza">
-                    <div class="servicios-columna">
-                        <ul>
-                            <li>Peluquería</li>
-                            <li>Manicure/Pedicure</li>
-                            <li>Barbería</li>
-                        </ul>
-                    </div>
-                    <div class="servicios-columna">
-                        <ul>
-                            <li>Maquillaje</li>
-                            <li>Depilación</li>
-                            <li>Extensiones</li>
-                        </ul>
-                    </div>
-                </div>
-    </main>
+
+        <!-- Servicios Populares -->
+<section id="servicios" class="services">
+    <h2 data-aos="fade-down">Servicios Populares</h2>
+    <div class="categorias">
+        <button class="categoria-btn active" data-categoria="Belleza">Belleza</button>
+        <button class="categoria-btn" data-categoria="Hogar">Hogar</button>
+        <button class="categoria-btn" data-categoria="Educacion">Educación</button>
+        <button class="categoria-btn" data-categoria="Salud">Salud</button>
+        <button class="categoria-btn" data-categoria="Transporte">Transporte</button>
+        <button class="categoria-btn" data-categoria="Otros">Otros</button>
+    </div>
+
+    <div class="servicios-container">
+    <!-- Categoría Belleza -->
+    <div class="servicios-categoria active" data-categoria="Belleza">
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Belleza.0">Peluquería</li>
+                <li data-translate="Belleza.1">Manicure/Pedicure</li>
+                <li data-translate="Belleza.2">Barbería</li>
+                <li data-translate="Belleza.3">Maquillaje profesional</li>
+            </ul>
+        </div>
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Belleza.4">Depilación</li>
+                <li data-translate="Belleza.5">Extensiones de pestañas</li>
+                <li data-translate="Belleza.6">Masajes relajantes</li>
+                <li data-translate="Belleza.7">Tintes</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Categoría Hogar -->
+    <div class="servicios-categoria" data-categoria="Hogar">
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Hogar.0">Limpieza de hogar</li>
+                <li data-translate="Hogar.1">Jardinería</li>
+                <li data-translate="Hogar.2">Electricista</li>
+                <li data-translate="Hogar.3">Fontanería</li>
+            </ul>
+        </div>
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Hogar.4">Mudanzas</li>
+                <li data-translate="Hogar.5">Cuidado de mascotas</li>
+                <li data-translate="Hogar.6">Montaje de muebles</li>
+                <li data-translate="Hogar.7">Pintura de paredes</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Categoría Educación -->
+    <div class="servicios-categoria" data-categoria="Educacion">
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Educacion.0">Clases de portugués</li>
+                <li data-translate="Educacion.1">Clases de inglés</li>
+                <li data-translate="Educacion.2">Clases de matemáticas</li>
+                <li data-translate="Educacion.3">Asesoría académica</li>
+            </ul>
+        </div>
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Educacion.4">Clases de música</li>
+                <li data-translate="Educacion.5">Talleres de cocina</li>
+                <li data-translate="Educacion.6">Tutorías para niños</li>
+                <li data-translate="Educacion.7">Preparación de CV</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Categoría Salud -->
+    <div class="servicios-categoria" data-categoria="Salud">
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Salud.0">Fisioterapia</li>
+                <li data-translate="Salud.1">Nutricionista</li>
+                <li data-translate="Salud.2">Entrenador personal</li>
+                <li data-translate="Salud.3">Terapia psicológica</li>
+            </ul>
+        </div>
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Salud.4">Masajes terapéuticos</li>
+                <li data-translate="Salud.5">Acupuntura</li>
+                <li data-translate="Salud.6">Yoga a domicilio</li>
+                <li data-translate="Salud.7">Reiki</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Categoría Transporte -->
+    <div class="servicios-categoria" data-categoria="Transporte">
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Transporte.0">Transporte privado</li>
+                <li data-translate="Transporte.1">Recogida en aeropuerto</li>
+                <li data-translate="Transporte.2">Mensajería</li>
+                <li data-translate="Transporte.3">Alquiler de furgonetas</li>
+            </ul>
+        </div>
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Transporte.4">Traslados médicos</li>
+                <li data-translate="Transporte.5">Servicio de taxi</li>
+                <li data-translate="Transporte.6">Transporte para eventos</li>
+                <li data-translate="Transporte.7">Guía turístico</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Categoría Otros -->
+    <div class="servicios-categoria" data-categoria="Otros">
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Otros.0">Fotografía</li>
+                <li data-translate="Otros.1">Diseño gráfico</li>
+                <li data-translate="Otros.2">Reparación de celulares</li>
+                <li data-translate="Otros.3">Asesoría legal</li>
+            </ul>
+        </div>
+        <div class="servicios-columna">
+            <ul>
+                <li data-translate="Otros.4">Traducciones</li>
+                <li data-translate="Otros.5">Organización de eventos</li>
+                <li data-translate="Otros.6">Servicios IT</li>
+                <li data-translate="Otros.7">Venta de productos artesanales</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</section>
+</main>
 
     <!-- Footer -->
 <footer class="footer">
@@ -127,7 +253,6 @@
     
 <script>
     
-    // Textos traducidos (personaliza con tus contenidos)
     const translations = {
         es: {
             titulo: "TiendaLatina | Servicios Latinos en Porto",
@@ -143,17 +268,72 @@
             abrirChat: "Abrir Chat",
             instagram: "Instagram",
             seguir: "Seguir",
+            serviciosPopulares: "Servicios Populares",
+            salud: "Salud",
+            transporte: "Transporte",
             explorarServicios: "Explorar Servicios",
-            categoriaBelleza: "Belleza",
-            categoriaHogar: "Hogar",
-            categoriaEducacion: "Educación",
-            categoriaOtros: "Otros",
-            peluqueria: "Peluquería",
-            manicure: "Manicure/Pedicure",
-            barberia: "Barbería",
-            maquillaje: "Maquillaje",
-            depilacion: "Depilación",
-            extensiones: "Extensiones"
+            categorias: {
+            Belleza: [
+                    "Cortes modernos",
+                    "Uñas artísticas",
+                    "Barbería premium",
+                    "Maquillaje de novias",
+                    "Depilación láser",
+                    "Extensiones profesionales",
+                    "Tratamientos capilares",
+                    "Colorimetría avanzada"
+                ],
+            Hogar: [
+                    "Limpieza ecológica",
+                    "Diseño de jardines",
+                    "Instalaciones eléctricas",
+                    "Fontanería urgente",
+                    "Montaje de muebles",
+                    "Cuidado de ancianos",
+                    "Pintura decorativa",
+                    "Impermeabilización"
+                ],
+            Educacion: [
+                    "Clases de portugués",
+                    "Inglés empresarial",
+                    "Matemáticas avanzadas",
+                    "Asesoría universitaria",
+                    "Clases de música",
+                    "Talleres de cocina",
+                    "Refuerzo escolar",
+                    "Preparación de CV"
+                ],
+            Salud: [
+                    "Fisioterapia deportiva",
+                    "Nutrición personalizada",
+                    "Entrenamiento funcional",
+                    "Terapia psicológica",
+                    "Masajes terapéuticos",
+                    "Acupuntura tradicional",
+                    "Yoga terapéutico",
+                    "Reiki energético"
+                ],
+            Transporte: [
+                    "Traslados ejecutivos",
+                    "Servicio de aeropuerto",
+                    "Mensajería urgente",
+                    "Alquiler de furgonetas",
+                    "Transporte médico",
+                    "Taxi turístico",
+                    "Eventos corporativos",
+                    "Guías certificados"
+                ],
+            Otros: [
+                    "Fotografía profesional",
+                    "Diseño gráfico digital",
+                    "Reparación de smartphones",
+                    "Asesoría legal migratoria",
+                    "Traducciones juradas",
+                    "Organización de eventos",
+                    "Soluciones IT",
+                    "Artesanía auténtica"
+                ]
+            }
         },
         en: {
             titulo: "TiendaLatina | Latin Services in Porto",
@@ -169,17 +349,72 @@
             abrirChat: "Open Chat",
             instagram: "Instagram",
             seguir: "Follow",
+            serviciosPopulares: "Popular Services", 
+            salud: "Health",
+            transporte: "Transportation",
             explorarServicios: "Explore Services",
-            categoriaBelleza: "Beauty",
-            categoriaHogar: "Home",
-            categoriaEducacion: "Education",
-            categoriaOtros: "Others",
-            peluqueria: "Hair Salon",
-            manicure: "Manicure/Pedicure",
-            barberia: "Barber Shop",
-            maquillaje: "Makeup",
-            depilacion: "Waxing",
-            extensiones: "Extensions"
+            categorias: {
+            Belleza: [
+                    "Modern haircuts",
+                    "Artistic nails",
+                    "Premium barbering",
+                    "Bridal makeup",
+                    "Laser hair removal",
+                    "Professional extensions",
+                    "Hair treatments",
+                    "Advanced colorimetry"
+                ],
+            Hogar: [
+                    "Eco cleaning",
+                    "Garden design",
+                    "Electrical installations",
+                    "Emergency plumbing",
+                    "Furniture assembly",
+                    "Elderly care",
+                    "Decorative painting",
+                    "Waterproofing"
+                ],
+            Educacion: [
+                    "Portuguese classes",
+                    "Business English",
+                    "Advanced mathematics",
+                    "University counseling",
+                    "Music lessons",
+                    "Cooking workshops",
+                    "School support",
+                    "CV preparation"
+                ],
+            Salud: [
+                    "Sports physiotherapy",
+                    "Personalized nutrition",
+                    "Functional training",
+                    "Psychological therapy",
+                    "Therapeutic massages",
+                    "Traditional acupuncture",
+                    "Therapeutic yoga",
+                    "Energy reiki"
+                ],
+            Transporte: [
+                    "Executive transfers",
+                    "Airport service",
+                    "Express courier",
+                    "Van rentals",
+                    "Medical transport",
+                    "Tourist taxi",
+                    "Corporate events",
+                    "Certified guides"
+                ],
+            Otros: [
+                    "Professional photography",
+                    "Digital graphic design",
+                    "Smartphone repairs",
+                    "Immigration legal advice",
+                    "Sworn translations",
+                    "Event planning",
+                    "IT solutions",
+                    "Authentic crafts"
+                ]
+            }
         },
         pt: { // Portugués DE PORTUGAL (pt-PT)
             titulo: "TiendaLatina | Serviços Latinos no Porto",
@@ -195,71 +430,197 @@
             abrirChat: "Abrir Chat",
             instagram: "Instagram",
             seguir: "Seguir",
+            serviciosPopulares: "Serviços Populares",
+            salud: "Saúde",
+            transporte: "Transporte",
             explorarServicios: "Explorar Serviços",
-            categoriaBelleza: "Beleza",
-            categoriaHogar: "Casa",
-            categoriaEducacion: "Educação",
-            categoriaOtros: "Outros",
-            peluqueria: "Cabeleireiro",
-            manicure: "Manicure/Pedicure",
-            barberia: "Barbearia",
-            maquillaje: "Maquilhagem",
-            depilacion: "Depilação",
-            extensiones: "Extensões"
+            categorias: {
+                Belleza: [
+                    "Cortes modernos",
+                    "Unhas artísticas",
+                    "Barbearia premium",
+                    "Maquilhagem de noivas",
+                    "Depilação a laser",
+                    "Extensões profissionais",
+                    "Tratamentos capilares",
+                    "Colorimetria avançada"
+                ],
+                Hogar: [
+                    "Limpeza ecológica",
+                    "Design de jardins",
+                    "Instalações elétricas",
+                    "Encanamento urgente",
+                    "Montagem de móveis",
+                    "Cuidados a idosos",
+                    "Pintura decorativa",
+                    "Impermeabilização"
+                ],
+                Educacion: [
+                    "Aulas de português",
+                    "Inglês empresarial",
+                    "Matemática avançada",
+                    "Aconselhamento universitário",
+                    "Aulas de música",
+                    "Oficinas de culinária",
+                    "Reforço escolar",
+                    "Preparação de CV"
+                ],
+                Salud: [
+                    "Fisioterapia esportiva",
+                    "Nutrição personalizada",
+                    "Treino funcional",
+                    "Terapia psicológica",
+                    "Massagens terapêuticas",
+                    "Acupuntura tradicional",
+                    "Yoga terapêutico",
+                    "Reiki energético"
+                ],
+                Transporte: [
+                    "Transferências executivas",
+                    "Serviço aeroportuário",
+                    "Mensageiro expresso",
+                    "Aluguel de furgões",
+                    "Transporte médico",
+                    "Táxi turístico",
+                    "Eventos corporativos",
+                    "Guias certificados"
+                ],
+                Otros: [
+                    "Fotografia profissional",
+                    "Design gráfico digital",
+                    "Reparação de smartphones",
+                    "Aconselhamento legal migratório",
+                    "Traduções juramentadas",
+                    "Organização de eventos",
+                    "Soluções de TI",
+                    "Artesanato autêntico"
+                ]
+            }
         }
     };
 
     // Función para cambiar idioma
-    function changeLanguage(lang) {
+     function changeLanguage(lang) {
+        // Traducciones básicas
         document.title = translations[lang].titulo;
-        document.querySelector('.hero-content h1').textContent = translations[lang].bienvenida;
-        document.querySelector('.hero-content p').textContent = translations[lang].lema;
-        document.querySelector('.services h2').textContent = translations[lang].servicios;
-        document.querySelector('.qr-container h3').textContent = translations[lang].contacto;
         document.querySelector('.footer p').textContent = translations[lang].derechos;
-        
+
         // Traducción del menú
-        document.querySelector('.nav-list li:nth-child(1) a').textContent = translations[lang].menuInicio;
-        document.querySelector('.nav-list li:nth-child(2) a').textContent = translations[lang].menuServicios;
-        document.querySelector('.nav-list li:nth-child(3) a').textContent = translations[lang].menuContacto;
-        
-        // Traducción de los botones de contacto
-        document.querySelectorAll('.qr-option p')[0].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-        document.querySelectorAll('.qr-option p')[1].innerHTML = `<i class="fab fa-instagram"></i> ${translations[lang].instagram}`;
-        document.querySelectorAll('.qr-button')[0].textContent = translations[lang].abrirChat;
-        document.querySelectorAll('.qr-button')[1].textContent = translations[lang].seguir;
-        
-        // Traducción del botón CTA
-        document.querySelector('.cta-button a').textContent = translations[lang].explorarServicios;
-        
-        // Traducción de categorías
-        document.querySelectorAll('.categoria-btn')[0].textContent = translations[lang].categoriaBelleza;
-        document.querySelectorAll('.categoria-btn')[1].textContent = translations[lang].categoriaHogar;
-        document.querySelectorAll('.categoria-btn')[2].textContent = translations[lang].categoriaEducacion;
-        document.querySelectorAll('.categoria-btn')[3].textContent = translations[lang].categoriaOtros;
-        
-        // Traducción de servicios de belleza
-        const beautyServices = document.querySelectorAll('.servicios-categoria[data-categoria="Belleza"] li');
-        beautyServices[0].textContent = translations[lang].peluqueria;
-        beautyServices[1].textContent = translations[lang].manicure;
-        beautyServices[2].textContent = translations[lang].barberia;
-        beautyServices[3].textContent = translations[lang].maquillaje;
-        beautyServices[4].textContent = translations[lang].depilacion;
-        beautyServices[5].textContent = translations[lang].extensiones;
-        
-        // Guarda el idioma en localStorage para recordarlo
+        const navItems = document.querySelectorAll('.nav-list li a');
+        if (navItems.length >= 3) {
+            navItems[0].textContent = translations[lang].menuInicio;
+            navItems[1].textContent = translations[lang].menuServicios;
+            navItems[2].textContent = translations[lang].menuContacto;
+        }
+
+        // Botones de contacto
+        const qrOptions = document.querySelectorAll('.qr-option p');
+        if (qrOptions.length >= 2) {
+            qrOptions[0].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+            qrOptions[1].innerHTML = `<i class="fab fa-instagram"></i> ${translations[lang].instagram}`;
+        }
+
+        // Botones de acción
+        const qrButtons = document.querySelectorAll('.qr-button');
+        if (qrButtons.length >= 2) {
+            qrButtons[0].textContent = translations[lang].abrirChat;
+            qrButtons[1].textContent = translations[lang].seguir;
+        }
+
+        // Título de servicios
+        const serviciosTitle = document.querySelector('.services h2');
+        if (serviciosTitle) {
+            serviciosTitle.textContent = translations[lang].serviciosPopulares;
+        }
+
+        // Categorías
+        document.querySelectorAll('.categoria-btn').forEach((btn, index) => {
+            const categories = [
+                translations[lang].categoriaBelleza,
+                translations[lang].categoriaHogar,
+                translations[lang].categoriaEducacion,
+                translations[lang].salud,
+                translations[lang].transporte,
+                translations[lang].categoriaOtros
+            ];
+            btn.textContent = categories[index] || btn.textContent;
+        });
+
+        // Traducción de servicios - ¡ESTA ERA LA PARTE FALTANTE!
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const [categoria, index] = element.getAttribute('data-translate').split('.');
+            if(translations[lang].categorias[categoria][index]) {
+                element.textContent = translations[lang].categorias[categoria][index];
+            }
+        });
+
         localStorage.setItem('language', lang);
     }
 
-    // Cargar idioma guardado al iniciar
+    // Inicialización
     document.addEventListener('DOMContentLoaded', function() {
         const savedLang = localStorage.getItem('language') || 'es';
         changeLanguage(savedLang);
         
-    document.querySelectorAll('.nav-list a, .language-buttons button').forEach(element => {
-        element.addEventListener('click', () => window.innerWidth <= 768 && document.querySelector('.navbar').classList.remove('active'));
-    });
+        document.querySelectorAll('.nav-list a, .language-buttons button').forEach(element => {
+            element.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.navbar').classList.remove('active');
+                }
+            });
+        });
     });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const contactoLink = document.getElementById("contacto-link");
+    const contactoMenu = document.getElementById("contacto-menu");
+
+    contactoLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        contactoMenu.classList.toggle("visible");
+    });
+
+    document.addEventListener("click", function (e) {
+        if (!contactoLink.contains(e.target) && !contactoMenu.contains(e.target)) {
+            contactoMenu.classList.remove("visible");
+        }
+    });
+});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,       // Duración de la animación (ms)
+        offset: 100,        // Retraso antes de activar (px)
+        easing: 'ease-in-out', // Tipo de suavizado
+        once: true           // Animación solo una vez
+    });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const contactoLink = document.getElementById('contacto-link');
+  const contactoModal = document.getElementById('contacto-modal');
+  const closeBtn = document.getElementById('contacto-modal-close');
+
+  // Solo en móvil, intercepta el clic
+  contactoLink.addEventListener('click', function(e) {
+  if (window.innerWidth <= 768) { // Solo móvil
+    e.preventDefault();
+    contactoModal.classList.add('open');
+  }
+  // En desktop no hace nada - menú normal se maneja con CSS hover
+});
+
+  // Cierra al pulsar X o en el backdrop
+  closeBtn.addEventListener('click', () => contactoModal.classList.remove('open'));
+  contactoModal.querySelector('.contacto-modal__backdrop')
+    .addEventListener('click', () => contactoModal.classList.remove('open'));
+});
+
+</script>
+
 </body>
 </html>
