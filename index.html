@@ -121,8 +121,8 @@
         <div class="servicios-columna">
             <ul>
                 <li data-translate="Belleza.0">Peluquería</li>
-                <li data-translate="Belleza.1">Manicure/Pedicure</li>
-                <li data-translate="Belleza.2">Barbería</li>
+                <li data-translate="Belleza.1">Barbería</li>
+                <li data-translate="Belleza.2">Tintes</li>
                 <li data-translate="Belleza.3">Maquillaje profesional</li>
             </ul>
         </div>
@@ -131,9 +131,13 @@
                 <li data-translate="Belleza.4">Depilación</li>
                 <li data-translate="Belleza.5">Extensiones de pestañas</li>
                 <li data-translate="Belleza.6">Masajes relajantes</li>
-                <li data-translate="Belleza.7">Tintes</li>
+                <li data-translate="Belleza.7">Manicure/Pedicure</li>
             </ul>
         </div>
+            <div class="icono-categoria">
+                <img src="imagenes/bellezafem.png" alt="bellezafem">
+                <img src="imagenes/bellezamasc .png" alt="bellezamasc">
+            </div>
     </div>
 
     <!-- Categoría Hogar -->
@@ -153,6 +157,10 @@
                 <li data-translate="Hogar.6">Montaje de muebles</li>
                 <li data-translate="Hogar.7">Pintura de paredes</li>
             </ul>
+        </div>
+        <div class="icono-categoria">
+            <img src="imagenes/casa.png" alt="casa">
+            <img src="imagenes/paint.png" alt="pintura">
         </div>
     </div>
 
@@ -174,6 +182,10 @@
                 <li data-translate="Educacion.7">Preparación de CV</li>
             </ul>
         </div>
+        <div class="icono-categoria">
+            <img src="imagenes/estudiante.png" alt="estudiante">
+            <img src="imagenes/cuaderno.png" alt="cuaderno">
+        </div>
     </div>
 
     <!-- Categoría Salud -->
@@ -193,6 +205,10 @@
                 <li data-translate="Salud.6">Yoga a domicilio</li>
                 <li data-translate="Salud.7">Reiki</li>
             </ul>
+        </div>
+        <div class="icono-categoria">
+            <img src="imagenes/corazon.png" alt="corazon">
+            <img src="imagenes/yoga.png" alt="yoga">
         </div>
     </div>
 
@@ -214,6 +230,10 @@
                 <li data-translate="Transporte.7">Guía turístico</li>
             </ul>
         </div>
+        <div class="icono-categoria">
+            <img src="imagenes/transporte1.png" alt="transporte1">
+            <img src="imagenes/taxi.png" alt="taxi">
+        </div>
     </div>
 
     <!-- Categoría Otros -->
@@ -234,9 +254,13 @@
                 <li data-translate="Otros.7">Venta de productos artesanales</li>
             </ul>
         </div>
+        <div class="icono-categoria">
+            <img src="imagenes/otros1.png" alt="otros1">
+            <img src="imagenes/otros2.png" alt="otros2">
+        </div>
     </div>
 </div>
-
+<p class="footer-legal">*Página destinada única y exclusivamente a la promoción de emprendimientos, No cobramos comisión por trabajos realizados</p>
 </section>
 </main>
 
@@ -272,6 +296,7 @@
             salud: "Salud",
             transporte: "Transporte",
             explorarServicios: "Explorar Servicios",
+            "footer.legal": "Página destinada única y exclusivamente a la promoción de emprendimientos. No cobramos comisión por trabajos realizados.",
             categorias: {
             Belleza: [
                     "Cortes modernos",
@@ -353,6 +378,7 @@
             salud: "Health",
             transporte: "Transportation",
             explorarServicios: "Explore Services",
+            "footer.legal": "This page is solely and exclusively intended for the promotion of entrepreneurship. We do not charge commission for completed jobs.",
             categorias: {
             Belleza: [
                     "Modern haircuts",
@@ -434,6 +460,7 @@
             salud: "Saúde",
             transporte: "Transporte",
             explorarServicios: "Explorar Serviços",
+            "footer.legal": "Página destinada única e exclusivamente à promoção de empreendimentos. Não cobramos comissão por trabalhos realizados.",
             categorias: {
                 Belleza: [
                     "Cortes modernos",
@@ -546,7 +573,7 @@
             btn.textContent = categories[index] || btn.textContent;
         });
 
-        // Traducción de servicios - ¡ESTA ERA LA PARTE FALTANTE!
+        // Traducción de servicios 
         document.querySelectorAll('[data-translate]').forEach(element => {
             const [categoria, index] = element.getAttribute('data-translate').split('.');
             if(translations[lang].categorias[categoria][index]) {
