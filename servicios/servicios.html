@@ -32,23 +32,37 @@
         <!-- Formulario Netlify -->
         <div class="contacto-form">
             <h3>¿Quieres aparecer aquí?</h3>
-            <form name="emprendedor" method="POST" data-netlify="true" data-netlify-recaptcha="true" hidden>
-                <input type="hidden" name="form-name" value="emprendedor">
-                <input type="text" name="nombre" placeholder="Tu nombre" required>
-                <input type="text" name="nombreneg" placeholder="Nombre del negocio" required>
-                <input type="tel" name="telefono" placeholder="WhatsApp" required>
-                
-                <select name="servicio" required>
-                    <option value="" disabled selected>Selecciona tu categoría</option>
-                    <option value="comida">Comida</option>
-                    <option value="belleza">Belleza</option>
-                    <option value="reparaciones">Reparaciones</option>
-                </select>
-                
-                <!-- Aquí Netlify inyectará el CAPTCHA -->
-                <div data-netlify-recaptcha="true"></div>
-                <button type="submit" class="btn-enviar">Solicitar información</button>
-            </form>
+            
+              <!-- Formulario visible para los usuarios -->
+<form name="emprendedor" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+  <input type="hidden" name="form-name" value="emprendedor">
+  <input type="text" name="nombre" placeholder="Tu nombre" required>
+  <input type="text" name="nombreneg" placeholder="Nombre del negocio" required>
+  <input type="tel" name="telefono" placeholder="WhatsApp" required>
+  
+  <select name="servicio" required>
+    <option value="" disabled selected>Selecciona tu categoría</option>
+    <option value="comida">Comida</option>
+    <option value="belleza">Belleza</option>
+    <option value="reparaciones">Reparaciones</option>
+  </select>
+
+  <div data-netlify-recaptcha="true"></div>
+  <button type="submit" class="btn-enviar">Solicitar información</button>
+</form>
+
+<!-- Formulario oculto solo para Netlify -->
+<form name="emprendedor" netlify netlify-recaptcha hidden>
+  <input type="text" name="nombre" />
+  <input type="text" name="nombreneg" />
+  <input type="tel" name="telefono" />
+  <select name="servicio">
+    <option value="comida">Comida</option>
+    <option value="belleza">Belleza</option>
+    <option value="reparaciones">Reparaciones</option>
+  </select>
+  <div data-netlify-recaptcha="true"></div>
+</form>
 
             <div class="opciones-pago">
                 <div class="opcion-pago">
