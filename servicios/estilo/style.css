@@ -21,7 +21,9 @@ html, body {
 }
 
 body.servicios {
-    background: linear-gradient(170deg, var(--azul-hero) 0%, var(--blanco) 90%);
+    background: linear-gradient(to bottom, var(--azul-hero), var(--blanco));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--azul-header);
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
@@ -30,6 +32,14 @@ body.servicios {
 }
 
 /* Header */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .servicios-header {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -38,7 +48,7 @@ body.servicios {
     background: linear-gradient(90deg, rgba(78, 124, 199, 0.9), rgba(168, 196, 240, 0.9));
     backdrop-filter: blur(6px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
 }
@@ -83,13 +93,20 @@ body.servicios {
 
 /* Main Content */
 .servicios-main {
+    display: flex;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem;
+    gap: 2rem;
     flex: 1;
+    padding-top: 120px;
 }
 
 .categoria-servicios {
+    flex: 1 1 300px;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 12px;
@@ -368,6 +385,36 @@ body.servicios {
     text-decoration: none;
 }
 
+.footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+}
+
+.footer-contenido {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.footer-eu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.eu-flag {
+    width: 24px;
+    height: auto;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .servicios-grid {
@@ -405,34 +452,7 @@ body.servicios {
     .tarifas {
         flex-direction: column;
     }
-}
-
-.footer {
-    background-color: #222;
-    color: #fff;
-    text-align: center;
-    padding: 10px 10px;
-    font-size: 0.9rem;
-}
-
-.footer-contenido {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    text-align: center;
-}
-
-.footer-eu {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
-    opacity: 0.8;
-}
-
-.eu-flag {
-    width: 24px;
-    height: auto;
+    .servicios-main {
+        flex-direction: column;
+    }
 }
