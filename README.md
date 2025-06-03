@@ -1,6 +1,6 @@
 # Tienda Latina - Marketplace de Publicidad para Emprendedores
 
-Este es un proyecto personal que desarrollé como parte de mi aprendizaje en desarrollo web. La idea es ofrecer una plataforma simple donde emprendedores puedan publicar sus productos y servicios para conseguir más visibilidad.
+Este es un proyecto personal que desarrollé como parte de mi aprendizaje en desarrollo web. La idea es ofrecer una plataforma simple donde emprendedores puedan publicar sus servicios para conseguir más visibilidad.
 
 ## 🚀 Funcionalidades
 

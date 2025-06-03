@@ -401,12 +401,12 @@ body {
 
 .icono-categoria {
     display: flex;
-    justify-content: center; /* Centrado horizontal */
-    align-items: center; /* Centrado vertical */
-    gap: 20px; /* Espacio entre imágenes */
-    padding: 15px 0; /* Padding vertical solamente */
-    margin-top: 10px; /* Separación de la lista */
-    width: 30%; /* Ocupa todo el ancho disponible */
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px;
+    padding: 15px 0;
+    margin-top: 10px; 
+    width: 22%; 
 }
 
 .icono-categoria img {
@@ -584,7 +584,8 @@ body {
         display: flex !important;
         margin-top: 25px;
         justify-content: center;    
-        flex-direction: column; 
+        flex-direction: row;
+        align-items: center;
     } 
      
     .menu-toggle span {
@@ -772,6 +773,10 @@ body {
     .hero-content h1 {
         font-size: 1.8rem;
     }
+    
+  .icono-categoria {
+    width: 80%; 
+}
 }
 
 @media (min-width: 769px) {
@@ -819,3 +824,4 @@ body {
     .menu-servicios:hover .servicios-menu {
         display: flex;
     }
+    
