@@ -12,7 +12,11 @@
 
 
 /* Estilos Generales */
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 html, body {
     height: 100%;
     margin: 0;
@@ -100,9 +104,12 @@ header{
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    gap: 2rem;
+    gap: 10px;
     flex: 1;
     padding-top: 120px;
+    margin-top: 60px;
+    overflow: visible;
+    padding-bottom: 20px;
 }
 
 .categoria-servicios {
@@ -113,7 +120,9 @@ header{
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    will-change: height;
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -198,6 +207,46 @@ header{
     text-transform: uppercase;
 }
 
+/* Estilos para el acordeón */
+.categoria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.categoria-header:hover {
+    background-color: #e9ecef;
+}
+
+.categoria-icono {
+    transition: transform 0.3s ease;
+}
+
+.servicios-contenido {
+    visibility: hidden;
+    opacity: 0;
+    transition: 
+        max-height 0.5s ease,
+        visibility 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.categoria-servicios.active .servicios-contenido {
+    max-height: 3000px; 
+    visibility: visible;
+    opacity: 1;
+}
+
+.categoria-servicios.active .categoria-icono {
+    transform: rotate(180deg);
+}
+
+
 .btn-emprendedor {
     position: fixed;
     bottom: 80px;
@@ -264,9 +313,7 @@ header{
     margin-bottom: 1.5rem;
 }
 
-.contacto-form input, 
-.contacto-form select, 
-.contacto-form textarea {
+.contacto-form input, .contacto-form select, .contacto-form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 1rem;
@@ -314,7 +361,7 @@ header{
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
-    font-size: 0.95rem; /* ligeramente más pequeño */
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -424,13 +471,14 @@ header{
     }
 
     .titulo {
-        font-size: 1.9rem;
+        font-size: 2rem;
         letter-spacing: -0.5px;
-        margin-left: -4px;
         justify-content: flex-start;
+        flex-wrap: wrap;
     }
     .logo {
         width: 25%;
+        margin-left: -5px;
     }
 
     .categoria-titulo {
@@ -462,5 +510,25 @@ header{
     }
     .servicios-main {
         flex-direction: column;
+    }
+    .categoria-header {
+        padding: 12px 15px;
+    }
+    
+    .servicios-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .servicios-main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .categoria-servicios {
+        flex: 1 1 calc(50% - 20px);
+        min-width: 0;
     }
 }
