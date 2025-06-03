@@ -427,6 +427,10 @@ header{
         font-size: 1.9rem;
         letter-spacing: -0.5px;
         margin-left: -4px;
+        justify-content: flex-start;
+    }
+    .logo {
+        width: 25%;
     }
 
     .categoria-titulo {
