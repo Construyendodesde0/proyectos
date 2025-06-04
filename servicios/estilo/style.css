@@ -97,6 +97,46 @@ header{
     box-shadow: #00000076;
 }
 
+/*Menu de Idiomas*/
+.language-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.language-buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+}
+
+.language-buttons button:hover {
+  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.language-buttons img {
+  width: 24px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.language-buttons span {
+  font-weight: bold;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+
 /* Main Content */
 .servicios-main {
     display: flex;
@@ -228,12 +268,14 @@ header{
 }
 
 .servicios-contenido {
-    visibility: hidden;
+    max-height: 0;
     opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
     transition: 
-        max-height 0.5s ease,
-        visibility 0.3s ease,
-        opacity 0.3s ease;
+    max-height 0.5s ease, 
+    opacity 0.3s ease, 
+    visibility 0.3s ease;
 }
 
 .categoria-servicios.active .servicios-contenido {
@@ -370,7 +412,7 @@ header{
     align-items: center;
     gap: 10px;
     min-width: 220px;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 52px;
     line-height: 1;
     vertical-align: middle;
@@ -394,13 +436,95 @@ header{
     width: 28px;
     height: auto;
 }
-
-.crypto-section {
-    display: none;
+.mbway-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
     margin-top: 2rem;
-    animation: fadeIn 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.mbway-section h3 {
+    color: var(--azul-header);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
+.mbway-section .tarifas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+.mbway-section .tarifa {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    min-width: 120px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.mbway-section .tarifa h4 {
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.mbway-section .tarifa p {
+    font-weight: bold;
+    color: #e60000; /* Rojo MB Way */
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+}
+
+.mbway-section .tarifa p:last-child {
+    color: #333;
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+/* Botón WhatsApp (igual que crypto) */
+.mbway-section .whatsapp-link {
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.mbway-section .whatsapp-link:hover {
+    background: #128C7E;
+}
+
+/* CRYPTO SECTION */
+.crypto-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.crypto-section h3 {
+    color: var(--azul-header);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -408,32 +532,54 @@ header{
 
 .tarifas {
     display: flex;
-    gap: 1rem;
     justify-content: center;
+    align-items: center;
+    gap: 2rem;
     flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+.tarifa {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    min-width: 100px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.tarifa h4 {
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+.tarifa p {
+    font-weight: bold;
+    color: orange;
+    font-size: 1.1rem;
 }
 
 .qr-pago {
     width: 150px;
     height: 150px;
-    display: block;
-    margin: 0 auto;
     border: 1px solid #eee;
-    padding: 5px;
+    padding: 8px;
     background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .whatsapp-link {
-    display: block;
-    text-align: center;
     background: #25D366;
     color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 1rem;
+    padding: 12px 20px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.3s;
 }
-
 .footer {
     background-color: #222;
     color: #fff;
@@ -466,6 +612,9 @@ header{
 
 /* Responsive */
 @media (max-width: 768px) {
+    .servicios-main {
+        margin-top: 100px;
+    }
     .servicios-grid {
         grid-template-columns: 1fr;
     }
@@ -491,6 +640,20 @@ header{
 
     .logo img {
         height: 80px;
+    }
+
+    .crypto-section .tarifas {
+        flex-direction: row;
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 1rem;
+        overflow-x: auto;
+        padding-bottom: 10px; 
+    }
+
+    .crypto-section .tarifa {
+        min-width: 120px; 
+        flex-shrink: 0;
     }
 
     .btn-emprendedor {
@@ -531,4 +694,16 @@ header{
         flex: 1 1 calc(50% - 20px);
         min-width: 0;
     }
+
+    .mbway-section .tarifas {
+        flex-direction: row; 
+        justify-content: center; 
+        gap: 2rem; 
+    }
+
+    .mbway-section .tarifa {
+        flex: 1; 
+        max-width: 200px;  
+    }
+
 }

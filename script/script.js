@@ -253,6 +253,8 @@ function changeLanguage(lang) {
     // Traducciones básicas
     document.title = translations[lang].titulo;
     document.querySelector('.footer p').textContent = translations[lang].derechos;
+     document.querySelector('.footer-legal').textContent = translations[lang]['footer.legal'];
+
 
     // Traducción del menú
     const navItems = document.querySelectorAll('.nav-list li a');

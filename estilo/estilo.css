@@ -44,7 +44,7 @@ body {
 .titulo {
     font-size: small;
     font-weight: 100;
-
+    color: transparent;
 }
 
 /* Banderas */
@@ -299,6 +299,7 @@ body {
     height: 30px;
     font-size: 12px;
     transition: all 0.3s;
+    font-weight: bold;
 }
 
 .language-buttons button:hover {
