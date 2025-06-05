@@ -638,6 +638,10 @@ header{
         padding: 1.5rem;
     }
 
+    .language-buttons {
+        gap: 4px;
+    }
+
     .logo img {
         height: 80px;
     }
