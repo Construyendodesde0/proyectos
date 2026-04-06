@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
 :root {
-    --rojo: #E63946;
-    --dorado: #f5c542;
-    --azul-header: #4e7cc7;
-    --azul-hero: #a8c4f0;
-    --azul-card: #e3edf9;
+    --rojo-acento: #c0392b;      /* Rojo terracota elegante (latino) */
+    --dorado-suave: #d4a017;     /* Dorado más sobrio, no chillón */
+    --fondo-general: #f8f9fa;    /* Gris blanquecino limpio */
     --blanco: #ffffff;
-    --gris-claro: #f9f9f9;
+    --texto-principal: #212529;  /* Casi negro, máximo contraste */
+    --texto-secundario: #495057; /* Gris oscuro para descripciones */
+    --bordes: #dee2e6;
+    --sombra: rgba(0, 0, 0, 0.05);
+    --azul-profundo: #cae1fe; 
 }
-
 
 /* Estilos Generales */
 * {
@@ -25,18 +26,14 @@ html, body {
 }
 
 body.servicios {
-    background: linear-gradient(to bottom, var(--azul-hero), var(--blanco));
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: var(--azul-header);
+    background: var(--fondo-general) !important;
+    color: var(--texto-principal) !important;
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 /* Header */
-header{
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -49,28 +46,27 @@ header{
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 1rem 2rem;
-    background: linear-gradient(90deg, rgba(78, 124, 199, 0.9), rgba(168, 196, 240, 0.9));
-    backdrop-filter: blur(6px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    background: var(--blanco) !important;
+    backdrop-filter: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     position: fixed;
     top: 0;
     z-index: 1000;
 }
 
 .titulo {
-    color: var(--dorado);
+    color: var(--rojo-acento) !important;
     font-weight: 700;
     font-size: 3em;
     display: flex;
     text-align: center;
     flex-wrap: wrap;
     margin: 1rem 0 2rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    text-shadow: none !important;
     position: relative;
     padding-bottom: 10px;
     justify-self: center;
-    -webkit-text-stroke: 0.5px #000;
-    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000; 
+    -webkit-text-stroke: 0 !important;
 }
 
 .titulo:after {
@@ -81,8 +77,8 @@ header{
     transform: translateX(-50%);
     width: 15vw;
     height: 3px;
-    background: var(--dorado);
-    box-shadow: 0 0 0 1px black, 0 0 2px rgba(0, 0, 0, 0.203);
+    background: var(--dorado-suave) !important;
+    box-shadow: none;
 }
 
 .logo {
@@ -94,10 +90,9 @@ header{
     width: auto;
     display: block;
     border-radius: 5px;
-    box-shadow: #00000076;
 }
 
-/*Menu de Idiomas*/
+/* Menu de Idiomas */
 .language-buttons {
   display: flex;
   gap: 1rem;
@@ -114,7 +109,7 @@ header{
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease;
   padding: 0.3rem 0.6rem;
   border-radius: 8px;
 }
@@ -132,10 +127,9 @@ header{
 
 .language-buttons span {
   font-weight: bold;
-  color: #333;
+  color: var(--texto-principal);
   font-size: 0.9rem;
 }
-
 
 /* Main Content */
 .servicios-main {
@@ -154,25 +148,23 @@ header{
 
 .categoria-servicios {
     flex: 1 1 300px;
-    background-color: transparent;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
+    background-color: var(--blanco) !important;
+    box-shadow: 0 4px 12px var(--sombra);
+    backdrop-filter: none;
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 15px;
     transition: all 0.3s ease;
-    will-change: height;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--bordes);
 }
 
 .categoria-titulo {
-    color: var(--dorado);
+    color: var(--rojo-acento) !important;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    border-left: 4px solid var(--dorado);
+    border-left: 4px solid var(--dorado-suave);
     padding-left: 15px;
 }
 
@@ -183,63 +175,57 @@ header{
 }
 
 .servicio-card {
-    background: var(--azul-card);
+    background: var(--blanco) !important;
     border-radius: 8px;
     padding: 1.5rem;
     transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--bordes);
     position: relative;
     overflow: hidden;
     margin-top: 10px;
+    box-shadow: 0 1px 3px var(--sombra);
 }
 
 .servicio-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 18px rgba(0,0,0,0.1);
-    border-color: var(--azul-header);
+    border-color: var(--rojo-acento);
 }
 
 .servicio-card:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(78, 124, 199, 0.1), rgba(255, 255, 255, 0.2));
-    z-index: -1;
+    display: none;
 }
 
 .servicio-nombre {
-    color: var(--dorado);
+    color: var(--rojo-acento) !important;
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
     font-weight: 600;
 }
 
 .servicio-descripcion {
-    color: var(--azul-header);
-    opacity: 0.9;
+    color: var(--texto-secundario) !important;
+    opacity: 1;
     margin-bottom: 1.2rem;
     line-height: 1.5;
 }
 
 .servicio-precio {
     display: inline-block;
-    background: var(--blanco);
-    color: var(--azul-header);
+    background: var(--fondo-general);
+    color: var(--rojo-acento);
     padding: 0.4rem 1rem;
     border-radius: 20px;
     font-weight: 700;
     font-size: 0.95rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--bordes);
 }
 
 .servicio-destacado {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: var(--rojo);
+    background: var(--rojo-acento);
     color: white;
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
@@ -251,7 +237,7 @@ header{
 .servicio-redes {
     margin-top: 15px;
     padding-top: 10px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--bordes);
 }
 
 .instagram-link {
@@ -272,13 +258,13 @@ header{
     opacity: 0.8;
 }
 
-/* Estilos para el acordeón */
+/* Acordeón */
 .categoria-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #f8f9fa;
+    background-color: var(--fondo-general);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -286,7 +272,7 @@ header{
 }
 
 .categoria-header:hover {
-    background-color: #e9ecef;
+    background-color: var(--bordes);
 }
 
 .categoria-icono {
@@ -298,14 +284,11 @@ header{
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
-    transition: 
-    max-height 0.5s ease, 
-    opacity 0.3s ease, 
-    visibility 0.3s ease;
+    transition: max-height 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .categoria-servicios.active .servicios-contenido {
-    max-height: 3000px; 
+    max-height: 3000px;
     visibility: visible;
     opacity: 1;
 }
@@ -314,12 +297,12 @@ header{
     transform: rotate(180deg);
 }
 
-
+/* Botón emprendedor */
 .btn-emprendedor {
     position: fixed;
     bottom: 80px;
     right: 20px;
-    background-color: #ff6600;
+    background-color: var(--rojo-acento);
     color: white;
     border: none;
     border-radius: 50px;
@@ -327,16 +310,16 @@ header{
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     z-index: 1000;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-
 .btn-emprendedor:hover {
     transform: translateY(-3px);
+    background-color: #a93226;
     box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
@@ -367,7 +350,7 @@ header{
 }
 
 .emprendedores-container {
-    background: white;
+    background: var(--blanco);
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
@@ -376,7 +359,7 @@ header{
 }
 
 .contacto-form h3 {
-    color: var(--azul-header);
+    color: var(--rojo-acento);
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -385,9 +368,9 @@ header{
     width: 100%;
     padding: 10px;
     margin-bottom: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--bordes);
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--blanco);
 }
 
 .contacto-form textarea {
@@ -396,7 +379,7 @@ header{
 }
 
 .btn-enviar {
-    background: var(--azul-header);
+    background: var(--rojo-acento);
     color: white;
     border: none;
     padding: 12px;
@@ -409,7 +392,7 @@ header{
 }
 
 .btn-enviar:hover {
-    background: var(--dorado);
+    background: var(--dorado-suave);
 }
 
 .opciones-pago {
@@ -432,7 +415,7 @@ header{
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: transform 0.2s ease;
     display: inline-flex;
     align-items: center;
@@ -449,12 +432,12 @@ header{
 }
 
 .btn-crypto {
-    background-color: orange;
+    background-color: var(--dorado-suave);
     color: white;
 }
 
 .btn-mbway {
-    background-color: #e60000;
+    background-color: var(--rojo-acento);
     color: white;
 }
 
@@ -462,16 +445,18 @@ header{
     width: 28px;
     height: auto;
 }
-.mbway-section {
-    background: #f8f9fa;
+
+.mbway-section, .crypto-section {
+    background: var(--fondo-general);
     padding: 1.5rem;
     border-radius: 10px;
     margin-top: 2rem;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
-.mbway-section h3 {
-    color: var(--azul-header);
+
+.mbway-section h3, .crypto-section h3 {
+    color: var(--rojo-acento);
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -479,7 +464,7 @@ header{
     gap: 10px;
 }
 
-.mbway-section .tarifas {
+.tarifas {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -487,34 +472,33 @@ header{
     flex-wrap: wrap;
     margin-bottom: 1.5rem;
 }
-.mbway-section .tarifa {
-    background: white;
+
+.tarifa {
+    background: var(--blanco);
     padding: 1rem 1.5rem;
     border-radius: 8px;
     min-width: 120px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px var(--sombra);
 }
 
-.mbway-section .tarifa h4 {
-    color: #555;
+.tarifa h4 {
+    color: var(--texto-secundario);
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
 
-.mbway-section .tarifa p {
+.tarifa p {
     font-weight: bold;
-    color: #e60000; /* Rojo MB Way */
+    color: var(--rojo-acento);
     font-size: 1.1rem;
-    margin: 0.3rem 0;
 }
 
 .mbway-section .tarifa p:last-child {
-    color: #333;
+    color: var(--texto-secundario);
     font-weight: normal;
     font-size: 0.9rem;
 }
 
-/* Botón WhatsApp (igual que crypto) */
 .mbway-section .whatsapp-link {
     background: #25D366;
     color: white;
@@ -534,54 +518,10 @@ header{
     background: #128C7E;
 }
 
-/* CRYPTO SECTION */
-.crypto-section {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-top: 2rem;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-.crypto-section h3 {
-    color: var(--azul-header);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
-.tarifas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-}
-.tarifa {
-    background: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    min-width: 100px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-.tarifa h4 {
-    color: #555;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-}
-.tarifa p {
-    font-weight: bold;
-    color: orange;
-    font-size: 1.1rem;
-}
-
 .qr-pago {
     width: 150px;
     height: 150px;
@@ -607,8 +547,8 @@ header{
     transition: background 0.3s;
 }
 .footer {
-    background-color: #222;
-    color: #fff;
+    background: var(--azul-profundo);
+    color: #212529;
     text-align: center;
     padding: 10px 10px;
     font-size: 0.9rem;
