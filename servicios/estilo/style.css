@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 :root {
-    --rojo-acento: #c0392b;      /* Rojo terracota elegante (latino) */
-    --dorado-suave: #d4a017;     /* Dorado más sobrio, no chillón */
-    --fondo-general: #f8f9fa;    /* Gris blanquecino limpio */
+    --rojo-acento: #c0392b;      
+    --dorado-suave: #d4a017;     
+    --fondo-general: #f8f9fa;   
     --blanco: #ffffff;
-    --texto-principal: #212529;  /* Casi negro, máximo contraste */
-    --texto-secundario: #495057; /* Gris oscuro para descripciones */
+    --texto-principal: #212529;  
+    --texto-secundario: #495057; 
     --bordes: #dee2e6;
     --sombra: rgba(0, 0, 0, 0.05);
     --azul-profundo: #cae1fe; 

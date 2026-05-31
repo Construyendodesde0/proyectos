@@ -3,57 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubre los mejores servicios de la comunidad latina en nuestra plataforma. Belleza, hogar, educación y más.">
+    <meta name="description" content="Descubre los mejores servicios de la comunidad en nuestra plataforma.">
     <meta name="google-site-verification" content="9FVUgyKoRDCtuW99XEOkWkhMsB8QGxPqYvOLmU2OY3k" />
-    <title>TiendaLatina | Servicios Latinos en Portugal</title>
+    <title>Matanga la Changa! | Servicios al instante</title>
     <link rel="stylesheet" href="estilo/estilo.css?v=2">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="shortcut icon" href="imagenes/favicon_esferico.ico" type="image/x-icon">
+    <!-- Font Awesome: solo una versión -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="imagenes/logo.matanga.4.png" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2GR7XS7XZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2GR7XS7XZG');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GR7XS7XZG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2GR7XS7XZG');
+    </script>
 </head>
 <body>
     <header class="header">
         <div class="logo" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800" oncontextmenu="return false;" draggable="false">
-            <img src="imagenes/logoTL.png" alt="TiendaLatina"  style="pointer-events: none;" title="Tienda Latina ™">
+            <img src="imagenes/logo.matanga.4.png" alt="Matanga la Changa!" style="pointer-events: none;" title="Matanga la Changa! ™">
         </div>
-            <h1 class="titulo">Tienda Latina</h1>
-            <button class="menu-toggle" aria-label="Abrir menú" data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
-             <i class="fas fa-bars"></i>
-            </button>
+        <h1 class="titulo">Matanga la Changa!</h1>
+        <button class="menu-toggle" aria-label="Abrir menú" data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
+            <i class="fas fa-bars"></i>
+        </button>
         
         <nav class="navbar" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
             <ul class="nav-list">
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#inicio" data-i18n="menuInicio">Inicio</a></li>
                 <li class="menu-servicios">
-                    <a href="servicios/servicios.html" id="servicios-link" target="_blank">Servicios</a>
+                    <a href="servicios/servicios.html" id="servicios-link" target="_blank" data-i18n="menuServicios">Servicios</a>
                 </li>
                 <li class="menu-contacto">
-                    <a href="#" id="contacto-link">Contacto <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" id="contacto-link" data-i18n="menuContacto">Contacto <i class="fas fa-chevron-down"></i></a>
                     <div class="contacto-menu" id="contacto-menu">
                         <div class="qr-container">
-                            <h3>Contáctanos vía:</h3>
+                            <h3 data-i18n="contacto">Contáctanos vía:</h3>
                             <div class="qr-option">
-                                 <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
-                                    <p><i class="fab fa-whatsapp"></i> WhatsApp</p>
-                                        <a href="https://wa.me/931307446" target="_blank" class="qr-button">Abrir Chat</a>
+                                <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
+                                <p><i class="fab fa-whatsapp"></i> <span data-i18n="whatsapp">WhatsApp</span></p>
+                                <a href="https://wa.me/931307446" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="abrirChat">Abrir Chat</a>
                             </div>
                             <div class="qr-option">
-                                 <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
-                                     <p><i class="fab fa-instagram"></i> Instagram</p>
-                                         <a href="https://www.instagram.com/tienda.latina.pt/" target="_blank" class="qr-button">Seguir</a>
-                        </div>
+                                <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
+                                <p><i class="fab fa-instagram"></i> <span data-i18n="instagram">Instagram</span></p>
+                                <a href="https://www.instagram.com/matangalachanga/" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="seguir">Seguir</a>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -67,226 +65,222 @@
                     <img src="imagenes/enmenu.png" alt="English"> EN
                 </button>
                 <button onclick="changeLanguage('pt')">
-                    <img src="imagenes/ptmenu.png" alt="Português"> PT
-                 </button>
+                    <img src="imagenes/br.png" alt="Português"> PT
+                </button>
             </div>
         </nav>
 
         <!-- Modal de Contacto para móvil -->
-    <div id="contacto-modal" class="contacto-modal">
-        <div class="contacto-modal__backdrop"></div>
-        <div class="contacto-modal__content">
-        <button id="contacto-modal-close" class="contacto-modal__close">&times;</button>
-            <h3>Contáctanos vía:</h3>
-        <div class="qr-option">
-            <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
-        <p><i class="fab fa-whatsapp"></i> WhatsApp</p>
-            <a href="https://wa.me/931307446" target="_blank" class="qr-button">Abrir Chat</a>
+        <div id="contacto-modal" class="contacto-modal">
+            <div class="contacto-modal__backdrop"></div>
+            <div class="contacto-modal__content">
+                <button id="contacto-modal-close" class="contacto-modal__close">&times;</button>
+                <h3 data-i18n="contacto">Contáctanos vía:</h3>
+                <div class="qr-option">
+                    <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
+                    <p><i class="fab fa-whatsapp"></i> <span data-i18n="whatsapp">WhatsApp</span></p>
+                    <a href="https://wa.me/931307446" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="abrirChat">Abrir Chat</a>
+                </div>
+                <div class="qr-option">
+                    <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
+                    <p><i class="fab fa-instagram"></i> <span data-i18n="instagram">Instagram</span></p>
+                    <a href="https://www.instagram.com/matangalachanga/" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="seguir">Seguir</a>
+                </div>
+            </div>
         </div>
-        <div class="qr-option">
-            <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
-        <p><i class="fab fa-instagram"></i> Instagram</p>
-            <a href="https://www.instagram.com/tienda.latina.pt/" target="_blank" class="qr-button">Seguir</a>
-        </div>
-    </div>
-</div>
-</header>
+    </header>
 
     <main>
         <div class="banderas">
-            <img src="imagenes/ar.png" alt="Argentina" title="Argentina" data-aos="fade-in" data-aos-delay="100">
-            <img src="imagenes/bo.png" alt="Bolivia" title="Bolivia" data-aos="fade-in" data-aos-delay="200">
-            <img src="imagenes/br.png" alt="Brasil" title="Brasil" data-aos="fade-in" data-aos-delay="300">
-            <img src="imagenes/cl.png" alt="Chile" title="Chile" data-aos="fade-in" data-aos-delay="400">
-            <img src="imagenes/co.png" alt="Colombia" title="Colombia" data-aos="fade-in" data-aos-delay="500">
-            <img src="imagenes/cr.png" alt="Costa Rica" title="Costa Rica" data-aos="fade-in" data-aos-delay="600">
-            <img src="imagenes/cu.png" alt="Cuba" title="Cuba" data-aos="fade-in" data-aos-delay="700">
-            <img src="imagenes/do.png" alt="Dominicana" title="República Dominicana" data-aos="fade-in" data-aos-delay="800">
-            <img src="imagenes/ec.png" alt="Ecuador" title="Ecuador" data-aos="fade-in" data-aos-delay="900">
-            <img src ="imagenes/gt.png" alt="Guatemala" title="Guatemala" data-aos="fade-in" data-aos-delay="1000">
-            <img src="imagenes/ht.png" alt="Haití" title="Haití" data-aos="fade-in" data-aos-delay="1100">
-            <img src="imagenes/jm.png" alt="Jamaica" title="Jamaica" data-aos="fade-in" data-aos-delay="1200">
-            <img src="imagenes/mx.png" alt="México" title="México" data-aos="fade-in" data-aos-delay="1300">
-            <img src="imagenes/ni.png" alt="Nicaragua" title="Nicaragua" data-aos="fade-in" data-aos-delay="1400">
-            <img src="imagenes/pa.png" alt="Panamá" title="Panamá" data-aos="fade-in" data-aos-delay="1500">
-            <img src="imagenes/pe.png" alt="Perú" title="Perú" data-aos="fade-in" data-aos-delay="1600">
-            <img src="imagenes/py.png" alt="Paraguay" title="Paraguay" data-aos="fade-in" data-aos-delay="1700">
-            <img src="imagenes/sv.png" alt="El Salvador" title="El Salvador" data-aos="fade-in" data-aos-delay="1800">
-            <img src="imagenes/uy.png" alt="Uruguay" title="Uruguay" data-aos="fade-in" data-aos-delay="1900">
-            <img src="imagenes/ve.png" alt="Venezuela" title="Venezuela" data-aos="fade-in" data-aos-delay="2000">
+            <img src="imagenes/serv/barberia.png" alt="barberia" title="barberia" data-aos="fade-in" data-aos-delay="100">
+             <img src="imagenes/serv/leccion.png" alt="traduccion" title="traduccion" data-aos="fade-in" data-aos-delay="200">
+            <img src="imagenes/serv/masaje.png" alt="masaje" title="masaje" data-aos="fade-in" data-aos-delay="300">
+            <img src="imagenes/serv/unas.png" alt="belleza" title="belleza" data-aos="fade-in" data-aos-delay="400">
+            <img src="imagenes/serv/digital.png" alt="IT" title="IT" data-aos="fade-in" data-aos-delay="500">
+            <img src="imagenes/serv/reparacioncel.png" alt="reparacion" title="reparacion" data-aos="fade-in" data-aos-delay="600">
+            <img src="imagenes/serv/cartero.png" alt="mensajeria" title="mensajeria" data-aos="fade-in" data-aos-delay="700">
+            <img src="imagenes/serv/taxi.png" alt="transporte" title="transporte" data-aos="fade-in" data-aos-delay="800">
+            <img src="imagenes/serv/casco.png" alt="construcción" title="construcción" data-aos="fade-in" data-aos-delay="900">
+            <img src="imagenes/serv/herramientas.png" alt="service" title="service" data-aos="fade-in" data-aos-delay="1000">
+            <img src="imagenes/serv/productos.png" alt="Limpieza" title="limpieza" data-aos="fade-in" data-aos-delay="1100">
+            <img src="imagenes/serv/taladro.png" alt="electricidad" title="electricidad" data-aos="fade-in" data-aos-delay="1200">
+            <img src="imagenes/serv/plomeria.png" alt="plomeria" title="plomeria" data-aos="fade-in" data-aos-delay="1300">
+            <img src="imagenes/serv/cocinero.png" alt="cocinero" title="cocinero" data-aos="fade-in" data-aos-delay="1400">
+            <img src="imagenes/serv/nutricionista.png" alt="nutricionista" title="nutricionista" data-aos="fade-in" data-aos-delay="1500">
+            
         </div>
 
         <!-- Servicios Populares -->
-<section id="servicios" class="services">
-    <h2 data-aos="fade-down">Servicios Populares</h2>
-    <div class="categorias">
-        <button class="categoria-btn active" data-categoria="Belleza">Belleza</button>
-        <button class="categoria-btn" data-categoria="Hogar">Hogar</button>
-        <button class="categoria-btn" data-categoria="Educacion">Educación</button>
-        <button class="categoria-btn" data-categoria="Salud">Salud</button>
-        <button class="categoria-btn" data-categoria="Transporte">Transporte</button>
-        <button class="categoria-btn" data-categoria="Otros">Otros</button>
-    </div>
-
-    <div class="servicios-container">
-    <!-- Categoría Belleza -->
-    <div class="servicios-categoria active" data-categoria="Belleza">
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Belleza.0">Peluquería</li>
-                <li data-translate="Belleza.1">Barbería</li>
-                <li data-translate="Belleza.2">Tintes</li>
-                <li data-translate="Belleza.3">Maquillaje profesional</li>
-            </ul>
-        </div>
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Belleza.4">Depilación</li>
-                <li data-translate="Belleza.5">Extensiones de pestañas</li>
-                <li data-translate="Belleza.6">Masajes relajantes</li>
-                <li data-translate="Belleza.7">Manicure/Pedicure</li>
-            </ul>
-        </div>
-            <div class="icono-categoria">
-                <img src="imagenes/bellezafem.png" alt="bellezafem">
-                <img src="imagenes/bellezamasc .png" alt="bellezamasc">
+        <section id="servicios" class="services">
+            <h2 data-aos="fade-down" data-i18n="serviciosPopulares">Servicios Populares</h2>
+            <div class="categorias">
+                <button class="categoria-btn active" data-categoria="Belleza" data-i18n="cat_belleza">Belleza</button>
+                <button class="categoria-btn" data-categoria="Hogar" data-i18n="cat_hogar">Hogar</button>
+                <button class="categoria-btn" data-categoria="Educacion" data-i18n="cat_educacion">Educación</button>
+                <button class="categoria-btn" data-categoria="Salud" data-i18n="cat_salud">Salud</button>
+                <button class="categoria-btn" data-categoria="Transporte" data-i18n="cat_transporte">Transporte</button>
+                <button class="categoria-btn" data-categoria="Otros" data-i18n="cat_otros">Otros</button>
             </div>
-    </div>
 
-    <!-- Categoría Hogar -->
-    <div class="servicios-categoria" data-categoria="Hogar">
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Hogar.0">Limpieza de hogar</li>
-                <li data-translate="Hogar.1">Jardinería</li>
-                <li data-translate="Hogar.2">Electricista</li>
-                <li data-translate="Hogar.3">Fontanería</li>
-            </ul>
-        </div>
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Hogar.4">Mudanzas</li>
-                <li data-translate="Hogar.5">Cuidado de mascotas</li>
-                <li data-translate="Hogar.6">Montaje de muebles</li>
-                <li data-translate="Hogar.7">Pintura de paredes</li>
-            </ul>
-        </div>
-        <div class="icono-categoria">
-            <img src="imagenes/casa.png" alt="casa">
-            <img src="imagenes/paint.png" alt="pintura">
-        </div>
-    </div>
+            <div class="servicios-container">
+                <!-- Categoría Belleza -->
+                <div class="servicios-categoria active" data-categoria="Belleza">
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Belleza.0">Peluquería</li>
+                            <li data-translate="Belleza.1">Barbería</li>
+                            <li data-translate="Belleza.2">Tintes</li>
+                            <li data-translate="Belleza.3">Maquillaje profesional</li>
+                        </ul>
+                    </div>
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Belleza.4">Depilación</li>
+                            <li data-translate="Belleza.5">Extensiones de pestañas</li>
+                            <li data-translate="Belleza.6">Masajes relajantes</li>
+                            <li data-translate="Belleza.7">Manicure/Pedicure</li>
+                        </ul>
+                    </div>
+                    <div class="icono-categoria">
+                        <img src="imagenes/bellezafem.png" alt="bellezafem">
+                        <img src="imagenes/bellezamasc .png" alt="bellezamasc">
+                    </div>
+                </div>
 
-    <!-- Categoría Educación -->
-    <div class="servicios-categoria" data-categoria="Educacion">
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Educacion.0">Clases de portugués</li>
-                <li data-translate="Educacion.1">Clases de inglés</li>
-                <li data-translate="Educacion.2">Clases de matemáticas</li>
-                <li data-translate="Educacion.3">Asesoría académica</li>
-            </ul>
-        </div>
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Educacion.4">Clases de música</li>
-                <li data-translate="Educacion.5">Talleres de cocina</li>
-                <li data-translate="Educacion.6">Tutorías para niños</li>
-                <li data-translate="Educacion.7">Preparación de CV</li>
-            </ul>
-        </div>
-        <div class="icono-categoria">
-            <img src="imagenes/estudiante.png" alt="estudiante">
-            <img src="imagenes/cuaderno.png" alt="cuaderno">
-        </div>
-    </div>
+                <!-- Categoría Hogar -->
+                <div class="servicios-categoria" data-categoria="Hogar">
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Hogar.0">Limpieza de hogar</li>
+                            <li data-translate="Hogar.1">Jardinería</li>
+                            <li data-translate="Hogar.2">Electricista</li>
+                            <li data-translate="Hogar.3">Plomería</li>
+                        </ul>
+                    </div>
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Hogar.4">Mudanzas</li>
+                            <li data-translate="Hogar.5">Cuidado de mascotas</li>
+                            <li data-translate="Hogar.6">Armado de muebles</li>
+                            <li data-translate="Hogar.7">Pintura de paredes</li>
+                        </ul>
+                    </div>
+                    <div class="icono-categoria">
+                        <img src="imagenes/casa.png" alt="casa">
+                        <img src="imagenes/paint.png" alt="pintura">
+                    </div>
+                </div>
 
-    <!-- Categoría Salud -->
-    <div class="servicios-categoria" data-categoria="Salud">
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Salud.0">Fisioterapia</li>
-                <li data-translate="Salud.1">Nutricionista</li>
-                <li data-translate="Salud.2">Entrenador personal</li>
-                <li data-translate="Salud.3">Terapia psicológica</li>
-            </ul>
-        </div>
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Salud.4">Masajes terapéuticos</li>
-                <li data-translate="Salud.5">Acupuntura</li>
-                <li data-translate="Salud.6">Yoga a domicilio</li>
-                <li data-translate="Salud.7">Reiki</li>
-            </ul>
-        </div>
-        <div class="icono-categoria">
-            <img src="imagenes/corazon.png" alt="corazon">
-            <img src="imagenes/yoga.png" alt="yoga">
-        </div>
-    </div>
+                <!-- Categoría Educación -->
+                <div class="servicios-categoria" data-categoria="Educacion">
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Educacion.0">Clases de portugués</li>
+                            <li data-translate="Educacion.1">Clases de inglés</li>
+                            <li data-translate="Educacion.2">Clases de matemáticas</li>
+                            <li data-translate="Educacion.3">Asesoría académica</li>
+                        </ul>
+                    </div>
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Educacion.4">Clases de música</li>
+                            <li data-translate="Educacion.5">Talleres de cocina</li>
+                            <li data-translate="Educacion.6">Tutorías para niños</li>
+                            <li data-translate="Educacion.7">Preparación de CV</li>
+                        </ul>
+                    </div>
+                    <div class="icono-categoria">
+                        <img src="imagenes/estudiante.png" alt="estudiante">
+                        <img src="imagenes/cuaderno.png" alt="cuaderno">
+                    </div>
+                </div>
 
-    <!-- Categoría Transporte -->
-    <div class="servicios-categoria" data-categoria="Transporte">
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Transporte.0">Transporte privado</li>
-                <li data-translate="Transporte.1">Recogida en aeropuerto</li>
-                <li data-translate="Transporte.2">Mensajería</li>
-                <li data-translate="Transporte.3">Alquiler de furgonetas</li>
-            </ul>
-        </div>
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Transporte.4">Traslados médicos</li>
-                <li data-translate="Transporte.5">Servicio de taxi</li>
-                <li data-translate="Transporte.6">Transporte para eventos</li>
-                <li data-translate="Transporte.7">Guía turístico</li>
-            </ul>
-        </div>
-        <div class="icono-categoria">
-            <img src="imagenes/transporte1.png" alt="transporte1">
-            <img src="imagenes/taxi.png" alt="taxi">
-        </div>
-    </div>
+                <!-- Categoría Salud -->
+                <div class="servicios-categoria" data-categoria="Salud">
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Salud.0">Fisioterapia</li>
+                            <li data-translate="Salud.1">Nutricionista</li>
+                            <li data-translate="Salud.2">Entrenador personal</li>
+                            <li data-translate="Salud.3">Terapia psicológica</li>
+                        </ul>
+                    </div>
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Salud.4">Masajes terapéuticos</li>
+                            <li data-translate="Salud.5">Acupuntura</li>
+                            <li data-translate="Salud.6">Yoga a domicilio</li>
+                            <li data-translate="Salud.7">Reiki</li>
+                        </ul>
+                    </div>
+                    <div class="icono-categoria">
+                        <img src="imagenes/corazon.png" alt="corazon">
+                        <img src="imagenes/yoga.png" alt="yoga">
+                    </div>
+                </div>
 
-    <!-- Categoría Otros -->
-    <div class="servicios-categoria" data-categoria="Otros">
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Otros.0">Fotografía</li>
-                <li data-translate="Otros.1">Diseño gráfico</li>
-                <li data-translate="Otros.2">Reparación de celulares</li>
-                <li data-translate="Otros.3">Asesoría legal</li>
-            </ul>
-        </div>
-        <div class="servicios-columna">
-            <ul>
-                <li data-translate="Otros.4">Traducciones</li>
-                <li data-translate="Otros.5">Organización de eventos</li>
-                <li data-translate="Otros.6">Servicios IT</li>
-                <li data-translate="Otros.7">Venta de productos artesanales</li>
-            </ul>
-        </div>
-        <div class="icono-categoria">
-            <img src="imagenes/otros1.png" alt="otros1">
-            <img src="imagenes/otros2.png" alt="otros2">
-        </div>
-    </div>
-</div>
-<p class="footer-legal">*Página destinada única y exclusivamente a la promoción de emprendimientos, No cobramos comisión por trabajos realizados</p>
-</section>
-</main>
+                <!-- Categoría Transporte -->
+                <div class="servicios-categoria" data-categoria="Transporte">
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Transporte.0">Transporte privado</li>
+                            <li data-translate="Transporte.1">Recogida en aeropuerto</li>
+                            <li data-translate="Transporte.2">Mensajería</li>
+                            <li data-translate="Transporte.3">Alquiler de camioneta</li>
+                        </ul>
+                    </div>
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Transporte.4">Traslados médicos</li>
+                            <li data-translate="Transporte.5">Servicio de taxi</li>
+                            <li data-translate="Transporte.6">Transporte para eventos</li>
+                            <li data-translate="Transporte.7">Guía turístico</li>
+                        </ul>
+                    </div>
+                    <div class="icono-categoria">
+                        <img src="imagenes/transporte1.png" alt="transporte1">
+                        <img src="imagenes/taxi.png" alt="taxi">
+                    </div>
+                </div>
+
+                <!-- Categoría Otros -->
+                <div class="servicios-categoria" data-categoria="Otros">
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Otros.0">Fotografía</li>
+                            <li data-translate="Otros.1">Diseño gráfico</li>
+                            <li data-translate="Otros.2">Reparación de celulares</li>
+                            <li data-translate="Otros.3">Asesoría legal</li>
+                        </ul>
+                    </div>
+                    <div class="servicios-columna">
+                        <ul>
+                            <li data-translate="Otros.4">Traducciones</li>
+                            <li data-translate="Otros.5">Organización de eventos</li>
+                            <li data-translate="Otros.6">Servicios IT</li>
+                            <li data-translate="Otros.7">Venta de productos artesanales</li>
+                        </ul>
+                    </div>
+                    <div class="icono-categoria">
+                        <img src="imagenes/otros1.png" alt="otros1">
+                        <img src="imagenes/otros2.png" alt="otros2">
+                    </div>
+                </div>
+            </div>
+            <p class="footer-legal" data-i18n="footer.legal">*Página destinada única y exclusivamente a la promoción de emprendimientos, No cobramos comisión por trabajos realizados*</p>
+        </section>
+    </main>
 
     <!-- Footer -->
-<footer class="footer">
-    <div class="footer-contenido">
-        <p>&copy; 2025 TiendaLatina. Todos los derechos reservados.</p>
-        <img src="imagenes/eu_flag.png" alt="Unión Europea" title="Unión Europea" class="eu-flag">
-    </div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="script/script.js"></script>
+    <footer class="footer">
+        <div class="footer-contenido">
+            <p data-i18n="derechos">&copy; 2026 Matanga la Changa!. Todos los derechos reservados.</p>
+            <img src="imagenes/ar.png" alt="Argentina" title="Argentina" class="eu-flag">
+        </div>
+    </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>

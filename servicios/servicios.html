@@ -1,12 +1,13 @@
+cios · HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubre los mejores servicios de la comunidad latina en nuestra plataforma. Belleza, hogar, educación y más.">
-    <title data-translate="page_title">TiendaLatina | Nuestros Servicios</title>
+    <meta name="description" content="Descubre los mejores servicios de la comunidad en nuestra plataforma. Belleza, hogar, educación y más.">
+    <title data-translate="page_title">Matanga la Changa! | Nuestros Servicios</title>
     <link rel="stylesheet" href="estilo/style.css">
-    <link rel="shortcut icon" href="../imagenes/favicon_esferico.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
@@ -14,7 +15,7 @@
     <header class="servicios-header">
         <a href="../index.html" class="logo-link">
             <div class="logo" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800" oncontextmenu="return false;" draggable="false">
-                <img src="../imagenes/logoTL.png" alt="TiendaLatina" title="Tienda Latina ™">
+                <img src="../imagenes/logo.matanga.4.png" alt="Matanga la Changa!" title="Matanga la Changa! ™">
             </div>
         </a>
         
@@ -22,27 +23,27 @@
         
         <div class="language-buttons" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
             <button type="button" id="esBtn" aria-label="Cambiar a Español">
-                <img src="../imagenes/esmenu.png" alt="Bandera de España">
+                <img src="../imagenes/esmenu.png" alt="Bandera de Argentina">
                 <span data-translate="lang_es">ES</span>
             </button>
-
+ 
             <button type="button" id="enBtn" aria-label="Change to English">
                 <img src="../imagenes/enmenu.png" alt="Flag of United Kingdom">
                 <span data-translate="lang_en">EN</span>
             </button>
-
+ 
             <button type="button" id="ptBtn" aria-label="Mudar para Português">
-                <img src="../imagenes/ptmenu.png" alt="Bandeira de Portugal">
+                <img src="../imagenes/br.png" alt="Bandeira do Brasil">
                 <span data-translate="lang_pt">PT</span>
             </button>
         </div>
     </header>
-
+ 
     <!-- Botón flotante para emprendedores -->
     <button class="btn-emprendedor" id="btnEmprendedor" data-aos="fade-up" data-translate="publish_business">
         <i class="fas fa-store-alt"></i> Publica tu negocio
     </button>
-
+ 
     <!-- Panel desplegable -->
     <div class="panel-emprendedor" id="panelEmprendedor">
         <button class="cerrar-panel" id="cerrarPanel">&times;</button>
@@ -54,12 +55,12 @@
                 
                 <form name="emprendedor" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                     <input type="hidden" name="form-name" value="emprendedor">
-                    <input type="hidden" name="bot-field"> <!-- campo honeypot -->
-
+                    <input type="hidden" name="bot-field" value=""> <!-- campo honeypot -->
+ 
                     <input type="text" name="nombre" placeholder="Tu nombre" data-translate-placeholder="your_name" required>
                     <input type="text" name="nombreneg" placeholder="Nombre del negocio" data-translate-placeholder="business_name" required>
                     <input type="tel" name="telefono" placeholder="WhatsApp" data-translate-placeholder="whatsapp" required>
-
+ 
                     <select name="servicio" required>
                         <option value="" disabled selected data-translate="select_category">Selecciona tu categoría</option>
                         <option value="belleza" data-translate="beauty">Belleza</option>
@@ -69,10 +70,10 @@
                         <option value="transporte" data-translate="transport">Transporte</option>
                         <option value="otros" data-translate="other">Otros</option>
                     </select>
-
+ 
                     <button type="submit" class="btn-enviar" data-translate="request_info">Solicitar información</button>
                 </form>
-
+ 
                 <!-- Formulario estático oculto para que Netlify lo registre -->
                 <form name="emprendedor" netlify netlify-honeypot="bot-field" hidden>
                     <input type="text" name="nombre" />
@@ -87,37 +88,38 @@
                         <option value="otros">Otros</option>
                     </select>
                     <input type="hidden" name="form-name" value="emprendedor">
-                    <input type="hidden" name="bot-field" />
+                    <input type="hidden" name="bot-field" value="" />
                 </form>
-
+ 
                 <div class="opciones-pago">
                     <div class="opcion-pago">
                         <p data-translate="pay_crypto">Pagar con crypto</p>
                         <button class="btn-pago btn-crypto" id="btnMostrarQR" data-translate="view_options">
+                            <img src="imagenes/logousdc.png" alt="usdc" loading="lazy">
                             <i class="fab fa-bitcoin"></i> Ver opciones
                         </button>
                     </div>
-
+ 
                     <div class="opcion-pago">
-                        <p data-translate="pay_mbway">Pagar con MB Way</p>
-                        <button class="btn-pago btn-mbway" id="btnMbway" data-translate="pay_with_mbway">
-                            <img src="imagenes/mbway.png" alt="MB Way" class="icono-mbway" loading="lazy"> Pagar con MB Way
+                        <p data-translate="pay_mp">Pagar con MercadoPago</p>
+                        <button class="btn-pago btn-mbway" id="btnMbway" data-translate="pay_with_mp">
+                            <img src="imagenes/mercadopago.logo.png" alt="MP" class="icono-mbway" loading="lazy"> Pagar con MP
                         </button>
                     </div>
                 </div>
             </div>
-
+ 
             <!-- Sección QR -->
             <div class="crypto-section" id="cryptoSection">
                 <h3><i class="fas fa-qrcode"></i> <span data-translate="usdc_payment">Pago con USDC</span></h3>
                 <div class="tarifas">
                     <div class="tarifa">
                         <h4 data-translate="one_month">1 mes</h4>
-                        <p>6 USDC</p>
+                        <p>10 USDC</p>
                     </div>
                     <div class="tarifa">
                         <h4 data-translate="one_year">1 año</h4>
-                        <p>55 USDC</p>
+                        <p>100 USDC</p>
                     </div>
                     
                     <img src="imagenes/qrbinance.jpg" alt="QR Binance" class="qr-pago">
@@ -127,28 +129,29 @@
                    <i class="fab fa-whatsapp"></i> <span data-translate="send_receipt">Enviar comprobante</span>
                 </a>
             </div>
-
+ 
+            <!-- Sección MercadoPago -->
             <div class="mbway-section" id="mbwaySection" style="display: none;">
-                <h3><i class="fas fa-euro-sign"></i> <span data-translate="mbway_payment">Pago con MB Way</span></h3>
+                <h3><i class="fas fa-dollar-sign"></i> <span data-translate="mp_payment">Pago con MercadoPago</span></h3>
                 <div class="tarifas">
                     <div class="tarifa">
                         <h4 data-translate="one_month">1 mes</h4>
-                        <p>5€</p>
-                        <p data-translate="mbway_number">Número MB Way: <strong>931 307 446</strong></p>
+                        <p>$15.000 ARS</p>
+                        <p data-translate="mbway_number">Alias MP: <strong>matanga.la.changa</strong></p>
                     </div>
                     <div class="tarifa">
                         <h4 data-translate="one_year">1 año</h4>
-                        <p>50€</p>
-                        <p data-translate="mbway_number">Número MB Way: <strong>931 307 446</strong></p>
+                        <p>$150.000 ARS</p>
+                        <p data-translate="mbway_number">Número de transferencia: <strong>3517584641</strong></p>
                     </div>
                 </div>
-                <a href="https://wa.me/931307446?text=He%20pagado%20con%20MB%20Way" class="whatsapp-link" target="_blank">
+                <a href="https://wa.me/931307446?text=Pagué%20con%20MP%20" class="whatsapp-link" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i> <span data-translate="send_receipt">Enviar comprobante</span>
                 </a>
             </div>
         </div>
     </div>
-
+ 
     <main class="servicios-main">
         <!-- Sección Belleza -->
         <section class="categoria-servicios" data-aos="fade-up">
@@ -162,50 +165,50 @@
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="beauty_hair_salon">Peluquería</h3>
                         <p class="servicio-descripcion" data-translate="beauty_hair_salon_desc">Cortes, peinados y tratamientos capilares profesionales</p>
-                        <span class="servicio-precio" data-translate="beauty_hair_salon_price">Desde 8€</span>
+                        <span class="servicio-precio" data-translate="beauty_hair_salon_price">Desde $10.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_barber">Barbería</h3>
                         <p class="servicio-descripcion" data-translate="beauty_barber_desc">Cortes clásicos y modernos para hombre</p>
-                        <span class="servicio-precio" data-translate="beauty_barber_price">Desde 10€</span>
+                        <span class="servicio-precio" data-translate="beauty_barber_price">Desde $10.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_hair_coloring">Tintes</h3>
                         <p class="servicio-descripcion" data-translate="beauty_hair_coloring_desc">Coloración profesional con productos de calidad</p>
-                        <span class="servicio-precio" data-translate="beauty_hair_coloring_price">Desde 25€</span>
+                        <span class="servicio-precio" data-translate="beauty_hair_coloring_price">Desde $25.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="beauty_makeup">Maquillaje profesional</h3>
                         <p class="servicio-descripcion" data-translate="beauty_makeup_desc">Para eventos especiales, bodas y ocasiones importantes</p>
-                        <span class="servicio-precio" data-translate="beauty_makeup_price">Desde 35€</span>
+                        <span class="servicio-precio" data-translate="beauty_makeup_price">Desde $35.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_waxing">Depilación</h3>
                         <p class="servicio-descripcion" data-translate="beauty_waxing_desc">Técnicas modernas de depilación indolora</p>
-                        <span class="servicio-precio" data-translate="beauty_waxing_price">Desde 25€</span>
+                        <span class="servicio-precio" data-translate="beauty_waxing_price">Desde $25.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_eyelashes">Extensiones de pestañas</h3>
                         <p class="servicio-descripcion" data-translate="beauty_eyelashes_desc">Pestañas postizas de alta calidad</p>
-                        <span class="servicio-precio" data-translate="beauty_eyelashes_price">Desde 20€</span>
+                        <span class="servicio-precio" data-translate="beauty_eyelashes_price">Desde $20.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_massage">Masajes relajantes</h3>
                         <p class="servicio-descripcion" data-translate="beauty_massage_desc">Terapia de relajación muscular</p>
-                        <span class="servicio-precio" data-translate="beauty_massage_price">Desde 20€/hora</span>
+                        <span class="servicio-precio" data-translate="beauty_massage_price">Desde $15.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_manicure">Manicure/Pedicure</h3>
                         <p class="servicio-descripcion" data-translate="beauty_manicure_desc">Cuidado profesional de uñas</p>
-                        <span class="servicio-precio" data-translate="beauty_manicure_price">Desde 15€</span>
+                        <span class="servicio-precio" data-translate="beauty_manicure_price">Desde $10.000</span>
                     </article>
                 </div>
             </div>
@@ -223,50 +226,50 @@
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="home_cleaning">Limpieza de hogar</h3>
                         <p class="servicio-descripcion" data-translate="home_cleaning_desc">Limpieza profesional de todas las áreas de su hogar</p>
-                        <span class="servicio-precio" data-translate="home_cleaning_price">Desde 10€/hora</span>
+                        <span class="servicio-precio" data-translate="home_cleaning_price">Desde $7.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="home_gardening">Jardinería</h3>
                         <p class="servicio-descripcion" data-translate="home_gardening_desc">Mantenimiento de jardines y áreas verdes</p>
-                        <span class="servicio-precio" data-translate="home_gardening_price">Desde 15€/hora</span>
+                        <span class="servicio-precio" data-translate="home_gardening_price">Desde $10.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="home_electrician">Electricista</h3>
                         <p class="servicio-descripcion" data-translate="home_electrician_desc">Reparaciones e instalaciones eléctricas</p>
-                        <span class="servicio-precio" data-translate="home_electrician_price">Desde 10€/hora</span>
+                        <span class="servicio-precio" data-translate="home_electrician_price">Desde $10.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="home_plumbing">Fontanería</h3>
-                        <p class="servicio-descripcion" data-translate="home_plumbing_desc">Reparación de tuberías y problemas de agua</p>
-                        <span class="servicio-precio" data-translate="home_plumbing_price">Desde 15€/hora</span>
+                        <h3 class="servicio-nombre" data-translate="home_plumbing">Plomería</h3>
+                        <p class="servicio-descripcion" data-translate="home_plumbing_desc">Reparación de cañerías y problemas de agua</p>
+                        <span class="servicio-precio" data-translate="home_plumbing_price">Desde $15.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="home_moving">Mudanzas</h3>
-                        <p class="servicio-descripcion" data-translate="home_moving_desc">Servicio completo de mudanzas con personal cualificado</p>
-                        <span class="servicio-precio" data-translate="home_moving_price">Desde 50€</span>
+                        <p class="servicio-descripcion" data-translate="home_moving_desc">Servicio completo de mudanzas con personal calificado</p>
+                        <span class="servicio-precio" data-translate="home_moving_price">Desde $50.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="home_pets">Cuidado de mascotas</h3>
                         <p class="servicio-descripcion" data-translate="home_pets_desc">Paseo y cuidado de sus animales</p>
-                        <span class="servicio-precio" data-translate="home_pets_price">Desde 10€/hora</span>
+                        <span class="servicio-precio" data-translate="home_pets_price">Desde $10.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="home_furniture">Montaje de muebles</h3>
+                        <h3 class="servicio-nombre" data-translate="home_furniture">Armado de muebles</h3>
                         <p class="servicio-descripcion" data-translate="home_furniture_desc">Ensamblaje profesional de todo tipo de muebles</p>
-                        <span class="servicio-precio" data-translate="home_furniture_price">Desde 15€/hora</span>
+                        <span class="servicio-precio" data-translate="home_furniture_price">Desde $15.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="home_painting">Pintura de paredes</h3>
                         <p class="servicio-descripcion" data-translate="home_painting_desc">Pintura interior y exterior con acabados perfectos</p>
-                        <span class="servicio-precio" data-translate="home_painting_price">Desde 10€/m²</span>
+                        <span class="servicio-precio" data-translate="home_painting_price">Desde $10.000/m²</span>
                     </article>
                 </div>
             </div>
@@ -283,51 +286,51 @@
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="edu_portuguese">Clases de portugués</h3>
                         <p class="servicio-descripcion" data-translate="edu_portuguese_desc">Clases personalizadas para todos los niveles</p>
-                        <span class="servicio-precio" data-translate="edu_portuguese_price">Desde 20€/hora</span>
+                        <span class="servicio-precio" data-translate="edu_portuguese_price">Desde $10.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="edu_english">Clases de inglés</h3>
                         <p class="servicio-descripcion" data-translate="edu_english_desc">Enfoque comunicativo para aprender rápido</p>
-                        <span class="servicio-precio" data-translate="edu_english_price">Desde 20€/hora</span>
+                        <span class="servicio-precio" data-translate="edu_english_price">Desde $10.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="edu_math">Clases de matemáticas</h3>
                         <p class="servicio-descripcion" data-translate="edu_math_desc">Apoyo escolar y universitario</p>
-                        <span class="servicio-precio" data-translate="edu_math_price">Desde 18€/hora</span>
+                        <span class="servicio-precio" data-translate="edu_math_price">Desde $12.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="edu_academic">Asesoría académica</h3>
                         <p class="servicio-descripcion" data-translate="edu_academic_desc">Orientación para trabajos y proyectos</p>
-                        <span class="servicio-precio" data-translate="edu_academic_price">Desde 15€/hora</span>
+                        <span class="servicio-precio" data-translate="edu_academic_price">Desde $15.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="edu_music">Clases de música</h3>
                         <p class="servicio-descripcion" data-translate="edu_music_desc">Piano, guitarra, canto y más</p>
-                        <span class="servicio-precio" data-translate="edu_music_price">Desde 20€/hora</span>
+                        <span class="servicio-precio" data-translate="edu_music_price">Desde $15.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="edu_cooking">Talleres de cocina</h3>
                         <p class="servicio-descripcion" data-translate="edu_cooking_desc">Aprende a cocinar como un profesional</p>
-                        <span class="servicio-precio" data-translate="edu_cooking_price">Desde 35€/sesión</span>
+                        <span class="servicio-precio" data-translate="edu_cooking_price">Desde $35.000/sesión</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="edu_tutoring">Tutorías para niños</h3>
                         <p class="servicio-descripcion" data-translate="edu_tutoring_desc">Apoyo escolar personalizado</p>
-                        <span class="servicio-precio" data-translate="edu_tutoring_price">Desde 15€/hora</span>
+                        <span class="servicio-precio" data-translate="edu_tutoring_price">Desde $15.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="edu_cv">Preparación de CV</h3>
                         <p class="servicio-descripcion" data-translate="edu_cv_desc">Crea un currículum que destaque</p>
-                        <span class="servicio-precio" data-translate="edu_cv_price">Desde 6€</span>
+                        <span class="servicio-precio" data-translate="edu_cv_price">Desde $5.000</span>
                     </article>
                 </div>
             </div>
@@ -345,50 +348,50 @@
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="health_physio">Fisioterapia</h3>
                         <p class="servicio-descripcion" data-translate="health_physio_desc">Rehabilitación y tratamiento de lesiones</p>
-                        <span class="servicio-precio" data-translate="health_physio_price">Desde 30€/sesión</span>
+                        <span class="servicio-precio" data-translate="health_physio_price">Desde $20.000/sesión</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="health_nutrition">Nutricionista</h3>
                         <p class="servicio-descripcion" data-translate="health_nutrition_desc">Planes alimenticios personalizados</p>
-                        <span class="servicio-precio" data-translate="health_nutrition_price">Desde 20€/consulta</span>
+                        <span class="servicio-precio" data-translate="health_nutrition_price">Desde $20.000/consulta</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="health_trainer">Entrenador personal</h3>
                         <p class="servicio-descripcion" data-translate="health_trainer_desc">Rutinas de ejercicio a medida</p>
-                        <span class="servicio-precio" data-translate="health_trainer_price">Desde 30€/sesión</span>
+                        <span class="servicio-precio" data-translate="health_trainer_price">Desde $20.000/sesión</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="health_therapy">Terapia psicológica</h3>
                         <p class="servicio-descripcion" data-translate="health_therapy_desc">Apoyo emocional y mental</p>
-                        <span class="servicio-precio" data-translate="health_therapy_price">Desde 20€/sesión</span>
+                        <span class="servicio-precio" data-translate="health_therapy_price">Desde $15.000/sesión</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="health_massage">Masajes terapéuticos</h3>
                         <p class="servicio-descripcion" data-translate="health_massage_desc">Alivio de tensiones y dolores musculares</p>
-                        <span class="servicio-precio" data-translate="health_massage_price">Desde 25€/hora</span>
+                        <span class="servicio-precio" data-translate="health_massage_price">Desde $25.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="health_acupuncture">Acupuntura</h3>
                         <p class="servicio-descripcion" data-translate="health_acupuncture_desc">Terapia alternativa para diversos males</p>
-                        <span class="servicio-precio" data-translate="health_acupuncture_price">Desde 20€/sesión</span>
+                        <span class="servicio-precio" data-translate="health_acupuncture_price">Desde $20.000/sesión</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="health_yoga">Yoga a domicilio</h3>
                         <p class="servicio-descripcion" data-translate="health_yoga_desc">Clases personalizadas en tu hogar</p>
-                        <span class="servicio-precio" data-translate="health_yoga_price">Desde 25€/sesión</span>
+                        <span class="servicio-precio" data-translate="health_yoga_price">Desde $15.000/sesión</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="health_reiki">Reiki</h3>
                         <p class="servicio-descripcion" data-translate="health_reiki_desc">Terapia energética para bienestar</p>
-                        <span class="servicio-precio" data-translate="health_reiki_price">Desde 20€/sesión</span>
+                        <span class="servicio-precio" data-translate="health_reiki_price">Desde $15.000/sesión</span>
                     </article>
                 </div>
             </div>
@@ -405,32 +408,32 @@
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="transport_private">Transporte privado</h3>
                         <p class="servicio-descripcion" data-translate="transport_private_desc">Traslados seguros y puntuales</p>
-                        <span class="servicio-precio" data-translate="transport_private_price">Desde 0.50€/km</span>
+                        <span class="servicio-precio" data-translate="transport_private_price">Desde $2.000/km</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="transport_airport">Recogida en aeropuerto</h3>
                         <p class="servicio-descripcion" data-translate="transport_airport_desc">Servicio puerta a puerta</p>
-                        <span class="servicio-precio" data-translate="transport_airport_price">Desde 30€</span>
+                        <span class="servicio-precio" data-translate="transport_airport_price">Desde $25.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="transport_courier">Mensajería</h3>
                         <p class="servicio-descripcion" data-translate="transport_courier_desc">Entrega rápida de paquetes</p>
-                        <span class="servicio-precio" data-translate="transport_courier_price">Desde 10€</span>
+                        <span class="servicio-precio" data-translate="transport_courier_price">Desde $10.000</span>
                     </article>
                     
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="transport_van">Alquiler de furgonetas</h3>
-                        <p class="servicio-descripcion" data-translate="transport_van_desc">Para mudanzas o transporte de mercancías</p>
-                        <span class="servicio-precio" data-translate="transport_van_price">Desde 40€/día</span>
+                        <h3 class="servicio-nombre" data-translate="transport_van">Alquiler de camioneta</h3>
+                        <p class="servicio-descripcion" data-translate="transport_van_desc">Para mudanzas o transporte de mercadería</p>
+                        <span class="servicio-precio" data-translate="transport_van_price">Desde $40.000/día</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="transport_medical">Traslados médicos</h3>
                         <p class="servicio-descripcion" data-translate="transport_medical_desc">Ambulancia no urgente</p>
-                        <span class="servicio-precio" data-translate="transport_medical_price">Desde 40€</span>
+                        <span class="servicio-precio" data-translate="transport_medical_price">Desde $40.000</span>
                     </article>
                     
                     <article class="servicio-card">
@@ -443,13 +446,13 @@
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="transport_events">Transporte para eventos</h3>
                         <p class="servicio-descripcion" data-translate="transport_events_desc">Bodas, fiestas y convenciones</p>
-                        <span class="servicio-precio" data-translate="transport_events_price">Desde 100€</span>
+                        <span class="servicio-precio" data-translate="transport_events_price">Desde $50.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="transport_guide">Guía turístico</h3>
                         <p class="servicio-descripcion" data-translate="transport_guide_desc">Conoce la ciudad con expertos</p>
-                        <span class="servicio-precio" data-translate="transport_guide_price">Desde 25€/hora</span>
+                        <span class="servicio-precio" data-translate="transport_guide_price">Desde $20.000/hora</span>
                     </article>
                 </div>
             </div>
@@ -466,55 +469,46 @@
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="other_photo">Fotografía</h3>
                         <p class="servicio-descripcion" data-translate="other_photo_desc">Sesiones profesionales para eventos</p>
-                        <span class="servicio-precio" data-translate="other_photo_price">Desde 100€</span>
+                        <span class="servicio-precio" data-translate="other_photo_price">Desde $30.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="other_design">Diseño gráfico</h3>
                         <p class="servicio-descripcion" data-translate="other_design_desc">Logos, folletos y material publicitario</p>
-                        <span class="servicio-precio" data-translate="other_design_price">Desde 40€</span>
+                        <span class="servicio-precio" data-translate="other_design_price">Desde $25.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="other_phone">Reparación de celulares</h3>
                         <p class="servicio-descripcion" data-translate="other_phone_desc">Pantallas, baterías y problemas de software</p>
-                        <span class="servicio-precio" data-translate="other_phone_price">Desde 30€</span>
+                        <span class="servicio-precio" data-translate="other_phone_price">Desde $15.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="other_legal">Asesoría legal</h3>
                         <p class="servicio-descripcion" data-translate="other_legal_desc">Consulta con profesionales del derecho</p>
-                        <span class="servicio-precio" data-translate="other_legal_price">Desde 60€/hora</span>
+                        <span class="servicio-precio" data-translate="other_legal_price">Desde $40.000/hora</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="other_translation">Traducciones</h3>
                         <p class="servicio-descripcion" data-translate="other_translation_desc">Documentos oficiales y técnicos</p>
-                        <span class="servicio-precio" data-translate="other_translation_price">Desde 0.10€/palabra</span>
+                        <span class="servicio-precio" data-translate="other_translation_price">Desde $500/palabra</span>
                     </article>
                     
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="other_events">Organización de eventos</h3>
                         <p class="servicio-descripcion" data-translate="other_events_desc">Bodas, cumpleaños y eventos corporativos</p>
-                        <span class="servicio-precio" data-translate="other_events_price">Desde 300€</span>
+                        <span class="servicio-precio" data-translate="other_events_price">Desde $100.000</span>
                     </article>
                     
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="other_it">Servicios IT</h3>
                         <p class="servicio-descripcion" data-translate="other_it_desc">Soporte técnico y desarrollo web</p>
-                        <span class="servicio-precio" data-translate="other_it_price">Desde 20€/hora</span>
-
+                        <span class="servicio-precio" data-translate="other_it_price">Desde $20.000/hora</span>
                         <div class="servicio-redes">
-                            <a href="https://www.instagram.com/gonzalezjoaquin098/" target="_blank" class="instagram-link">
-                        <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                            <span data-translate="follow">Joaquin Gonzalez</span>
-                            </a>
                         </div>
                     </article>
                     
@@ -528,18 +522,17 @@
         </section>
     </main>
     
-    <script src="script/script.js"></script>
-    
     <footer class="footer">
         <div class="footer-contenido">
-            <p data-translate="footer_text">&copy; 2025 TiendaLatina. Todos los derechos reservados.</p>
+            <p data-translate="footer_text">&copy; 2026 Matanga la Changa!. Todos los derechos reservados.</p>
             <div class="footer-eu">
-                <img src="imagenes/eu_flag.png" alt="Unión Europea" title="Unión Europea" class="eu-flag">
+                <img src="imagenes/ar.png" alt="Argentina" title="Argentina" class="eu-flag">
             </div>
         </div>
     </footer>
-
+ 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script/script.js"></script>
     
 </body>
 </html>
