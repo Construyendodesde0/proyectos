@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // =============================================
-    // AOS – Inicialización
-    // =============================================
     AOS.init({
         once: false,
         duration: 600,

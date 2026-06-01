@@ -1,4 +1,3 @@
-cios · HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +9,334 @@ cios · HTML
     <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* =============================================
+           SISTEMA DE ZONAS / CIUDADES
+           ============================================= */
+        .zona-selector {
+            background: var(--blanco);
+            border-bottom: 2px solid var(--azul-profundo);
+            padding: 14px 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 120px;
+            z-index: 900;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+        }
+
+        .zona-label {
+            font-weight: 700;
+            color: var(--texto-secundario);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .zona-label i {
+            color: var(--rojo-acento);
+        }
+
+        .zona-btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .zona-btn {
+            background: var(--fondo-general);
+            border: 2px solid #dee2e6;
+            color: var(--texto-principal);
+            padding: 6px 16px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+
+        .zona-btn:hover {
+            border-color: var(--rojo-acento);
+            color: var(--rojo-acento);
+        }
+
+        .zona-btn.active {
+            background: var(--rojo-acento);
+            border-color: var(--rojo-acento);
+            color: white;
+            box-shadow: 0 3px 10px rgba(192,57,43,0.3);
+        }
+
+        /* Sub-zonas (barrios de Córdoba) */
+        .barrios-row {
+            display: none;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 8px 0 2px;
+            width: 100%;
+            animation: fadeInRow 0.25s ease;
+        }
+
+        .barrios-row.visible {
+            display: flex;
+        }
+
+        @keyframes fadeInRow {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .barrio-btn {
+            background: #fff9f0;
+            border: 1.5px solid var(--dorado-suave);
+            color: #7a5a00;
+            padding: 4px 13px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .barrio-btn:hover {
+            background: var(--dorado-suave);
+            color: white;
+        }
+
+        .barrio-btn.active {
+            background: var(--dorado-suave);
+            color: white;
+            box-shadow: 0 2px 6px rgba(212,160,23,0.35);
+        }
+
+        .zona-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #eaf4ff;
+            border: 1.5px solid #a8d0f5;
+            color: #1a6aad;
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-left: auto;
+        }
+
+        /* =============================================
+           TARJETA DE TRABAJADOR
+           ============================================= */
+        .trabajador-card {
+            background: var(--blanco);
+            border: 1px solid #e8e8e8;
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: box-shadow 0.25s, transform 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trabajador-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--rojo-acento);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .trabajador-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .trabajador-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rojo-acento), var(--dorado-suave));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: 0 3px 8px rgba(192,57,43,0.3);
+        }
+
+        .trabajador-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .trabajador-nombre {
+            font-weight: 700;
+            font-size: 0.97rem;
+            color: var(--texto-principal);
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .trabajador-zona {
+            font-size: 0.75rem;
+            color: var(--texto-secundario);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .trabajador-zona i {
+            color: var(--rojo-acento);
+            font-size: 0.7rem;
+        }
+
+        .trabajador-redes {
+            display: flex;
+            gap: 7px;
+        }
+
+        .btn-red {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 11px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-1px);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+
+        .btn-instagram:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        .trabajador-precio {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--rojo-acento);
+            background: #fff0ee;
+            border: 1px solid #f5b8b2;
+            border-radius: 12px;
+            padding: 3px 9px;
+            white-space: nowrap;
+            align-self: flex-start;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* Tarjetas ocultas por zona */
+        .trabajador-card[data-zona] {
+            display: flex;
+        }
+
+        .trabajador-card.zona-oculta {
+            display: none !important;
+        }
+
+        /* Mensaje cuando no hay resultados en zona */
+        .sin-resultados {
+            display: none;
+            text-align: center;
+            padding: 18px;
+            color: var(--texto-secundario);
+            font-size: 0.9rem;
+            background: var(--fondo-general);
+            border-radius: 10px;
+            margin-top: 12px;
+        }
+
+        .sin-resultados.visible {
+            display: block;
+        }
+
+        /* =============================================
+           SECCIÓN "¿SOS EMPRENDEDOR?" — CTA LIMPIO
+           ============================================= */
+        .cta-emprendedor {
+            background: linear-gradient(135deg, #fff5f5, #fff9ee);
+            border: 1.5px solid #f5c6c0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        .cta-emprendedor p {
+            font-size: 0.88rem;
+            color: var(--texto-secundario);
+            margin-bottom: 10px;
+        }
+
+        .cta-emprendedor strong {
+            color: var(--rojo-acento);
+        }
+
+        /* =============================================
+           RESPONSIVE ZONA SELECTOR
+           ============================================= */
+        @media (max-width: 768px) {
+            .zona-selector {
+                top: 90px;
+                padding: 10px 12px;
+                gap: 8px;
+            }
+
+            .zona-badge {
+                margin-left: 0;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .trabajador-card {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .trabajador-precio {
+                align-self: center;
+            }
+        }
+    </style>
 </head>
 <body class="servicios">
     <header class="servicios-header">
@@ -18,51 +345,78 @@ cios · HTML
                 <img src="../imagenes/logo.matanga.4.png" alt="Matanga la Changa!" title="Matanga la Changa! ™">
             </div>
         </a>
-        
+
         <h1 class="titulo" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800" data-translate="discover_services">Descubre Nuestros Servicios</h1>
-        
+
         <div class="language-buttons" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
             <button type="button" id="esBtn" aria-label="Cambiar a Español">
                 <img src="../imagenes/esmenu.png" alt="Bandera de Argentina">
                 <span data-translate="lang_es">ES</span>
             </button>
- 
             <button type="button" id="enBtn" aria-label="Change to English">
                 <img src="../imagenes/enmenu.png" alt="Flag of United Kingdom">
                 <span data-translate="lang_en">EN</span>
             </button>
- 
             <button type="button" id="ptBtn" aria-label="Mudar para Português">
                 <img src="../imagenes/br.png" alt="Bandeira do Brasil">
                 <span data-translate="lang_pt">PT</span>
             </button>
         </div>
     </header>
- 
+
+    <!-- =============================================
+         SELECTOR DE ZONA (siempre visible, sticky)
+         ============================================= -->
+    <div class="zona-selector" id="zonaSelector">
+        <span class="zona-label"><i class="fas fa-map-marker-alt"></i> <span data-translate="zona_label">Zona:</span></span>
+
+        <div class="zona-btns">
+            <button class="zona-btn active" data-zona="todas" onclick="seleccionarZona('todas', this)">
+                <i class="fas fa-globe-americas"></i> Todas
+            </button>
+            <button class="zona-btn" data-zona="monte-cristo" onclick="seleccionarZona('monte-cristo', this)">
+                🏘️ Monte Cristo
+            </button>
+            <button class="zona-btn" data-zona="cordoba" onclick="seleccionarZona('cordoba', this)">
+                🏙️ Córdoba Capital
+            </button>
+        </div>
+
+        <!-- Sub-barrios de Córdoba (aparecen solo cuando se elige Córdoba) -->
+        <div class="barrios-row" id="barriosRow">
+            <span class="zona-label" style="font-size:0.75rem;">Barrio:</span>
+            <button class="barrio-btn active" data-barrio="todos" onclick="seleccionarBarrio('todos', this)">Todos</button>
+            <button class="barrio-btn" data-barrio="centro" onclick="seleccionarBarrio('centro', this)">Centro</button>
+            <button class="barrio-btn" data-barrio="nueva-cordoba" onclick="seleccionarBarrio('nueva-cordoba', this)">Nueva Córdoba</button>
+            <button class="barrio-btn" data-barrio="zona-sur" onclick="seleccionarBarrio('zona-sur', this)">Zona Sur</button>
+            <button class="barrio-btn" data-barrio="alberdi" onclick="seleccionarBarrio('alberdi', this)">Alberdi</button>
+            <button class="barrio-btn" data-barrio="cerro" onclick="seleccionarBarrio('cerro', this)">Cerro de las Rosas</button>
+        </div>
+
+        <span class="zona-badge" id="zonaBadge">
+            <i class="fas fa-users"></i> <span id="zonaCount">ver todos</span>
+        </span>
+    </div>
+
     <!-- Botón flotante para emprendedores -->
     <button class="btn-emprendedor" id="btnEmprendedor" data-aos="fade-up" data-translate="publish_business">
         <i class="fas fa-store-alt"></i> Publica tu negocio
     </button>
- 
+
     <!-- Panel desplegable -->
     <div class="panel-emprendedor" id="panelEmprendedor">
         <button class="cerrar-panel" id="cerrarPanel">&times;</button>
-        
         <div class="emprendedores-container">
-            <!-- Formulario Netlify -->
             <div class="contacto-form">
-                <h3 data-translate="appear_here">¿Quieres aparecer aquí?</h3>
-                
+                <h3 data-translate="appear_here">¿Querés aparecer aquí?</h3>
                 <form name="emprendedor" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                     <input type="hidden" name="form-name" value="emprendedor">
-                    <input type="hidden" name="bot-field" value=""> <!-- campo honeypot -->
- 
+                    <input type="hidden" name="bot-field" value="">
                     <input type="text" name="nombre" placeholder="Tu nombre" data-translate-placeholder="your_name" required>
                     <input type="text" name="nombreneg" placeholder="Nombre del negocio" data-translate-placeholder="business_name" required>
                     <input type="tel" name="telefono" placeholder="WhatsApp" data-translate-placeholder="whatsapp" required>
- 
                     <select name="servicio" required>
-                        <option value="" disabled selected data-translate="select_category">Selecciona tu categoría</option>
+                        <option value="" disabled selected data-translate="select_category">Seleccioná tu categoría</option>
                         <option value="belleza" data-translate="beauty">Belleza</option>
                         <option value="hogar" data-translate="home">Hogar</option>
                         <option value="educacion" data-translate="education">Educación</option>
@@ -70,11 +424,8 @@ cios · HTML
                         <option value="transporte" data-translate="transport">Transporte</option>
                         <option value="otros" data-translate="other">Otros</option>
                     </select>
- 
                     <button type="submit" class="btn-enviar" data-translate="request_info">Solicitar información</button>
                 </form>
- 
-                <!-- Formulario estático oculto para que Netlify lo registre -->
                 <form name="emprendedor" netlify netlify-honeypot="bot-field" hidden>
                     <input type="text" name="nombre" />
                     <input type="text" name="nombreneg" />
@@ -90,7 +441,6 @@ cios · HTML
                     <input type="hidden" name="form-name" value="emprendedor">
                     <input type="hidden" name="bot-field" value="" />
                 </form>
- 
                 <div class="opciones-pago">
                     <div class="opcion-pago">
                         <p data-translate="pay_crypto">Pagar con crypto</p>
@@ -99,7 +449,6 @@ cios · HTML
                             <i class="fab fa-bitcoin"></i> Ver opciones
                         </button>
                     </div>
- 
                     <div class="opcion-pago">
                         <p data-translate="pay_mp">Pagar con MercadoPago</p>
                         <button class="btn-pago btn-mbway" id="btnMbway" data-translate="pay_with_mp">
@@ -108,8 +457,6 @@ cios · HTML
                     </div>
                 </div>
             </div>
- 
-            <!-- Sección QR -->
             <div class="crypto-section" id="cryptoSection">
                 <h3><i class="fas fa-qrcode"></i> <span data-translate="usdc_payment">Pago con USDC</span></h3>
                 <div class="tarifas">
@@ -121,28 +468,24 @@ cios · HTML
                         <h4 data-translate="one_year">1 año</h4>
                         <p>100 USDC</p>
                     </div>
-                    
                     <img src="imagenes/qrbinance.jpg" alt="QR Binance" class="qr-pago">
                 </div>
-                <a href="https://wa.me/931307446?text=He%20realizado%20el%20pago%20de%20publicación" 
-                   class="whatsapp-link">
-                   <i class="fab fa-whatsapp"></i> <span data-translate="send_receipt">Enviar comprobante</span>
+                <a href="https://wa.me/931307446?text=He%20realizado%20el%20pago%20de%20publicación" class="whatsapp-link">
+                    <i class="fab fa-whatsapp"></i> <span data-translate="send_receipt">Enviar comprobante</span>
                 </a>
             </div>
- 
-            <!-- Sección MercadoPago -->
             <div class="mbway-section" id="mbwaySection" style="display: none;">
                 <h3><i class="fas fa-dollar-sign"></i> <span data-translate="mp_payment">Pago con MercadoPago</span></h3>
                 <div class="tarifas">
                     <div class="tarifa">
                         <h4 data-translate="one_month">1 mes</h4>
                         <p>$15.000 ARS</p>
-                        <p data-translate="mbway_number">Alias MP: <strong>matanga.la.changa</strong></p>
+                        <p>Alias MP: <strong>matanga.la.changa</strong></p>
                     </div>
                     <div class="tarifa">
                         <h4 data-translate="one_year">1 año</h4>
                         <p>$150.000 ARS</p>
-                        <p data-translate="mbway_number">Número de transferencia: <strong>3517584641</strong></p>
+                        <p>Transferencia: <strong>3517584641</strong></p>
                     </div>
                 </div>
                 <a href="https://wa.me/931307446?text=Pagué%20con%20MP%20" class="whatsapp-link" target="_blank" rel="noopener noreferrer">
@@ -151,9 +494,10 @@ cios · HTML
             </div>
         </div>
     </div>
- 
+
     <main class="servicios-main">
-        <!-- Sección Belleza -->
+
+        <!-- ==================== BELLEZA ==================== -->
         <section class="categoria-servicios" data-aos="fade-up">
             <div class="categoria-header">
                 <h2 class="categoria-titulo"><i class="fas fa-spa"></i> <span data-translate="beauty">Belleza</span></h2>
@@ -161,60 +505,214 @@ cios · HTML
             </div>
             <div class="servicios-contenido">
                 <div class="servicios-grid">
+
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="beauty_hair_salon">Peluquería</h3>
                         <p class="servicio-descripcion" data-translate="beauty_hair_salon_desc">Cortes, peinados y tratamientos capilares profesionales</p>
                         <span class="servicio-precio" data-translate="beauty_hair_salon_price">Desde $10.000</span>
+                        <!-- Trabajadores -->
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">SM</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Sandra Mamani</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/sandra.peluqueria" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="nueva-cordoba">
+                            <div class="trabajador-avatar">LG</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Luciana González</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Nueva Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/luci.estilo" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $12.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="centro">
+                            <div class="trabajador-avatar">MP</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">María Paz Rueda</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Centro</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/maripaz.hair" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $11.000</span>
+                        </div>
+                        <div class="sin-resultados" id="sin-belleza-peluqueria">No hay peluqueros en esta zona aún. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_barber">Barbería</h3>
                         <p class="servicio-descripcion" data-translate="beauty_barber_desc">Cortes clásicos y modernos para hombre</p>
                         <span class="servicio-precio" data-translate="beauty_barber_price">Desde $10.000</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">JR</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Juan "El Rulo" Pérez</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/elrulo.barberia" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="alberdi">
+                            <div class="trabajador-avatar">FT</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Franco Toscano</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Alberdi</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/barberia.toscano" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000</span>
+                        </div>
+                        <div class="sin-resultados" id="sin-belleza-barberia">No hay barberos en esta zona aún. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_hair_coloring">Tintes</h3>
                         <p class="servicio-descripcion" data-translate="beauty_hair_coloring_desc">Coloración profesional con productos de calidad</p>
                         <span class="servicio-precio" data-translate="beauty_hair_coloring_price">Desde $25.000</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="nueva-cordoba">
+                            <div class="trabajador-avatar">AV</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Agustina Vargas</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Nueva Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/agustina.colorista" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $25.000</span>
+                        </div>
+                        <div class="sin-resultados" id="sin-belleza-tintes">No hay especialistas en tintes en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="beauty_makeup">Maquillaje profesional</h3>
                         <p class="servicio-descripcion" data-translate="beauty_makeup_desc">Para eventos especiales, bodas y ocasiones importantes</p>
                         <span class="servicio-precio" data-translate="beauty_makeup_price">Desde $35.000</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">VL</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Valentina Luna</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/vale.makeup" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $35.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="cerro">
+                            <div class="trabajador-avatar">CR</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Carolina Ríos</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Cerro de las Rosas</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/caro.beauty" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $40.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay maquilladores en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_waxing">Depilación</h3>
                         <p class="servicio-descripcion" data-translate="beauty_waxing_desc">Técnicas modernas de depilación indolora</p>
                         <span class="servicio-precio" data-translate="beauty_waxing_price">Desde $25.000</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">NB</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Natalia Bustos</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/nati.depilacion" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $25.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay depiladores en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="beauty_eyelashes">Extensiones de pestañas</h3>
-                        <p class="servicio-descripcion" data-translate="beauty_eyelashes_desc">Pestañas postizas de alta calidad</p>
-                        <span class="servicio-precio" data-translate="beauty_eyelashes_price">Desde $20.000</span>
-                    </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_massage">Masajes relajantes</h3>
                         <p class="servicio-descripcion" data-translate="beauty_massage_desc">Terapia de relajación muscular</p>
                         <span class="servicio-precio" data-translate="beauty_massage_price">Desde $15.000/hora</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="zona-sur">
+                            <div class="trabajador-avatar">DM</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Diego Molina</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Zona Sur</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/diego.masajes" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $15.000/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay masajistas en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="beauty_manicure">Manicure/Pedicure</h3>
                         <p class="servicio-descripcion" data-translate="beauty_manicure_desc">Cuidado profesional de uñas</p>
                         <span class="servicio-precio" data-translate="beauty_manicure_price">Desde $10.000</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">PC</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Paula Cáceres</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/paula.unas" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="centro">
+                            <div class="trabajador-avatar">RO</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Romina Ojeda</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Centro</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/romina.nails" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $11.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay manicuras en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
+
+                </div>
+                <div class="cta-emprendedor">
+                    <p>¿Trabajás en belleza? <strong>Publicá tu negocio</strong> y empezá a recibir clientes hoy mismo.</p>
+                    <button class="btn-emprendedor" onclick="document.getElementById('panelEmprendedor').style.display='block'" style="position:static;bottom:auto;right:auto;font-size:0.85rem;padding:8px 18px;">
+                        <i class="fas fa-plus-circle"></i> Sumarme
+                    </button>
                 </div>
             </div>
         </section>
-        
-        <!-- Sección Hogar -->
+
+        <!-- ==================== HOGAR ==================== -->
         <section class="categoria-servicios" data-aos="fade-up">
             <div class="categoria-header">
                 <h2 class="categoria-titulo"><i class="fas fa-home"></i> <span data-translate="home">Hogar</span></h2>
@@ -222,60 +720,170 @@ cios · HTML
             </div>
             <div class="servicios-contenido">
                 <div class="servicios-grid">
+
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="home_cleaning">Limpieza de hogar</h3>
                         <p class="servicio-descripcion" data-translate="home_cleaning_desc">Limpieza profesional de todas las áreas de su hogar</p>
                         <span class="servicio-precio" data-translate="home_cleaning_price">Desde $7.000/hora</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">MF</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">María Fernanda Díaz</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/mf.limpieza" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $7.000/h</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="zona-sur">
+                            <div class="trabajador-avatar">EM</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Elena Medina</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Zona Sur</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/elena.cleanpro" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $7.500/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay limpiadores en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="home_gardening">Jardinería</h3>
-                        <p class="servicio-descripcion" data-translate="home_gardening_desc">Mantenimiento de jardines y áreas verdes</p>
-                        <span class="servicio-precio" data-translate="home_gardening_price">Desde $10.000/hora</span>
-                    </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="home_electrician">Electricista</h3>
                         <p class="servicio-descripcion" data-translate="home_electrician_desc">Reparaciones e instalaciones eléctricas</p>
                         <span class="servicio-precio" data-translate="home_electrician_price">Desde $10.000/hora</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">HR</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Héctor Romero</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/hector.electricista" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000/h</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="alberdi">
+                            <div class="trabajador-avatar">GS</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Gustavo Suárez</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Alberdi</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/gustavo.electro" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay electricistas en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="home_plumbing">Plomería</h3>
                         <p class="servicio-descripcion" data-translate="home_plumbing_desc">Reparación de cañerías y problemas de agua</p>
                         <span class="servicio-precio" data-translate="home_plumbing_price">Desde $15.000/hora</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">RV</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Roberto Villalba</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/roberto.plomero" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $15.000/h</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="centro">
+                            <div class="trabajador-avatar">OM</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Omar Morales</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Centro</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/omar.plomeria" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $15.000/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay plomeros en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
+                    <article class="servicio-card">
+                        <h3 class="servicio-nombre" data-translate="home_gardening">Jardinería</h3>
+                        <p class="servicio-descripcion" data-translate="home_gardening_desc">Mantenimiento de jardines y áreas verdes</p>
+                        <span class="servicio-precio" data-translate="home_gardening_price">Desde $10.000/hora</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">TC</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Tomás Cardozo</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/tomas.jardines" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay jardineros en esta zona. <strong>¡Sé el primero!</strong></div>
+                    </article>
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="home_moving">Mudanzas</h3>
                         <p class="servicio-descripcion" data-translate="home_moving_desc">Servicio completo de mudanzas con personal calificado</p>
                         <span class="servicio-precio" data-translate="home_moving_price">Desde $50.000</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="todos">
+                            <div class="trabajador-avatar">FM</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Flete Matanga Express</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Toda Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/flete.matanga" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $50.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay servicios de mudanza en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="home_pets">Cuidado de mascotas</h3>
                         <p class="servicio-descripcion" data-translate="home_pets_desc">Paseo y cuidado de sus animales</p>
                         <span class="servicio-precio" data-translate="home_pets_price">Desde $10.000/hora</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">IS</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Ignacio "Nacho" Soto</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/nacho.dogwalker" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay cuidadores de mascotas en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="home_furniture">Armado de muebles</h3>
-                        <p class="servicio-descripcion" data-translate="home_furniture_desc">Ensamblaje profesional de todo tipo de muebles</p>
-                        <span class="servicio-precio" data-translate="home_furniture_price">Desde $15.000/hora</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="home_painting">Pintura de paredes</h3>
-                        <p class="servicio-descripcion" data-translate="home_painting_desc">Pintura interior y exterior con acabados perfectos</p>
-                        <span class="servicio-precio" data-translate="home_painting_price">Desde $10.000/m²</span>
-                    </article>
+
+                </div>
+                <div class="cta-emprendedor">
+                    <p>¿Hacés trabajos del hogar? <strong>Unite a la red</strong> y conseguí más clientes.</p>
+                    <button class="btn-emprendedor" onclick="document.getElementById('panelEmprendedor').style.display='block'" style="position:static;bottom:auto;right:auto;font-size:0.85rem;padding:8px 18px;">
+                        <i class="fas fa-plus-circle"></i> Sumarme
+                    </button>
                 </div>
             </div>
         </section>
-        
-        <!-- Sección Educación -->
+
+        <!-- ==================== EDUCACIÓN ==================== -->
         <section class="categoria-servicios" data-aos="fade-up">
             <div class="categoria-header">
                 <h2 class="categoria-titulo"><i class="fas fa-graduation-cap"></i> <span data-translate="education">Educación</span></h2>
@@ -284,59 +892,79 @@ cios · HTML
             <div class="servicios-contenido">
                 <div class="servicios-grid">
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="edu_portuguese">Clases de portugués</h3>
-                        <p class="servicio-descripcion" data-translate="edu_portuguese_desc">Clases personalizadas para todos los niveles</p>
-                        <span class="servicio-precio" data-translate="edu_portuguese_price">Desde $10.000/hora</span>
-                    </article>
-                    
-                    <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="edu_english">Clases de inglés</h3>
                         <p class="servicio-descripcion" data-translate="edu_english_desc">Enfoque comunicativo para aprender rápido</p>
                         <span class="servicio-precio" data-translate="edu_english_price">Desde $10.000/hora</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="nueva-cordoba">
+                            <div class="trabajador-avatar">KA</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Karen Álvarez</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Nueva Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/karen.english" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000/h</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">BN</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Brenda Nuñez</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/brenda.idiomas" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay profesores de inglés en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="edu_math">Clases de matemáticas</h3>
-                        <p class="servicio-descripcion" data-translate="edu_math_desc">Apoyo escolar y universitario</p>
-                        <span class="servicio-precio" data-translate="edu_math_price">Desde $12.000/hora</span>
+                        <h3 class="servicio-nombre" data-translate="edu_portuguese">Clases de portugués</h3>
+                        <p class="servicio-descripcion" data-translate="edu_portuguese_desc">Clases personalizadas para todos los niveles</p>
+                        <span class="servicio-precio" data-translate="edu_portuguese_price">Desde $10.000/hora</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="centro">
+                            <div class="trabajador-avatar">AP</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Ana Pereira</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Centro</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/ana.portugues" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000/h</span>
+                        </div>
+                        <div class="sin-resultados">No hay profesores de portugués en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="edu_academic">Asesoría académica</h3>
-                        <p class="servicio-descripcion" data-translate="edu_academic_desc">Orientación para trabajos y proyectos</p>
-                        <span class="servicio-precio" data-translate="edu_academic_price">Desde $15.000/hora</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="edu_music">Clases de música</h3>
-                        <p class="servicio-descripcion" data-translate="edu_music_desc">Piano, guitarra, canto y más</p>
-                        <span class="servicio-precio" data-translate="edu_music_price">Desde $15.000/hora</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <span class="servicio-destacado" data-translate="new">Nuevo</span>
-                        <h3 class="servicio-nombre" data-translate="edu_cooking">Talleres de cocina</h3>
-                        <p class="servicio-descripcion" data-translate="edu_cooking_desc">Aprende a cocinar como un profesional</p>
-                        <span class="servicio-precio" data-translate="edu_cooking_price">Desde $35.000/sesión</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="edu_tutoring">Tutorías para niños</h3>
-                        <p class="servicio-descripcion" data-translate="edu_tutoring_desc">Apoyo escolar personalizado</p>
-                        <span class="servicio-precio" data-translate="edu_tutoring_price">Desde $15.000/hora</span>
-                    </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="edu_cv">Preparación de CV</h3>
                         <p class="servicio-descripcion" data-translate="edu_cv_desc">Crea un currículum que destaque</p>
                         <span class="servicio-precio" data-translate="edu_cv_price">Desde $5.000</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="nueva-cordoba">
+                            <div class="trabajador-avatar">PL</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Pablo Lozano</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Nueva Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/pablo.cv" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $5.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay asesores de CV en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
                 </div>
             </div>
         </section>
-        
-        <!-- Sección Salud -->
+
+        <!-- ==================== SALUD ==================== -->
         <section class="categoria-servicios" data-aos="fade-up">
             <div class="categoria-header">
                 <h2 class="categoria-titulo"><i class="fas fa-heartbeat"></i> <span data-translate="health">Salud</span></h2>
@@ -349,55 +977,63 @@ cios · HTML
                         <h3 class="servicio-nombre" data-translate="health_physio">Fisioterapia</h3>
                         <p class="servicio-descripcion" data-translate="health_physio_desc">Rehabilitación y tratamiento de lesiones</p>
                         <span class="servicio-precio" data-translate="health_physio_price">Desde $20.000/sesión</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="cerro">
+                            <div class="trabajador-avatar">MR</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Martín Rodríguez</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Cerro de las Rosas</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/martin.fisio" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $20.000/ses.</span>
+                        </div>
+                        <div class="sin-resultados">No hay fisioterapeutas en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="health_nutrition">Nutricionista</h3>
                         <p class="servicio-descripcion" data-translate="health_nutrition_desc">Planes alimenticios personalizados</p>
                         <span class="servicio-precio" data-translate="health_nutrition_price">Desde $20.000/consulta</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">CG</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Cecilia Guzmán</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/cecilia.nutricion" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $20.000/cons.</span>
+                        </div>
+                        <div class="sin-resultados">No hay nutricionistas en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="health_trainer">Entrenador personal</h3>
-                        <p class="servicio-descripcion" data-translate="health_trainer_desc">Rutinas de ejercicio a medida</p>
-                        <span class="servicio-precio" data-translate="health_trainer_price">Desde $20.000/sesión</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="health_therapy">Terapia psicológica</h3>
-                        <p class="servicio-descripcion" data-translate="health_therapy_desc">Apoyo emocional y mental</p>
-                        <span class="servicio-precio" data-translate="health_therapy_price">Desde $15.000/sesión</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="health_massage">Masajes terapéuticos</h3>
-                        <p class="servicio-descripcion" data-translate="health_massage_desc">Alivio de tensiones y dolores musculares</p>
-                        <span class="servicio-precio" data-translate="health_massage_price">Desde $25.000/hora</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="health_acupuncture">Acupuntura</h3>
-                        <p class="servicio-descripcion" data-translate="health_acupuncture_desc">Terapia alternativa para diversos males</p>
-                        <span class="servicio-precio" data-translate="health_acupuncture_price">Desde $20.000/sesión</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="health_yoga">Yoga a domicilio</h3>
                         <p class="servicio-descripcion" data-translate="health_yoga_desc">Clases personalizadas en tu hogar</p>
                         <span class="servicio-precio" data-translate="health_yoga_price">Desde $15.000/sesión</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="health_reiki">Reiki</h3>
-                        <p class="servicio-descripcion" data-translate="health_reiki_desc">Terapia energética para bienestar</p>
-                        <span class="servicio-precio" data-translate="health_reiki_price">Desde $15.000/sesión</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="nueva-cordoba">
+                            <div class="trabajador-avatar">SB</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Sofía Bernardi</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Nueva Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/sofia.yoga" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $15.000/ses.</span>
+                        </div>
+                        <div class="sin-resultados">No hay profesores de yoga en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
                 </div>
             </div>
         </section>
-        
-        <!-- Sección Transporte -->
+
+        <!-- ==================== TRANSPORTE ==================== -->
         <section class="categoria-servicios" data-aos="fade-up">
             <div class="categoria-header">
                 <h2 class="categoria-titulo"><i class="fas fa-car"></i> <span data-translate="transport">Transporte</span></h2>
@@ -406,59 +1042,60 @@ cios · HTML
             <div class="servicios-contenido">
                 <div class="servicios-grid">
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="transport_private">Transporte privado</h3>
-                        <p class="servicio-descripcion" data-translate="transport_private_desc">Traslados seguros y puntuales</p>
-                        <span class="servicio-precio" data-translate="transport_private_price">Desde $2.000/km</span>
-                    </article>
-                    
-                    <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="transport_airport">Recogida en aeropuerto</h3>
                         <p class="servicio-descripcion" data-translate="transport_airport_desc">Servicio puerta a puerta</p>
                         <span class="servicio-precio" data-translate="transport_airport_price">Desde $25.000</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">LC</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Luis "Lucho" Cabral</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/lucho.remis" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $25.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="todos">
+                            <div class="trabajador-avatar">RE</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Remis Express CBA</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Toda Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/remis.express.cba" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $25.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay choferes en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="transport_courier">Mensajería</h3>
                         <p class="servicio-descripcion" data-translate="transport_courier_desc">Entrega rápida de paquetes</p>
                         <span class="servicio-precio" data-translate="transport_courier_price">Desde $10.000</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="transport_van">Alquiler de camioneta</h3>
-                        <p class="servicio-descripcion" data-translate="transport_van_desc">Para mudanzas o transporte de mercadería</p>
-                        <span class="servicio-precio" data-translate="transport_van_price">Desde $40.000/día</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="transport_medical">Traslados médicos</h3>
-                        <p class="servicio-descripcion" data-translate="transport_medical_desc">Ambulancia no urgente</p>
-                        <span class="servicio-precio" data-translate="transport_medical_price">Desde $40.000</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="transport_taxi">Servicio de taxi</h3>
-                        <p class="servicio-descripcion" data-translate="transport_taxi_desc">24 horas los 7 días de la semana</p>
-                        <span class="servicio-precio" data-translate="transport_taxi_price">Según taxímetro</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <span class="servicio-destacado" data-translate="new">Nuevo</span>
-                        <h3 class="servicio-nombre" data-translate="transport_events">Transporte para eventos</h3>
-                        <p class="servicio-descripcion" data-translate="transport_events_desc">Bodas, fiestas y convenciones</p>
-                        <span class="servicio-precio" data-translate="transport_events_price">Desde $50.000</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="transport_guide">Guía turístico</h3>
-                        <p class="servicio-descripcion" data-translate="transport_guide_desc">Conoce la ciudad con expertos</p>
-                        <span class="servicio-precio" data-translate="transport_guide_price">Desde $20.000/hora</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">EF</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Esteban Flores</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/esteban.mensajeria" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $10.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay mensajeros en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
                 </div>
             </div>
         </section>
-        
-        <!-- Sección Otros -->
+
+        <!-- ==================== OTROS ==================== -->
         <section class="categoria-servicios" data-aos="fade-up">
             <div class="categoria-header">
                 <h2 class="categoria-titulo"><i class="fas fa-ellipsis-h"></i> <span data-translate="other_services">Otros Servicios</span></h2>
@@ -467,61 +1104,112 @@ cios · HTML
             <div class="servicios-contenido">
                 <div class="servicios-grid">
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="other_photo">Fotografía</h3>
-                        <p class="servicio-descripcion" data-translate="other_photo_desc">Sesiones profesionales para eventos</p>
-                        <span class="servicio-precio" data-translate="other_photo_price">Desde $30.000</span>
-                    </article>
-                    
-                    <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="popular">Popular</span>
                         <h3 class="servicio-nombre" data-translate="other_design">Diseño gráfico</h3>
                         <p class="servicio-descripcion" data-translate="other_design_desc">Logos, folletos y material publicitario</p>
                         <span class="servicio-precio" data-translate="other_design_price">Desde $25.000</span>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="nueva-cordoba">
+                            <div class="trabajador-avatar">IA</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Iván Aguirre</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Nueva Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/ivan.diseño" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $25.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay diseñadores en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
                         <h3 class="servicio-nombre" data-translate="other_phone">Reparación de celulares</h3>
                         <p class="servicio-descripcion" data-translate="other_phone_desc">Pantallas, baterías y problemas de software</p>
                         <span class="servicio-precio" data-translate="other_phone_price">Desde $15.000</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">NM</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Nicolás Medina</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/nico.celulares" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $15.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="alberdi">
+                            <div class="trabajador-avatar">WP</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Walter Ponce</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Alberdi</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/walter.tech" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $15.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay técnicos de celulares en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="other_legal">Asesoría legal</h3>
-                        <p class="servicio-descripcion" data-translate="other_legal_desc">Consulta con profesionales del derecho</p>
-                        <span class="servicio-precio" data-translate="other_legal_price">Desde $40.000/hora</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="other_translation">Traducciones</h3>
-                        <p class="servicio-descripcion" data-translate="other_translation_desc">Documentos oficiales y técnicos</p>
-                        <span class="servicio-precio" data-translate="other_translation_price">Desde $500/palabra</span>
-                    </article>
-                    
-                    <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="other_events">Organización de eventos</h3>
-                        <p class="servicio-descripcion" data-translate="other_events_desc">Bodas, cumpleaños y eventos corporativos</p>
-                        <span class="servicio-precio" data-translate="other_events_price">Desde $100.000</span>
-                    </article>
-                    
+
                     <article class="servicio-card">
                         <span class="servicio-destacado" data-translate="new">Nuevo</span>
                         <h3 class="servicio-nombre" data-translate="other_it">Servicios IT</h3>
                         <p class="servicio-descripcion" data-translate="other_it_desc">Soporte técnico y desarrollo web</p>
                         <span class="servicio-precio" data-translate="other_it_price">Desde $20.000/hora</span>
-                        <div class="servicio-redes">
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="nueva-cordoba">
+                            <div class="trabajador-avatar">ML</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Matías López Dev</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Nueva Córdoba</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/matias.dev" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $20.000/h</span>
                         </div>
+                        <div class="sin-resultados">No hay técnicos IT en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
-                    
+
                     <article class="servicio-card">
-                        <h3 class="servicio-nombre" data-translate="other_crafts">Venta de productos artesanales</h3>
-                        <p class="servicio-descripcion" data-translate="other_crafts_desc">Arte y manualidades únicas</p>
-                        <span class="servicio-precio" data-translate="other_crafts_price">Precios variables</span>
+                        <h3 class="servicio-nombre" data-translate="other_photo">Fotografía</h3>
+                        <p class="servicio-descripcion" data-translate="other_photo_desc">Sesiones profesionales para eventos</p>
+                        <span class="servicio-precio" data-translate="other_photo_price">Desde $30.000</span>
+                        <div class="trabajador-card" data-zona="monte-cristo">
+                            <div class="trabajador-avatar">CF</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Camila Ferreyra</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Monte Cristo</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/cami.foto" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $30.000</span>
+                        </div>
+                        <div class="trabajador-card" data-zona="cordoba" data-barrio="cerro">
+                            <div class="trabajador-avatar">JO</div>
+                            <div class="trabajador-info">
+                                <div class="trabajador-nombre">Joaquín Ortega</div>
+                                <div class="trabajador-zona"><i class="fas fa-map-marker-alt"></i> Cerro de las Rosas</div>
+                                <div class="trabajador-redes">
+                                    <a href="https://wa.me/549XXXXXXXXX" target="_blank" class="btn-red btn-whatsapp"><i class="fab fa-whatsapp"></i> WA</a>
+                                    <a href="https://instagram.com/joaco.foto" target="_blank" class="btn-red btn-instagram"><i class="fab fa-instagram"></i> IG</a>
+                                </div>
+                            </div>
+                            <span class="trabajador-precio">Desde $35.000</span>
+                        </div>
+                        <div class="sin-resultados">No hay fotógrafos en esta zona. <strong>¡Sé el primero!</strong></div>
                     </article>
                 </div>
             </div>
         </section>
+
     </main>
-    
+
     <footer class="footer">
         <div class="footer-contenido">
             <p data-translate="footer_text">&copy; 2026 Matanga la Changa!. Todos los derechos reservados.</p>
@@ -530,9 +1218,92 @@ cios · HTML
             </div>
         </div>
     </footer>
- 
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script/script.js"></script>
-    
+
+    <script>
+    // =============================================
+    // SISTEMA DE ZONAS
+    // =============================================
+    let zonaActual  = 'todas';
+    let barrioActual = 'todos';
+
+    function seleccionarZona(zona, btn) {
+        zonaActual = zona;
+        barrioActual = 'todos';
+
+        // Botones de ciudad
+        document.querySelectorAll('.zona-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Mostrar/ocultar barrios
+        const barriosRow = document.getElementById('barriosRow');
+        if (zona === 'cordoba') {
+            barriosRow.classList.add('visible');
+            // Reset barrio buttons
+            document.querySelectorAll('.barrio-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.barrio-btn[data-barrio="todos"]').classList.add('active');
+        } else {
+            barriosRow.classList.remove('visible');
+        }
+
+        aplicarFiltro();
+    }
+
+    function seleccionarBarrio(barrio, btn) {
+        barrioActual = barrio;
+        document.querySelectorAll('.barrio-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        aplicarFiltro();
+    }
+
+    function aplicarFiltro() {
+        const cards = document.querySelectorAll('.trabajador-card[data-zona]');
+        let visible = 0;
+
+        cards.forEach(card => {
+            const cardZona   = card.getAttribute('data-zona');
+            const cardBarrio = card.getAttribute('data-barrio') || 'todos';
+
+            let mostrar = false;
+
+            if (zonaActual === 'todas') {
+                mostrar = true;
+            } else if (zonaActual === 'monte-cristo') {
+                mostrar = cardZona === 'monte-cristo';
+            } else if (zonaActual === 'cordoba') {
+                if (barrioActual === 'todos') {
+                    mostrar = cardZona === 'cordoba';
+                } else {
+                    mostrar = cardZona === 'cordoba' &&
+                              (cardBarrio === barrioActual || cardBarrio === 'todos');
+                }
+            }
+
+            card.classList.toggle('zona-oculta', !mostrar);
+            if (mostrar) visible++;
+        });
+
+        // Mostrar/ocultar mensajes "sin resultados" por tarjeta
+        document.querySelectorAll('.servicio-card').forEach(servCard => {
+            const sinRes   = servCard.querySelector('.sin-resultados');
+            const hayCards = [...servCard.querySelectorAll('.trabajador-card[data-zona]')]
+                               .some(c => !c.classList.contains('zona-oculta'));
+            if (sinRes) sinRes.classList.toggle('visible', !hayCards);
+        });
+
+        // Badge contador
+        const badge = document.getElementById('zonaCount');
+        if (zonaActual === 'todas') {
+            badge.textContent = 'ver todos';
+        } else {
+            badge.textContent = visible + ' trabajador' + (visible !== 1 ? 'es' : '');
+        }
+    }
+
+    // Inicializar sin filtro
+    document.addEventListener('DOMContentLoaded', () => aplicarFiltro());
+    </script>
 </body>
 </html>
