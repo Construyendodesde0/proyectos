@@ -25,11 +25,13 @@ body {
 }
 
 /* =============================================
-   HEADER — alineación corregida para PC
+   HEADER — 2 columnas: logo | navbar
+   El .titulo es invisible (placeholder).
+   El .menu-toggle está fuera del flujo (position:absolute).
    ============================================= */
 .header {
     display: grid;
-    grid-template-columns: auto 1fr auto;   /* logo | título (oculto) | navbar */
+    grid-template-columns: auto 1fr;
     align-items: center;
     padding: 10px 30px;
     background: var(--blanco);
@@ -37,7 +39,14 @@ body {
     box-shadow: var(--sombra);
     position: relative;
     z-index: 1000;
-    gap: 0;
+}
+
+/* Logo: columna izquierda */
+.header .logo,
+.header .logo-link {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
 }
 
 .logo img {
@@ -46,31 +55,60 @@ body {
     border-radius: 50%;
 }
 
+/* Título invisible: se excluye del grid con position absolute
+   para no ocupar columna y no romper el layout */
 .titulo {
-    font-size: small;
-    font-weight: 100;
-    color: transparent;
+    position: absolute;
+    visibility: hidden;
     pointer-events: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
 
-/* =============================================
-   NAVBAR — centrada en el espacio disponible
-   ============================================= */
+/* Navbar: ocupa el 1fr del centro, nav-list centrada, idiomas a la derecha */
 .navbar {
+    grid-column: 2;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 8px;
+    flex-direction: row;        /* nav-list e idiomas en la misma fila */
+    align-items: center;
+    justify-content: center;    /* nav-list queda centrada en el espacio */
+    gap: 24px;
     margin: 0;
-    padding: 0 0 0 20px;
+    padding: 0 16px;
     position: relative;
     z-index: 1001;
 }
 
+/* Idiomas: empujados al extremo derecho dentro de la fila */
+.navbar .language-buttons {
+    margin-left: auto;
+}
+
+/* Hamburguesa: fuera del flujo del grid */
+.menu-toggle {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--dorado-suave);
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =============================================
+   NAV-LIST
+   ============================================= */
 .nav-list {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     gap: 1.5rem;
     list-style: none;
@@ -102,6 +140,47 @@ body {
 }
 
 /* =============================================
+   BOTONES DE IDIOMA
+   Desktop: segunda fila dentro del navbar (debajo de nav-list)
+   ============================================= */
+.language-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.language-buttons button {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid #dee2e6;
+    color: var(--texto-principal);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 62px;
+    height: 28px;
+    font-size: 11px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.language-buttons button:hover {
+    background: var(--rojo-acento);
+    color: white;
+    transform: scale(1.05);
+}
+
+.language-buttons button img {
+    width: 20px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* =============================================
    MENÚ DE CONTACTO (DESKTOP)
    ============================================= */
 .menu-contacto {
@@ -109,7 +188,7 @@ body {
 }
 
 .contacto-menu {
-    display: flex;
+    display: none;
     position: absolute !important;
     top: calc(100% + 10px);
     right: 0;
@@ -139,18 +218,14 @@ body {
     width: 100%;
 }
 
-/* =============================================
-   FIX: h3 "Contáctanos vía:" — color más oscuro
-   ============================================= */
 .qr-container h3 {
-    color: #2471a3;   /* azul más oscuro, legible sobre blanco */
+    color: #2471a3;
     margin-bottom: 10px;
     font-size: 1.1rem;
     width: 100%;
     font-weight: 700;
 }
 
-/* mismo fix para el modal móvil */
 .contacto-modal__content h3 {
     color: #2471a3;
     font-size: 1.1rem;
@@ -229,46 +304,6 @@ body {
 
 .banderas img:hover {
     transform: scale(1.1);
-}
-
-/* =============================================
-   BOTONES DE IDIOMA
-   ============================================= */
-.language-buttons {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.language-buttons button {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid #dee2e6;
-    color: var(--texto-principal);
-    padding: 6px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    width: 62px;
-    height: 28px;
-    font-size: 11px;
-    transition: all 0.3s;
-    font-weight: bold;
-}
-
-.language-buttons button:hover {
-    background: var(--rojo-acento);
-    color: white;
-    transform: scale(1.05);
-}
-
-.language-buttons button img {
-    width: 20px;
-    height: auto;
-    object-fit: contain;
 }
 
 /* =============================================
@@ -469,24 +504,6 @@ body {
 }
 
 /* =============================================
-   MENÚ HAMBURGUESA
-   ============================================= */
-.menu-toggle {
-    display: none;
-    position: relative;
-    width: 40px;
-    height: 40px;
-    background: var(--dorado-suave);
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 9999;
-    border: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* =============================================
    MODAL CONTACTO (MÓVIL)
    ============================================= */
 .contacto-modal {
@@ -497,6 +514,8 @@ body {
    RESPONSIVE — MÓVIL
    ============================================= */
 @media (max-width: 768px) {
+
+    /* Header: flex simple, logo a la izquierda, hamburguesa a la derecha */
     .header {
         display: flex;
         flex-direction: row;
@@ -507,20 +526,21 @@ body {
         z-index: 1002;
     }
 
+    /* Navbar oculto por defecto, se muestra al abrir el menú */
     .navbar {
         display: none;
         position: fixed;
-        top: 60px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 100% !important;
-        max-width: 400px !important;
-        background: var(--blanco) !important;
+        top: 64px;
+        left: 0;                /* ← no usar left:50% con translateX, causa el salto */
+        right: 0;
+        width: 92%;
+        max-width: 400px;
+        margin: 0 auto;         /* centrado con margin auto en vez de translate */
+        background: var(--blanco);
         border-radius: 0 0 15px 15px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        padding: 20px 0 !important;
-        height: 360px !important;
-        max-height: 80vh !important;
+        padding: 20px 0;
+        max-height: 80vh;
         overflow-y: auto;
         z-index: 9998;
         flex-direction: column;
@@ -534,25 +554,31 @@ body {
     }
 
     @keyframes slideDown {
-        from { transform: translate(-50%, -20px); opacity: 0; }
-        to   { transform: translate(-50%, 0);     opacity: 1; }
+        from { opacity: 0; transform: translateY(-10px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* Hamburguesa visible en móvil */
+    .menu-toggle {
+        display: flex !important;
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+    }
+
+    .menu-toggle span,
+    .menu-toggle i {
+        color: white;
+        font-size: 1.1rem;
+    }
+
+    /* Nav-list: apilada verticalmente */
     .nav-list {
         flex-direction: column;
         gap: 10px;
-        justify-content: center;
         padding: 0 15px;
         width: 100%;
-    }
-
-    .navbar ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
     }
 
     .navbar li {
@@ -566,7 +592,6 @@ body {
         color: var(--texto-principal);
         text-decoration: none;
         font-size: 1.1rem;
-        transition: all 0.3s ease;
         border-radius: 4px;
         text-align: center;
         background: var(--blanco);
@@ -578,35 +603,22 @@ body {
         color: white;
     }
 
-    .menu-toggle {
+    /* Idiomas: al final del menú desplegable, centrados con separador */
+    .navbar .language-buttons {
         display: flex !important;
-    }
-
-    .menu-toggle span {
-        width: 20px;
-        display: block;
-        background-color: white;
-        height: 3px;
-        border-radius: 2px;
-        margin: 3px 0;
+        justify-content: center !important;
+        gap: 8px !important;
+        padding: 15px 0 10px !important;
+        width: 100% !important;
+        border-top: 1px solid #dee2e6;
+        margin-top: 6px;
+        margin-left: 0;         /* cancela el margin-left:auto del desktop */
     }
 
     body.menu-open {
         overflow: hidden;
         position: fixed;
         width: 100%;
-    }
-
-    .language-buttons {
-        position: absolute;
-        top: auto;
-        right: auto;
-        justify-content: center !important;
-        padding: 15px 0 !important;
-        width: 100% !important;
-        gap: 8px !important;
-        margin: 0;
-        order: -1;
     }
 
     .banderas {

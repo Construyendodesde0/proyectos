@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubre los mejores servicios de la comunidad en nuestra plataforma.">
-    <meta name="google-site-verification" content="9FVUgyKoRDCtuW99XEOkWkhMsB8QGxPqYvOLmU2OY3k" />
-    <title>Matanga la Changa! | Servicios al instante</title>
-    <link rel="stylesheet" href="estilo/estilo.css?v=2">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome: solo una versión -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="imagenes/logo.matanga.4.png" type="image/x-icon">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- SEO básico -->
+    <meta name="description" content="Encontrá peluqueros, electricistas, profesores, masajistas y más en Monte Cristo y Córdoba. Servicios al instante, sin comisiones.">
+    <meta name="keywords" content="servicios Monte Cristo, changas Córdoba, peluquería, electricista, plomero, clases particulares, emprendedores Córdoba">
+    <meta name="author" content="Matanga la Changa!">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="9FVUgyKoRDCtuW99XEOkWkhMsB8QGxPqYvOLmU2OY3k">
+
+    <!-- Open Graph — para WhatsApp, Facebook, Instagram -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://matangalachanga.netlify.app/">
+    <meta property="og:title"       content="Matanga la Changa! | Servicios al instante">
+    <meta property="og:description" content="Encontrá peluqueros, electricistas, profesores y más en Monte Cristo y Córdoba. Sin comisiones, directo al trabajador.">
+    <meta property="og:image"       content="https://matangalachanga.netlify.app/imagenes/og-preview.png">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale"      content="es_AR">
+    <meta property="og:site_name"   content="Matanga la Changa!">
+
+    <!-- Twitter/X Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Matanga la Changa! | Servicios al instante">
+    <meta name="twitter:description" content="Encontrá peluqueros, electricistas, profesores y más. Sin comisiones.">
+    <meta name="twitter:image"       content="https://matangalachanga.netlify.app/imagenes/og-preview.png">
+
+    <title>Matanga la Changa! | Servicios al instante</title>
+
+    <!-- Favicon -->
+    <link rel="icon"       href="imagenes/logo.matanga.4.png" type="image/png">
+    <link rel="apple-touch-icon" href="imagenes/logo.matanga.4.png">
+
+    <!-- Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo/estilo.css?v=4">
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GR7XS7XZG"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -23,107 +54,134 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800" oncontextmenu="return false;" draggable="false">
-            <img src="imagenes/logo.matanga.4.png" alt="Matanga la Changa!" style="pointer-events: none;" title="Matanga la Changa! ™">
-        </div>
-        <h1 class="titulo">Matanga la Changa!</h1>
-        <button class="menu-toggle" aria-label="Abrir menú" data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <nav class="navbar" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
-            <ul class="nav-list">
-                <li><a href="#inicio" data-i18n="menuInicio">Inicio</a></li>
-                <li class="menu-servicios">
-                    <a href="servicios/servicios.html" id="servicios-link" target="_blank" data-i18n="menuServicios">Servicios</a>
-                </li>
-                <li class="menu-contacto">
-                    <a href="#" id="contacto-link" data-i18n="menuContacto">Contacto <i class="fas fa-chevron-down"></i></a>
-                    <div class="contacto-menu" id="contacto-menu">
-                        <div class="qr-container">
-                            <h3 data-i18n="contacto">Contáctanos vía:</h3>
-                            <div class="qr-option">
-                                <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
-                                <p><i class="fab fa-whatsapp"></i> <span data-i18n="whatsapp">WhatsApp</span></p>
-                                <a href="https://wa.me/931307446" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="abrirChat">Abrir Chat</a>
-                            </div>
-                            <div class="qr-option">
-                                <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
-                                <p><i class="fab fa-instagram"></i> <span data-i18n="instagram">Instagram</span></p>
-                                <a href="https://www.instagram.com/matangalachanga/" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="seguir">Seguir</a>
-                            </div>
+
+    <!-- Columna 1: Logo -->
+    <div class="logo"
+         data-aos="fade-left" data-aos-delay="200" data-aos-duration="800"
+         oncontextmenu="return false;" draggable="false">
+        <img src="imagenes/logo.matanga.4.png"
+             alt="Matanga la Changa!"
+             style="pointer-events:none;"
+             title="Matanga la Changa! ™">
+    </div>
+
+    <!-- Título invisible (se saca del flujo, no ocupa columna) -->
+    <h1 class="titulo" data-translate="discover_services">
+        Descubre Nuestros Servicios
+    </h1>
+
+    <!-- Hamburguesa: solo visible en móvil -->
+    <button class="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Columna 2: Navbar + idiomas adentro -->
+    <nav class="navbar" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
+
+        <ul class="nav-list">
+            <li><a href="#inicio" data-i18n="menuInicio">Inicio</a></li>
+            <li class="menu-servicios">
+                <a href="servicios/servicios.html" target="_blank" data-i18n="menuServicios">Servicios</a>
+            </li>
+            <li class="menu-contacto">
+                <a href="#" id="contacto-link" data-i18n="menuContacto">
+                    Contacto <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="contacto-menu" id="contacto-menu">
+                    <div class="qr-container">
+                        <h3 data-i18n="contacto">Contáctanos vía:</h3>
+                        <div class="qr-option">
+                            <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
+                            <p><i class="fab fa-whatsapp"></i> <span data-i18n="whatsapp">WhatsApp</span></p>
+                            <a href="https://wa.me/931307446" target="_blank" rel="noopener noreferrer"
+                               class="qr-button" data-i18n="abrirChat">Abrir Chat</a>
+                        </div>
+                        <div class="qr-option">
+                            <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
+                            <p><i class="fab fa-instagram"></i> <span data-i18n="instagram">Instagram</span></p>
+                            <a href="https://www.instagram.com/matanga.la.changa/" target="_blank" rel="noopener noreferrer"
+                               class="qr-button" data-i18n="seguir">Seguir</a>
                         </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </li>
+        </ul>
 
-            <div class="language-buttons" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
-                <button onclick="changeLanguage('es')">
-                    <img src="imagenes/esmenu.png" alt="Español"> ES
-                </button>
-                <button onclick="changeLanguage('en')">
-                    <img src="imagenes/enmenu.png" alt="English"> EN
-                </button>
-                <button onclick="changeLanguage('pt')">
-                    <img src="imagenes/br.png" alt="Português"> PT
-                </button>
+        <!-- Idiomas: única instancia, adentro del navbar -->
+        <div class="language-buttons">
+            <button onclick="changeLanguage('es')">
+                <img src="imagenes/esmenu.png" alt="Español"> ES
+            </button>
+            <button onclick="changeLanguage('en')">
+                <img src="imagenes/enmenu.png" alt="English"> EN
+            </button>
+            <button onclick="changeLanguage('pt')">
+                <img src="imagenes/br.png" alt="Português"> PT
+            </button>
+        </div>
+
+    </nav>
+
+</header>
+
+    <!-- Modal de Contacto para móvil -->
+    <div id="contacto-modal" class="contacto-modal">
+        <div class="contacto-modal__backdrop"></div>
+        <div class="contacto-modal__content">
+            <button id="contacto-modal-close" class="contacto-modal__close">&times;</button>
+            <h3 data-i18n="contacto">Contáctanos vía:</h3>
+            <div class="qr-option">
+                <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
+                <p><i class="fab fa-whatsapp"></i> <span data-i18n="whatsapp">WhatsApp</span></p>
+                <a href="https://wa.me/931307446" target="_blank" rel="noopener noreferrer"
+                   class="qr-button" data-i18n="abrirChat">Abrir Chat</a>
             </div>
-        </nav>
-
-        <!-- Modal de Contacto para móvil -->
-        <div id="contacto-modal" class="contacto-modal">
-            <div class="contacto-modal__backdrop"></div>
-            <div class="contacto-modal__content">
-                <button id="contacto-modal-close" class="contacto-modal__close">&times;</button>
-                <h3 data-i18n="contacto">Contáctanos vía:</h3>
-                <div class="qr-option">
-                    <img src="imagenes/qrwp.png" alt="QR WhatsApp" class="qr-code">
-                    <p><i class="fab fa-whatsapp"></i> <span data-i18n="whatsapp">WhatsApp</span></p>
-                    <a href="https://wa.me/931307446" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="abrirChat">Abrir Chat</a>
-                </div>
-                <div class="qr-option">
-                    <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
-                    <p><i class="fab fa-instagram"></i> <span data-i18n="instagram">Instagram</span></p>
-                    <a href="https://www.instagram.com/matangalachanga/" target="_blank" rel="noopener noreferrer" class="qr-button" data-i18n="seguir">Seguir</a>
-                </div>
+            <div class="qr-option">
+                <img src="imagenes/qrig.png" alt="QR Instagram" class="qr-code">
+                <p><i class="fab fa-instagram"></i> <span data-i18n="instagram">Instagram</span></p>
+                <a href="https://www.instagram.com/matangalachanga/" target="_blank" rel="noopener noreferrer"
+                   class="qr-button" data-i18n="seguir">Seguir</a>
             </div>
         </div>
-    </header>
+    </div>
 
     <main>
+
+        <!-- Íconos de categorías -->
         <div class="banderas">
-            <img src="imagenes/serv/barberia.png" alt="barberia" title="barberia" data-aos="fade-in" data-aos-delay="100">
-             <img src="imagenes/serv/leccion.png" alt="traduccion" title="traduccion" data-aos="fade-in" data-aos-delay="200">
-            <img src="imagenes/serv/masaje.png" alt="masaje" title="masaje" data-aos="fade-in" data-aos-delay="300">
-            <img src="imagenes/serv/unas.png" alt="belleza" title="belleza" data-aos="fade-in" data-aos-delay="400">
-            <img src="imagenes/serv/digital.png" alt="IT" title="IT" data-aos="fade-in" data-aos-delay="500">
-            <img src="imagenes/serv/reparacioncel.png" alt="reparacion" title="reparacion" data-aos="fade-in" data-aos-delay="600">
-            <img src="imagenes/serv/cartero.png" alt="mensajeria" title="mensajeria" data-aos="fade-in" data-aos-delay="700">
-            <img src="imagenes/serv/taxi.png" alt="transporte" title="transporte" data-aos="fade-in" data-aos-delay="800">
-            <img src="imagenes/serv/casco.png" alt="construcción" title="construcción" data-aos="fade-in" data-aos-delay="900">
-            <img src="imagenes/serv/herramientas.png" alt="service" title="service" data-aos="fade-in" data-aos-delay="1000">
-            <img src="imagenes/serv/productos.png" alt="Limpieza" title="limpieza" data-aos="fade-in" data-aos-delay="1100">
-            <img src="imagenes/serv/taladro.png" alt="electricidad" title="electricidad" data-aos="fade-in" data-aos-delay="1200">
-            <img src="imagenes/serv/plomeria.png" alt="plomeria" title="plomeria" data-aos="fade-in" data-aos-delay="1300">
-            <img src="imagenes/serv/cocinero.png" alt="cocinero" title="cocinero" data-aos="fade-in" data-aos-delay="1400">
+            <img src="imagenes/serv/barberia.png"      alt="barberia"    title="barberia"     data-aos="fade-in" data-aos-delay="100">
+            <img src="imagenes/serv/leccion.png"       alt="traduccion"  title="traduccion"   data-aos="fade-in" data-aos-delay="200">
+            <img src="imagenes/serv/masaje.png"        alt="masaje"      title="masaje"       data-aos="fade-in" data-aos-delay="300">
+            <img src="imagenes/serv/unas.png"          alt="belleza"     title="belleza"      data-aos="fade-in" data-aos-delay="400">
+            <img src="imagenes/serv/digital.png"       alt="IT"          title="IT"           data-aos="fade-in" data-aos-delay="500">
+            <img src="imagenes/serv/reparacioncel.png" alt="reparacion"  title="reparacion"   data-aos="fade-in" data-aos-delay="600">
+            <img src="imagenes/serv/cartero.png"       alt="mensajeria"  title="mensajeria"   data-aos="fade-in" data-aos-delay="700">
+            <img src="imagenes/serv/taxi.png"          alt="transporte"  title="transporte"   data-aos="fade-in" data-aos-delay="800">
+            <img src="imagenes/serv/casco.png"         alt="construcción" title="construcción" data-aos="fade-in" data-aos-delay="900">
+            <img src="imagenes/serv/herramientas.png"  alt="service"     title="service"      data-aos="fade-in" data-aos-delay="1000">
+            <img src="imagenes/serv/productos.png"     alt="Limpieza"    title="limpieza"     data-aos="fade-in" data-aos-delay="1100">
+            <img src="imagenes/serv/taladro.png"       alt="electricidad" title="electricidad" data-aos="fade-in" data-aos-delay="1200">
+            <img src="imagenes/serv/plomeria.png"      alt="plomeria"    title="plomeria"     data-aos="fade-in" data-aos-delay="1300">
+            <img src="imagenes/serv/cocinero.png"      alt="cocinero"    title="cocinero"     data-aos="fade-in" data-aos-delay="1400">
             <img src="imagenes/serv/nutricionista.png" alt="nutricionista" title="nutricionista" data-aos="fade-in" data-aos-delay="1500">
-            
         </div>
 
         <!-- Servicios Populares -->
         <section id="servicios" class="services">
             <h2 data-aos="fade-down" data-i18n="serviciosPopulares">Servicios al instante!</h2>
+
             <div class="categorias">
-                <button class="categoria-btn active" data-categoria="Belleza" data-i18n="cat_belleza">Belleza</button>
-                <button class="categoria-btn" data-categoria="Hogar" data-i18n="cat_hogar">Hogar</button>
-                <button class="categoria-btn" data-categoria="Educacion" data-i18n="cat_educacion">Educación</button>
-                <button class="categoria-btn" data-categoria="Salud" data-i18n="cat_salud">Salud</button>
-                <button class="categoria-btn" data-categoria="Transporte" data-i18n="cat_transporte">Transporte</button>
-                <button class="categoria-btn" data-categoria="Otros" data-i18n="cat_otros">Otros</button>
+                <button class="categoria-btn active" data-categoria="Belleza"    data-i18n="cat_belleza">Belleza</button>
+                <button class="categoria-btn"        data-categoria="Hogar"      data-i18n="cat_hogar">Hogar</button>
+                <button class="categoria-btn"        data-categoria="Educacion"  data-i18n="cat_educacion">Educación</button>
+                <button class="categoria-btn"        data-categoria="Salud"      data-i18n="cat_salud">Salud</button>
+                <button class="categoria-btn"        data-categoria="Transporte" data-i18n="cat_transporte">Transporte</button>
+                <button class="categoria-btn"        data-categoria="Otros"      data-i18n="cat_otros">Otros</button>
             </div>
 
             <div class="servicios-container">
-                <!-- Categoría Belleza -->
+
+                <!-- Belleza -->
                 <div class="servicios-categoria active" data-categoria="Belleza">
                     <div class="servicios-columna">
                         <ul>
@@ -147,7 +205,7 @@
                     </div>
                 </div>
 
-                <!-- Categoría Hogar -->
+                <!-- Hogar -->
                 <div class="servicios-categoria" data-categoria="Hogar">
                     <div class="servicios-columna">
                         <ul>
@@ -171,7 +229,7 @@
                     </div>
                 </div>
 
-                <!-- Categoría Educación -->
+                <!-- Educación -->
                 <div class="servicios-categoria" data-categoria="Educacion">
                     <div class="servicios-columna">
                         <ul>
@@ -195,7 +253,7 @@
                     </div>
                 </div>
 
-                <!-- Categoría Salud -->
+                <!-- Salud -->
                 <div class="servicios-categoria" data-categoria="Salud">
                     <div class="servicios-columna">
                         <ul>
@@ -219,7 +277,7 @@
                     </div>
                 </div>
 
-                <!-- Categoría Transporte -->
+                <!-- Transporte -->
                 <div class="servicios-categoria" data-categoria="Transporte">
                     <div class="servicios-columna">
                         <ul>
@@ -243,7 +301,7 @@
                     </div>
                 </div>
 
-                <!-- Categoría Otros -->
+                <!-- Otros -->
                 <div class="servicios-categoria" data-categoria="Otros">
                     <div class="servicios-columna">
                         <ul>
@@ -266,12 +324,17 @@
                         <img src="imagenes/otros2.png" alt="otros2">
                     </div>
                 </div>
+
             </div>
-            <p class="footer-legal" data-i18n="footer.legal">*Página destinada única y exclusivamente a la promoción de emprendimientos, No cobramos comisión por trabajos realizados*</p>
+
+            <p class="footer-legal" data-i18n="footer.legal">
+                *Página destinada única y exclusivamente a la promoción de emprendimientos.
+                No cobramos comisión por trabajos realizados.*
+            </p>
         </section>
+
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-contenido">
             <p data-i18n="derechos">&copy; 2026 Matanga la Changa!. Todos los derechos reservados.</p>
@@ -282,5 +345,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script/script.js"></script>
+
 </body>
 </html>
